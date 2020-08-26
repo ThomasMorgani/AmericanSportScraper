@@ -1,0 +1,50 @@
+ENDPOINTS
+
+
+
+//edit json and json encode string
+//returns html
+//WEEK 1 EXAMPLE
+https://www.nfl.com/api/lazy/load?json={"Name":"Schedules","Module":{"seasonFromUrl":2020,"SeasonType":"REG1","WeekFromUrl":1,"PreSeasonPlacement":0,"RegularSeasonPlacement":0,"PostSeasonPlacement":0,"TimeZoneID":"America/New_York"}}
+
+//POST SEASON EXAMPLE
+https://www.nfl.com/api/lazy/load?json={"Name":"Schedules","Module":{"seasonFromUrl":2020,"SeasonType":"POST1","WeekFromUrl":1,"PreSeasonPlacement":0,"RegularSeasonPlacement":0,"PostSeasonPlacement":0,"TimeZoneID":"America/New_York"}}
+
+//SUPER BOWL EXAMPLE
+https://www.nfl.com/api/lazy/load?json={"Name":"Schedules","Module":{"seasonFromUrl":2020,"SeasonType":"POST4","WeekFromUrl":1,"PreSeasonPlacement":0,"RegularSeasonPlacement":0,"PostSeasonPlacement":0,"TimeZoneID":"America/New_York"}}
+
+
+//QUERIES
+//returns json all teams with name, city, nickname, fullname, etc
+https://api.nfl.com/v3/shield/?query=query{viewer{teams(first:100,seasonValue:0){edges{cursor node{abbreviation cityStateRegion fullName id nickName}}}}}&variables=null
+
+//returns game details, awayteam, hometeam, game location, 
+https://api.nfl.com/v3/shield/?query=%20query%7Bviewer%7Bgame(id%3A%2210012020-0914-006c-3137-bf4fd425611c%22)%7Bid%20networkChannels%20gameTime%20gsisId%20slug%20awayTeam%7Babbreviation%20fullName%20id%20nickName%20cityStateRegion%20franchise%7Bid%20slug%20currentLogo%7Burl%7D%7D%7DhomeTeam%7Babbreviation%20fullName%20id%20nickName%20cityStateRegion%20franchise%7Bid%20slug%20currentLogo%7Burl%7D%7D%7Dweek%7BseasonValue%20id%20seasonType%20weekValue%20weekType%7DradioLinks%20ticketUrl%20venue%7BfullName%20city%20state%7DgameDetailId%7D%7D%7D&variables=null
+
+
+//returns json of all teams with team, teamseasonstats, opponentseasonstats. (note nothing identifying opp.)
+https://api.nfl.com/v3/shield/?query=query{viewer{stats{teamStats(seasonType:REG,season_season:0,first:100){edges{node{team{abbreviation,nickName}teamSeasonStats{passingNetYards receivingYards firstdownsTotal scrimmageYds passingAverageYards rushingAverageYards scrimmagePlays totalPointsScored fumblesLost rushingYards passingInterceptions passingSacked down3rdAttempted down3rdFdMade timeOfPossSeconds penaltiesTotal gamesPlayed}opponentSeasonStats{passingNetYards rushingYards scrimmageYds passingAverageYards rushingAverageYards totalPointsScored fumblesLost passingInterceptions passingSacked down3rdAttempted down3rdFdMade gamesPlayed}}}}}}}&variables=null
+
+
+
+//INTERESTING RETURN
+//when on nyg, pit game page it showed last meeting with date. found this ajax that included mlb teams 
+https://api.nfl.com/v3/shield/?query=query{viewer{league{previousMatchUps(franchise1:"10403900-8251-6892-d81c-4348525c2d47",franchise2:"10403410-997c-9c75-256b-3b012f468bd0",){id esbId gameTime gameDetailId homeTeam{nickName abbreviation franchise{currentLogo{url}}}awayTeam{nickName abbreviation franchise{currentLogo{url}}}}}}}&variables=null
+
+
+//get team stats and opponent team stats for game_id
+https://api.nfl.com/v3/shield/?query=query{viewer{stats{teamGameStats(team_id:"10043430-2019-2e60-9b74-01423d60638a",first:100,game_id:"10012019-0908-05c6-6216-e2e4f6c1782f"){edges{node{team{abbreviation}teamGameStats{passingNetYards scrimmageYds passingAverageYards rushingAverageYards scrimmagePlays totalPointsScored fumblesLost rushingYards passingInterceptions passingSacked down3rdAttempted down3rdFdMade timeOfPossSeconds penaltiesTotal gamesPlayed}opponentGameStats{passingNetYards scrimmageYds passingAverageYards rushingAverageYards totalPointsScored fumblesLost passingInterceptions passingSacked down3rdAttempted down3rdFdMade gamesPlayed rushingYards}}}}}}}&variables=null
+
+
+//get all stats (pretty sure) of all players in gameDetailId (hopefully a relational id)
+https://api.nfl.com/v3/shield/?query=query{viewer{live{playerGameStats(gameDetailId:"10160000-0579-0647-b2a2-599c7c0b47ed"){createdDate gameStats{defensiveAssists defensiveInterceptions defensiveInterceptionsYards defensiveForcedFumble defensivePassesDefensed defensiveSacks defensiveSafeties defensiveSoloTackles defensiveTotalTackles defensiveTacklesForALoss touchdownsDefense fumblesLost fumblesTotal kickReturns kickReturnsLong kickReturnsTouchdowns kickReturnsYards kickingFgAtt kickingFgLong kickingFgMade kickingXkAtt kickingXkMade passingAttempts passingCompletions passingTouchdowns passingYards passingInterceptions puntReturns puntingAverageYards puntingLong puntingPunts puntingPuntsInside20 receivingReceptions receivingTarget receivingTouchdowns receivingYards rushingAttempts rushingAverageYards rushingTouchdowns rushingYards kickoffReturnsTouchdowns kickoffReturnsYards puntReturnsLong opponentFumbleRecovery totalPointsScored kickReturnsAverageYards puntReturnsAverageYards puntReturnsTouchdowns}lastModifiedDate team{nickName}player{person{displayName slug}position firstName nickName lastName}}}}}&variables=null
+
+
+//holy grail of game data includes lots of ids for game, players, week, season, 
+https://api.nfl.com/v3/shield/?query=query{viewer{playerGameStats(first:200,game_id:"10012019-0908-05c6-6216-e2e4f6c1782f"){edges{cursor node{createdDate game{id}gameStats{defensiveAssists defensiveInterceptions defensiveInterceptionsYards defensiveForcedFumble defensivePassesDefensed defensiveSacks defensiveSafeties defensiveSoloTackles defensiveTotalTackles defensiveTacklesForALoss touchdownsDefense fumblesLost fumblesTotal kickReturns kickReturnsLong kickReturnsTouchdowns kickReturnsYards kickingFgAtt kickingFgLong kickingFgMade kickingXkAtt kickingXkMade passingAttempts passingCompletions passingTouchdowns passingYards passingInterceptions puntReturns puntingAverageYards puntingLong puntingPunts puntingPuntsInside20 receivingReceptions receivingTarget receivingTouchdowns receivingYards rushingAttempts rushingAverageYards rushingTouchdowns rushingYards kickoffReturnsTouchdowns kickoffReturnsYards puntReturnsLong opponentFumbleRecovery totalPointsScored kickReturnsAverageYards puntReturnsAverageYards puntReturnsTouchdowns}id lastModifiedDate player{position jerseyNumber currentTeam{abbreviation nickName}person{firstName lastName displayName headshot{asset{url}}}}season{id}week{id}}}}}}&variables=null
+
+//ton of game information incl. drives, scoreing drives, plays,  teams, location, weather, attendance, quarterly scoring
+https://api.nfl.com/v3/shield/?query=query{viewer{gameDetail(id:"10160000-0579-0647-b2a2-599c7c0b47ed"){id attendance distance down gameClock goalToGo homePointsOvertime homePointsTotal homePointsQ1 homePointsQ2 homePointsQ3 homePointsQ4 homeTeam{abbreviation nickName}homeTimeoutsUsed homeTimeoutsRemaining period phase playReview possessionTeam{abbreviation nickName}redzone scoringSummaries{playId playDescription patPlayId homeScore visitorScore}stadium startTime visitorPointsOvertime visitorPointsOvertimeTotal visitorPointsQ1 visitorPointsQ2 visitorPointsQ3 visitorPointsQ4 visitorPointsTotal visitorTeam{abbreviation nickName}visitorTimeoutsUsed visitorTimeoutsRemaining homePointsOvertimeTotal visitorPointsOvertimeTotal possessionTeam{nickName}weather{currentFahrenheit location longDescription shortDescription currentRealFeelFahrenheit}yardLine yardsToGo drives{quarterStart endTransition endYardLine endedWithScore firstDowns gameClockEnd gameClockStart howEndedDescription howStartedDescription inside20 orderSequence playCount playIdEnded playIdStarted playSeqEnded playSeqStarted possessionTeam{abbreviation nickName franchise{currentLogo{url}}}quarterEnd realStartTime startTransition startYardLine timeOfPossession yards yardsPenalized}plays{clockTime down driveNetYards drivePlayCount driveSequenceNumber driveTimeOfPossession endClockTime endYardLine firstDown goalToGo nextPlayIsGoalToGo nextPlayType orderSequence penaltyOnPlay playClock playDeleted playDescription playDescriptionWithJerseyNumbers playId playReviewStatus isBigPlay playType playStats{statId yards team{id abbreviation}playerName gsisPlayer{id}}possessionTeam{abbreviation nickName franchise{currentLogo{url}}}prePlayByPlay quarter scoringPlay scoringPlayType scoringTeam{id abbreviation nickName}shortDescription specialTeamsPlay stPlayType timeOfDay yardLine yards yardsToGo latestPlay}}}}&variables=null
+
+//teams standings
+https://api.nfl.com/v3/shield/?query=query{viewer{standings(first:350,orderBy:week__weekValue,orderByDirection:DESC,week_seasonValue:2019,week_seasonType:REG,){edges{cursor node{id,week{seasonType season{season}id,weekOrder,weekValue,weekType},teamRecords{conferenceRank,teamId,division,teamId,fullName,nickName,overallWin,overallLoss,overallTie}}}}}}&variables=null
