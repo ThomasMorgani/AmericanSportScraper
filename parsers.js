@@ -1,11 +1,69 @@
 module.exports = {
+  /*
+
+    METHODS FOR PARSING SCRAPED DATA
+
+  */
+  async gameDataset(name, data, gameData) {
+    let parsedData = {}
+    switch (name) {
+      case 'game':
+        //PAST MATCHUP RESPONSE IS LABELLED WITH GAME KEY, IGNORE THIS
+        console.log('processing dataset:::game')
+        if (data.slug === gameData.slug) {
+          parsedData = await this.game(data)
+        }
+        break
+      case 'gameDetail':
+        console.log('processing dataset:::gameDetail')
+        //PAST MATCHUP RESPONSE IS LABELLED WITH GAMEDETAIL KEY, IGNORE THIS
+        if (data && Object.keys(data).length > 3) {
+          parsedData = await this.gameDetails(data, gameData.game)
+        }
+        break
+      case 'league':
+        ///CURRENTLY ONLY RETURNS milestonePlayers: []
+        ///WATCH AFTER SEASON STARTS FOR ANY CHANGE
+        console.log('processing dataset:::league')
+        return { placeHolder: '19' }
+        break
+      case 'live':
+        console.log('processing dataset:::live')
+        return await this.live(data)
+        break
+      case 'playerStats':
+        console.log('processing dataset:::playerStats')
+        return await this.playerStats(data)
+        break
+      case 'standings':
+        console.log('processing dataset:::standings')
+        parsedData = await this.standings(data)
+        break
+      case 'teams':
+        console.log('processing dataset:::teams')
+        parsedData = await this.teams(data)
+        break
+      case 'teamStats':
+        console.log('processing dataset:::teamStats')
+        parsedData = await this.teamStats(data)
+        break
+      default:
+        console.log('PARSING ERROR: :::default reached')
+        console.log(name, data, gameData)
+        console.log('==============================')
+        return false
+        break
+    }
+    return parsedData
+  },
+
   async game(rawData) {
     //EXAMPLES
     const game = {
       id: rawData.id,
       gameTime: rawData.gameTime, //2019-09-08T17:00:00.000Z
       gsisId: rawData.gsisId,
-      slug: 'titans-at-browns-2019-reg-1',
+      slug: rawData.slug, //'titans-at-browns-2019-reg-1',
       awayTeam: rawData.awayTeam.id, //CONFIRM THIS ID IS STANDARD THROUGHOUT OTHER DATA
       homeTeam: rawData.homeTeam.id, //CONFIRM THIS ID IS STANDARD THROUGHOUT OTHER DATA
       seasonValue: rawData.week.seasonValue,
@@ -18,21 +76,8 @@ module.exports = {
     }
     return game
   },
-  async gameTeams(gameData = null) {
-    const { abbreviation, fullName, id, nickName, cityStateRegion } = gameData
-    return { abbreviation, fullName, id, nickName, cityStateRegion }
 
-    //TEAM DATA WILL BE MOVED TO SEPARATE SCRAPER
-    //PLACE HOLDER FUNCTION
-    if (gameData === null) {
-      console.log('game Teams error... missing gameData')
-      return
-    }
-    const teams = { awayTeam: {}, homeTeam: {} }
-
-    return teams
-  },
-  async gameDetails(gameData = null, rawData) {
+  async gameDetails(rawData, gameData = null) {
     if (gameData === null) {
       console.log('game details error... missing gameData')
       return
@@ -79,7 +124,7 @@ module.exports = {
       visitorTimeoutsUsed: rawData.visitorTimeoutsUsed,
       visitorTimeoutsRemaining: rawData.visitorTimeoutsRemaining,
       homePointsOvertimeTotal: rawData.homePointsOvertimeTotal,
-      weather: rawData.weather.shortDescription, //{
+      weather: rawData.weather.shortDescription || '', //{
       //   currentFahrenheit: null,
       //   location: null,
       //   longDescription: null,
@@ -92,9 +137,69 @@ module.exports = {
 
     return details
   },
+  async gameResponse(json) {
+    // console.log(json)
+    if (json && json.data && json.data.viewer) {
+      const viewer = json.data.viewer
+      // console.log(viewer)
+      //teamStats
+      if (viewer.stats && viewer.stats.teamGameStats && viewer.stats.teamGameStats.edges && viewer.stats.teamGameStats.edges['0'] && viewer.stats.teamGameStats.edges['0'].node) {
+        return { teamStats: viewer.stats.teamGameStats.edges['0'].node }
+      }
+      //playerStats //playerGameStats includes much more data.
+      //TODO: monitor to ensure we can rely on playerGameStats
+      if (viewer.live && viewer.live.playerGameStats) {
+        // return   viewer.live
+      }
+      //playerGameStats
+      if (viewer.playerGameStats && viewer.playerGameStats.edges) {
+        const pos = ['QB', 'RB', 'FB', 'HB', 'TE', 'WR', 'K']
+        return { playerStats: viewer.playerGameStats.edges.filter(e => e.node && pos.includes(e.node.player.position)).map(e => e.node) }
+      }
+      return json.data.viewer
+    }
+    return false
+  },
+  async gameTeams(gameData = null) {
+    const { abbreviation, fullName, id, nickName, cityStateRegion } = gameData
+    return { abbreviation, fullName, id, nickName, cityStateRegion }
+
+    //TEAM DATA WILL BE MOVED TO SEPARATE SCRAPER
+    //PLACE HOLDER FUNCTION
+    if (gameData === null) {
+      console.log('game Teams error... missing gameData')
+      return
+    }
+    const teams = { awayTeam: {}, homeTeam: {} }
+
+    return teams
+  },
+  async live(rawData) {
+    if (typeof rawData !== 'object') return
+    rawData = rawData.playerGameStats ? rawData.playerGameStats : rawData
+    const liveData = {}
+    return liveData
+  },
+  async logValue(data) {
+    console.log('========  LOGGED VALUE ==========')
+    console.log(data)
+    return data
+  },
+  async playerStats(data) {
+    return data
+  },
   standings(rawData) {
     if (typeof rawData !== 'object') return
-    const standings = rawData.edges ? rawData.edges['0'].node.teamRecords : rawData['0'].node.teamRecords
+    const standings = rawData.edges && rawData.edges['0'] ? rawData.edges['0'].node.teamRecords : []
     return standings
+  },
+  async teams(data) {
+    if (data && data.edges) {
+      return data.edges.map(i => i.node)
+    }
+    return []
+  },
+  async teamStats(data) {
+    return data
   },
 }
