@@ -1,8 +1,6 @@
 const funcs = require('./funcs')
-if (process.argv.length < 3) {
+const man = () => {
   console.log(`
-  Expected Argument
-  ========
   -game TBD
   -players [all | teamslug]
     ex: players pittsburgh-steelers
@@ -13,10 +11,29 @@ if (process.argv.length < 3) {
   `)
   return
 }
+if (process.argv.length < 3) {
+  man()
+}
+const args = process.argv.splice(3)
 switch (process.argv['2']) {
+  case 'players':
+    if (!args['0']) {
+      console.log(`
+      Expected an option to be provided
+      -players [all | teamslug]
+        ex: players pittsburgh-steelers
+        team slug retrieved from nfl.com team page url: nfl.com/teams/[team-slug]
+      `)
+      break
+    }
+    if (args['0'] === 'all') {
+      funcs.playerDataLeague()
+    } else {
+      funcs.playerDataRoster(args['0'])
+    }
+    break
   case 'week':
-    const args = process.argv.splice(3)
-    //TODO: CREATE METHOD TO GET CURRENT WEEK DATA
+    //TODO: CREATE METHOD TO GET CURRENT WEEK DATA FROM BACKEND
     const currentWeek = { week: 1, year: 2020, type: 'REG' }
     const seasonData = {
       week: args['0'] || currentWeek.week,
@@ -27,7 +44,8 @@ switch (process.argv['2']) {
     break
 
   default:
-    console.log('Expected Argument')
+    console.log('Unknown Argument')
+    man()
     break
 }
 return

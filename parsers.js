@@ -185,6 +185,30 @@ module.exports = {
     console.log(data)
     return data
   },
+  player(rawData, team = '') {
+    //TODO: DETERMINE HOW TO ADD PLAYER TEAM AND GET OR GENERATE A UNIQUE ID
+    //SEE NOTES file
+    const name = rawData.name.split(' ')
+    const nameAbv = `${name['0'].substring(0, 1)}. ${name['1']}`
+    const player = {
+      abv_name: nameAbv,
+      first_name: name['0'],
+      pid: '',
+      last_name: name['1'],
+      posiiton: rawData.pos,
+      team: team,
+      number: rawData.number,
+      status: rawData.status,
+      height: rawData.height,
+      weight: rawData.weight,
+      birthdate: rawData.birthdate,
+      experience: rawData.experience,
+      college: rawData.college,
+    }
+    console.log(player)
+
+    return player
+  },
   async playerStats(data) {
     return data
   },
@@ -192,6 +216,20 @@ module.exports = {
     if (typeof rawData !== 'object') return
     const standings = rawData.edges && rawData.edges['0'] ? rawData.edges['0'].node.teamRecords : []
     return standings
+  },
+  teamnameFromSlug(slug) {
+    const segments = slug.split('-')
+    const name = segments[segments.length - 1]
+    //account for washington team (washington-football-team)
+    return name === 'team' ? 'washington' : name
+  },
+  teamSlug(slug) {
+    console.log(slug)
+    if (!slug) return
+    // /teams/baltimore-ravens/
+    const split = slug.split('/')
+
+    return split.filter(str => str.includes('-'))['0']
   },
   async teams(data) {
     if (data && data.edges) {

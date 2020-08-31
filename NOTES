@@ -1,4 +1,5 @@
 Players: 
-    for now will have 2 ids
+    for now will have 2 ids ?
     internal: name + team + pos hashed, this is to have a unique key in the backend until we propogate all official ids
     id: from nfl.com... cant find ids for rookies due to no game data exisiting yet
+        hopefully once the seaoson starts should get ids for all players eventually
