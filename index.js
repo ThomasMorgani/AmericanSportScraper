@@ -1,19 +1,19 @@
 const funcs = require('./funcs')
 const man = () => {
   console.log(`
-  -game TBD
-  -players [all | teamslug]
+  ARGUMENT [OPTIONS]
+
+  players [all | teamslug]
     ex: players pittsburgh-steelers
-    team slug retrieved from nfl.com team page url: nfl.com/teams/[team-slug]
-  -week [week year type] 
+    team slug retrieved from nfl.com teams page url: nfl.com/teams/[team-slug]
+
+  week [week year type] 
     ex: week 1 2020 
     omitted args default to current week/year/type
   `)
   return
 }
-if (process.argv.length < 3) {
-  man()
-}
+
 const args = process.argv.splice(3)
 switch (process.argv['2']) {
   case 'players':
@@ -44,7 +44,7 @@ switch (process.argv['2']) {
     break
 
   default:
-    console.log('Unknown Argument')
+    console.log('Missing or Unknown Argument')
     man()
     break
 }

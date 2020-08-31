@@ -21,7 +21,7 @@ module.exports = {
     //SET GAME SLUG, IT NEEDS TO BE PASSED TO PARSER TO DETECT CORRECT GAME IS BEING SET
     gameData.slug = url.split('/games/')['1']
     try {
-      const browser = browserIn ? browserIn : await puppeteer.launch({ headless: false })
+      const browser = browserIn ? browserIn : await puppeteer.launch({ headless: true })
       const page = await browser.newPage()
       console.log('FETCHING: ', url)
       await page.goto(fullUrl)
@@ -55,7 +55,7 @@ module.exports = {
   },
   async gameDataSeason() {},
   async gameDataWeek(sesonData) {
-    const browser = await puppeteer.launch({ headless: false })
+    const browser = await puppeteer.launch({ headless: true })
     const scheduleData = []
     const weekScheduleUrls = await this.gameScheduleWeek({ ...sesonData }, browser)
     console.log('WEEK SCHEDULE URLS: ')
@@ -83,7 +83,6 @@ module.exports = {
     console.log('getting schedules from: ', url)
     if (!browser) {
       const browser = await puppeteer.launch({ headless: true })
-      // browser = await puppeteer.launch({  headless: false })
     }
     //get games for season week
     const page = await browser.newPage()
@@ -97,7 +96,7 @@ module.exports = {
     const teamsUrl = process.env.baseUrl + '/teams'
     let players = []
 
-    const browser = await puppeteer.launch({ headless: false })
+    const browser = await puppeteer.launch({ headless: true })
     const page = await browser.newPage()
     //GET LIST OF TEAM URL SLUGS
     await page.goto(teamsUrl)
@@ -118,14 +117,12 @@ module.exports = {
   async playerDataRoster(slug, browserIn = false, storeResults = true) {
     //STANDARDIZE SLUG
     slug = parsers.teamSlug(slug)
-    console.log(slug)
     const fullUrl = `${process.env.baseUrl}/teams/${slug}/roster`
-    console.log(fullUrl)
     //LIST OF POSITIONS WE'RE INTERESTED IN RETRIEVING
     const pos = ['QB', 'RB', 'FB', 'HB', 'TE', 'WR', 'K']
     const players = []
     try {
-      const browser = browserIn ? browserIn : await puppeteer.launch({ headless: false })
+      const browser = browserIn ? browserIn : await puppeteer.launch({ headless: true })
       const page = await browser.newPage()
       console.log('FETCHING: ', fullUrl)
       await page.goto(fullUrl)
@@ -144,16 +141,16 @@ module.exports = {
       const scrapedData = await page.evaluate(scrapers.playersRoster)
       const team = parsers.teamnameFromSlug(slug)
       const players = scrapedData.filter(player => pos.includes(player.pos)).map(player => parsers.player(player, team))
-      console.log(players)
+      //   console.log(players)
 
       if (storeResults) {
         await db.save(players, `players_${team}`)
       }
+      if (!browserIn) {
+        await browser.close()
+      }
     } catch (err) {
       console.log('error caught', err)
-    }
-    if (!browserIn) {
-      await browser.close
     }
     return players
   },

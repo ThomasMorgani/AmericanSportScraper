@@ -205,7 +205,7 @@ module.exports = {
       experience: rawData.experience,
       college: rawData.college,
     }
-    console.log(player)
+    // console.log(player)
 
     return player
   },

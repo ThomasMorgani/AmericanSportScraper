@@ -21,7 +21,6 @@ module.exports = {
   async gameTriggerStats(page) {
     //ClICK ON "STATS TAB" TO TRIGGER AJAX CALLS (live, teamPlayerStats, teamGameStats)
     await page.waitFor(3000)
-    console.log('DONE WAITING 3000')
     try {
       await page.$eval(`[data-testid="gamecenter-tabs-container"]`, elem => {
         console.log(elem)
