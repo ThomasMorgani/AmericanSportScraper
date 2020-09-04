@@ -18,6 +18,9 @@
   "homepage": "https://github.com/ThomasMorgani/AmericanSportScraper#readme",
   "dependencies": {
     "dotenv": "^8.2.0",
-    "puppeteer": "^5.2.1"
+    "pg": "^8.3.3",
+    "pg-hstore": "^2.3.3",
+    "puppeteer": "^5.2.1",
+    "sequelize": "^6.3.5"
   }
 }
