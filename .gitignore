@@ -1,5 +1,7 @@
 # Custom
 ENDPOINTS
+store/*.json
+
 
 # Logs
 logs

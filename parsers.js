@@ -34,7 +34,7 @@ module.exports = {
         break
       case 'playerStats':
         console.log('processing dataset:::playerStats')
-        return data.map(player => this.playerStats(player, gameData))
+        return data.map(player => this.playerStats(player))
         break
       case 'standings':
         console.log('processing dataset:::standings')
@@ -210,24 +210,29 @@ module.exports = {
 
     return player
   },
-  async playerStats(rawData) {
+  playerStats(rawData) {
     console.log('playerStats PARSER~~~~~~~~~~~~~~')
-    const { game, player } = rawData
-    // console.log(gameData)
-    // return rawData
+    const { id, game, player, season, week } = rawData
+    const { currentTeam: team } = player
     //MAP STATS TO EXISTING PLAYER_PLAY STRUCTURE
     //ADDITIONAL AVAILABLE SLOTS AT END OF METHOD
-    const playerid = utils.playerIdHash({
+
+    //TODO: PREFIX ID IF DST?
+    const playerId = utils.playerIdHash({
       firstName: player.person.firstName,
       lastName: player.person.lastName,
       number: player.jerseyNumber,
-      team: player.currentTeam.abbreviation,
+      team: team.abbreviation,
     })
-    stats = {
+    //TODO: ANALYZE DATA LAYOUT, WHAT TO KEEP/REMOVE
+    //COMBINE PLAYER & DST STATS?
+    const stats = {
       game_id: game.id || 0,
-      play_id: rawData.id || 0,
-      player_id: playerid || 'ERR',
-      team: rawData.xxxx || 0,
+      play_id: id || 0,
+      player_id: playerId || 'ERR',
+      team: player.currentTeam.abbreviation || 0,
+      season_id: season.id || 0,
+      week_id: week.id || 0,
       defense_ast: rawData.defensiveAssists || 0,
       defense_ffum: rawData.defensiveForcedFumble || 0,
       defense_fgblk: rawData.xxxx || 0,
@@ -324,6 +329,7 @@ module.exports = {
       rushing_twoptmissed: rawData.xxxx || 0,
       rushing_yds: rawData.rushingYards || 0,
     }
+
     return stats
     //ADDIITONAL STATS NOT CURRENTLY IN DB
     // "defensiveSoloTackles": null,
