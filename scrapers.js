@@ -76,9 +76,6 @@ module.exports = {
       gameData.gameUrl = game.getAttribute('href')
       results.push(gameData)
     })
-
-    console.log('ONLY RETURNING 2 RESULTS FOR TESTING`')
-
     return results
   },
   async teamUrls() {
@@ -86,16 +83,15 @@ module.exports = {
     //parent div: .d3-o-media-object__cta nfl-c-custom-promo__cta
     //child0 a: teamurl
     //child1 a:  team official website
-    const results = []
-    let teams = document.querySelectorAll(`[aria-label="View Profile"]`)
-    teams.forEach(team => {
-      let data = {}
-      data.teamUrl = team.getAttribute('href')
-      results.push(data)
+    const els = document.querySelectorAll(`.d3-o-media-object__link`)
+    //document.querySelectorAll(`[aria-label="View Profile"]`)//THIS IS NOT RELIABLE, TODO: DELETE WHEN CONFIRMED
+    const slugs = []
+    els.forEach(el => {
+      if (el.innerText.toLowerCase().includes('profile')) {
+        slugs.push({ teamUrl: el.getAttribute('href') })
+      }
     })
 
-    console.log('ONLY RETURNING 2 RESULTS FOR TESTING`')
-
-    return results
+    return slugs
   },
 }

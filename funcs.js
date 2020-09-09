@@ -5,7 +5,7 @@ const db = require('./db')
 const parsers = require('./parsers')
 const scrapers = require('./scrapers')
 
-const isHeadless = true
+const isHeadless = false
 
 module.exports = {
   async gameDataGame(url, browserIn = null) {
@@ -107,7 +107,7 @@ module.exports = {
     const page = await browser.newPage()
     //GET LIST OF TEAM URL SLUGS
     await page.goto(teamsUrl)
-    await page.waitFor(2500)
+    await page.waitFor(2000)
     const teamSlugs = await page.evaluate(scrapers.teamUrls)
     console.log(teamSlugs)
     let count = 1 //DEBUGGING, SEE LOOP
@@ -115,7 +115,7 @@ module.exports = {
       roster = await this.playerDataRoster(slug.teamUrl, browser)
       players = [...players, ...roster]
       count++
-      if (count > 4) break
+      // if (count > 4) break
     }
     console.log('RAN ALL TEAMS, FINAL PLAYERS LENGTH: ', players.length)
     db.save(players, 'playersLeague')
