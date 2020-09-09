@@ -5,7 +5,7 @@ const db = require('./db')
 const parsers = require('./parsers')
 const scrapers = require('./scrapers')
 
-const isHeadleass = true
+const isHeadless = true
 
 module.exports = {
   async gameDataGame(url, browserIn = null) {
@@ -23,7 +23,7 @@ module.exports = {
     //SET GAME SLUG, IT NEEDS TO BE PASSED TO PARSER TO DETECT CORRECT GAME IS BEING SET
     gameData.slug = url.split('/games/')['1']
     try {
-      const browser = browserIn ? browserIn : await puppeteer.launch({ headless: isHeadleass })
+      const browser = browserIn ? browserIn : await puppeteer.launch({ headless: isHeadless })
       const page = await browser.newPage()
       console.log('FETCHING: ', url)
       await page.goto(fullUrl)
@@ -62,7 +62,7 @@ module.exports = {
   },
   async gameDataSeason() {},
   async gameDataWeek(sesonData) {
-    const browser = await puppeteer.launch({ headless: isHeadleass })
+    const browser = await puppeteer.launch({ headless: isHeadless })
     const scheduleData = []
     const weekScheduleUrls = await this.gameScheduleWeek({ ...sesonData }, browser)
     console.log('WEEK SCHEDULE URLS: ')
@@ -89,7 +89,7 @@ module.exports = {
     const url = endpoints.scheduleWeek
     console.log('getting schedules from: ', url)
     if (!browser) {
-      const browser = await puppeteer.launch({ headless: isHeadleass })
+      const browser = await puppeteer.launch({ headless: isHeadless })
     }
     //get games for season week
     const page = await browser.newPage()
@@ -103,7 +103,7 @@ module.exports = {
     const teamsUrl = process.env.baseUrl + '/teams'
     let players = []
 
-    const browser = await puppeteer.launch({ headless: isHeadleass })
+    const browser = await puppeteer.launch({ headless: isHeadless })
     const page = await browser.newPage()
     //GET LIST OF TEAM URL SLUGS
     await page.goto(teamsUrl)
@@ -128,7 +128,7 @@ module.exports = {
     const fullUrl = `${process.env.baseUrl}/teams/${slug}/roster`
     //LIST OF POSITIONS WE'RE INTERESTED IN RETRIEVING
     const pos = ['QB', 'RB', 'FB', 'HB', 'TE', 'WR', 'K']
-    const players = []
+    let players = []
     try {
       //IF BROWSER INSTANCE EXISTS, USE IT
       const browser = browserIn ? browserIn : await puppeteer.launch({ headless: false })
@@ -156,7 +156,7 @@ module.exports = {
       //SCRAPE PLAYERS, SET TEAM NAME SCRAPING, RETURN PLAYERS FILTERED BY POSITION AND FORMATTED
       const scrapedData = await page.evaluate(scrapers.playersRoster)
       const team = parsers.teamnameFromSlug(slug)
-      const players = scrapedData.filter(player => pos.includes(player.pos)).map(player => parsers.player(player, team))
+      players = scrapedData.filter(player => pos.includes(player.pos)).map(player => parsers.player(player, team))
 
       if (storeResults) {
         await db.save(players, `players_${team}`)
@@ -164,10 +164,10 @@ module.exports = {
       if (!browserIn) {
         await browser.close()
       }
-      return players
     } catch (err) {
       console.log('error caught', err)
     }
+    return players
   },
   async teamData() {},
   async weekData() {},
