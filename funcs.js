@@ -43,7 +43,12 @@ module.exports = {
         if (!response.url().includes(process.env.apiUrl)) return // we're only interested in calls to nfl api
         // console.log('\n 🚀MATCH: ', response.url()) //debugging
         const parsedData = await scrapers.gameResponse(response, gameData)
-        if (parsedData) Object.keys(parsedData).forEach(dataSet => (gameData[dataSet] = { ...parsedData[dataSet] }))
+        // if (parsedData) Object.keys(parsedData).forEach(dataSet => (gameData[dataSet] = { ...parsedData[dataSet] }))
+        if (parsedData) {
+          for (let dataSet in parsedData) {
+            gameData[dataSet] = parsedData[dataSet]
+          }
+        }
       })
       await scrapers.gameTriggerStats(page)
       await page.waitFor(5000) //await a few seconds to ensure we captured requests
@@ -66,7 +71,7 @@ module.exports = {
       scheduleData.push(gameData)
       //DEBUGGING: LIMIT GAMES PULLED
       count++
-      if (count > 1) break
+      if (count > 2) break
     }
     console.log('+++++++++++++++++++++++++++++=')
     // console.log(scheduleData)

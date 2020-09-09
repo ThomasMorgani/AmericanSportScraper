@@ -34,10 +34,12 @@ module.exports = {
         break
       case 'playerStats':
         console.log('processing dataset:::playerStats')
+        return //disabled for now
         return data.map(player => this.playerStats(player))
         break
       case 'standings':
         console.log('processing dataset:::standings')
+        return //DISABLE FOR NOW
         parsedData = await this.standings(data)
         break
       case 'teams':
@@ -46,7 +48,15 @@ module.exports = {
         break
       case 'teamStats':
         console.log('processing dataset:::teamStats')
-        parsedData = await this.teamStats(data)
+        if (gameData.game) {
+          parsedData = await this.teamStats(data, gameData.game)
+        } else {
+          console.log('no gameData')
+        }
+        // console.log(...gameData.teamStats)
+        // console.log(...parsedData)
+        // parsedData = { ...gameData.teamStats, ...parsedData }
+        // parsedData = { ...parsedData }
         break
       default:
         console.log('PARSING ERROR: :::default reached')
@@ -59,21 +69,23 @@ module.exports = {
   },
 
   async game(rawData) {
-    //EXAMPLES
+    const { awayTeam, homeTeam, week } = rawData
     const game = {
-      id: rawData.id,
-      gameTime: rawData.gameTime, //2019-09-08T17:00:00.000Z
-      gsisId: rawData.gsisId,
-      slug: rawData.slug, //'titans-at-browns-2019-reg-1',
-      awayTeam: rawData.awayTeam.id, //CONFIRM THIS ID IS STANDARD THROUGHOUT OTHER DATA
-      homeTeam: rawData.homeTeam.id, //CONFIRM THIS ID IS STANDARD THROUGHOUT OTHER DATA
-      seasonValue: rawData.week.seasonValue,
-      //   weekId: '00020120-1920-5245-4719-400b50b3c04a', //CONFIRM THIS ID IS STANDARD
-      seasonType: rawData.week.seasonType,
-      weekValue: rawData.week.weekValue,
-      weekType: rawData.week.weekType,
-      venue: JSON.stringify(rawData.venue),
+      away_abv: awayTeam.abbreviation,
+      away_team: awayTeam.id, //CONFIRM THIS ID IS STANDARD THROUGHOUT OTHER DATA
+      game_id: rawData.id,
       gameDetailId: rawData.gameDetailId,
+      gameTime: rawData.gameTime, //2019-09-08T17:00:00.000Z
+      gsis_id: rawData.gsisId,
+      home_abv: homeTeam.abbreviation,
+      home_team: homeTeam.id, //CONFIRM THIS ID IS STANDARD THROUGHOUT OTHER DATA
+      season_value: week.seasonValue,
+      season_type: week.seasonType,
+      slug: rawData.slug, //'titans-at-browns-2019-reg-1',
+      venue: JSON.stringify(rawData.venue),
+      week: week.weekValue,
+      week_id: week.id, //CONFIRM THIS ID IS STANDARD
+      week_type: week.weekType,
     }
     return game
   },
@@ -139,10 +151,8 @@ module.exports = {
     return details
   },
   async gameResponse(json) {
-    // console.log(json)
     if (json && json.data && json.data.viewer) {
       const viewer = json.data.viewer
-      // console.log(viewer)
       //teamStats
       if (viewer.stats && viewer.stats.teamGameStats && viewer.stats.teamGameStats.edges && viewer.stats.teamGameStats.edges['0'] && viewer.stats.teamGameStats.edges['0'].node) {
         return { teamStats: viewer.stats.teamGameStats.edges['0'].node }
@@ -372,7 +382,29 @@ module.exports = {
     }
     return []
   },
-  async teamStats(data) {
-    return data
+
+  // parsedData = await this.teamStats(data, gameData.game)
+
+  async teamStats(data, gameData) {
+    //TODO: ADD NFL DATA AS WELL
+    const { opponentGameStats, teamGameStats } = data
+    const home = teamGameStats
+    const away = opponentGameStats
+    const awayStats = {
+      interceptions: home.passingInterceptions,
+      fumbles_recovered: home.fumblesLost,
+      points_against: home.totalPointsScored,
+      sacks: home.passingSacked,
+    }
+
+    const homeStats = {
+      interceptions: away.passingInterceptions,
+      fumbles_recovered: away.fumblesLost,
+      points_against: away.totalPointsScored,
+      sacks: away.passingSacked,
+    }
+    const { away_abv, home_abv } = gameData
+    console.log({ [away_abv]: awayStats, [home_abv]: homeStats })
+    return { [away_abv]: awayStats, [home_abv]: homeStats }
   },
 }
