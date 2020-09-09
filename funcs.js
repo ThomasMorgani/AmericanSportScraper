@@ -5,6 +5,8 @@ const db = require('./db')
 const parsers = require('./parsers')
 const scrapers = require('./scrapers')
 
+const isHeadleass = true
+
 module.exports = {
   async gameDataGame(url, browserIn = null) {
     const gameData = {
@@ -21,7 +23,7 @@ module.exports = {
     //SET GAME SLUG, IT NEEDS TO BE PASSED TO PARSER TO DETECT CORRECT GAME IS BEING SET
     gameData.slug = url.split('/games/')['1']
     try {
-      const browser = browserIn ? browserIn : await puppeteer.launch({ headless: true })
+      const browser = browserIn ? browserIn : await puppeteer.launch({ headless: isHeadleass })
       const page = await browser.newPage()
       console.log('FETCHING: ', url)
       await page.goto(fullUrl)
@@ -60,7 +62,7 @@ module.exports = {
   },
   async gameDataSeason() {},
   async gameDataWeek(sesonData) {
-    const browser = await puppeteer.launch({ headless: true })
+    const browser = await puppeteer.launch({ headless: isHeadleass })
     const scheduleData = []
     const weekScheduleUrls = await this.gameScheduleWeek({ ...sesonData }, browser)
     console.log('WEEK SCHEDULE URLS: ')
@@ -87,7 +89,7 @@ module.exports = {
     const url = endpoints.scheduleWeek
     console.log('getting schedules from: ', url)
     if (!browser) {
-      const browser = await puppeteer.launch({ headless: true })
+      const browser = await puppeteer.launch({ headless: isHeadleass })
     }
     //get games for season week
     const page = await browser.newPage()
@@ -101,7 +103,7 @@ module.exports = {
     const teamsUrl = process.env.baseUrl + '/teams'
     let players = []
 
-    const browser = await puppeteer.launch({ headless: true })
+    const browser = await puppeteer.launch({ headless: isHeadleass })
     const page = await browser.newPage()
     //GET LIST OF TEAM URL SLUGS
     await page.goto(teamsUrl)
@@ -115,6 +117,7 @@ module.exports = {
       count++
       if (count > 4) break
     }
+    console.log('RAN ALL TEAMS, FINAL PLAYERS LENGTH: ', players.length)
     db.save(players, 'playersLeague')
     console.log('DONE>>>>>')
     await browser.close()
@@ -127,26 +130,33 @@ module.exports = {
     const pos = ['QB', 'RB', 'FB', 'HB', 'TE', 'WR', 'K']
     const players = []
     try {
-      const browser = browserIn ? browserIn : await puppeteer.launch({ headless: true })
-      const page = await browser.newPage()
+      //IF BROWSER INSTANCE EXISTS, USE IT
+      const browser = browserIn ? browserIn : await puppeteer.launch({ headless: false })
+      //IF BROWSER INSTANCE HAS OPEN TABS, DONT SPAWN NEW TABS, USE FIRST OPEN
+      const pages = await browser.pages()
+      const page = pages.length > 0 ? pages['0'] : await browser.newPage()
       console.log('FETCHING: ', fullUrl)
-      await page.goto(fullUrl)
-      await page.setRequestInterception(true)
+      await page.goto(fullUrl).catch(err => console.log(err))
 
       //ABORT ALL REQUESTS NOT RELEVANT  //TODO: CREATE COMPLETE BLACKLIST
-      page.on('request', async request => {
-        if (request.type === 'image') {
-          request.abort()
-        } else {
-          request.continue()
-        }
-      })
+      //CURRENTLY DISABLING SINCE THIS SEEMS TO BE CAUSING A BUG
+      //"REQUEST ALREADY HANDLED"
+      //SEE: https://github.com/puppeteer/puppeteer/issues/5334
+      // await page.setRequestInterception(true)
+      // page
+      //   .on('request', async request => {
+      //     if (request.type === 'image') {
+      //       request.abort()
+      //     } else {
+      //       request.continue()
+      //     }
+      //   })
+      // .catch(err => console.log(err))
 
       //SCRAPE PLAYERS, SET TEAM NAME SCRAPING, RETURN PLAYERS FILTERED BY POSITION AND FORMATTED
       const scrapedData = await page.evaluate(scrapers.playersRoster)
       const team = parsers.teamnameFromSlug(slug)
       const players = scrapedData.filter(player => pos.includes(player.pos)).map(player => parsers.player(player, team))
-      //   console.log(players)
 
       if (storeResults) {
         await db.save(players, `players_${team}`)
@@ -154,10 +164,10 @@ module.exports = {
       if (!browserIn) {
         await browser.close()
       }
+      return players
     } catch (err) {
       console.log('error caught', err)
     }
-    return players
   },
   async teamData() {},
   async weekData() {},

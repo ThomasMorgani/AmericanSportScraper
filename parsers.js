@@ -34,7 +34,7 @@ module.exports = {
         break
       case 'playerStats':
         console.log('processing dataset:::playerStats')
-        return //disabled for now
+        // return //disabled for now
         return data.map(player => this.playerStats(player))
         break
       case 'standings':
@@ -199,6 +199,7 @@ module.exports = {
   player(rawData, team = '') {
     //TODO: DETERMINE HOW TO ADD PLAYER TEAM AND GET OR GENERATE A UNIQUE ID
     //SEE NOTES file
+
     const name = rawData.name.split(' ')
     const nameAbv = `${name['0'].substring(0, 1)}. ${name['1']}`
     const player = {
@@ -216,8 +217,15 @@ module.exports = {
       experience: rawData.experience,
       college: rawData.college,
     }
-    // console.log(player)
 
+    const playerId = utils.playerIdHash({
+      firstName: player.first_name,
+      lastName: player.last_name,
+      number: player.number,
+      team: team, //TEAM APPEARS TO BE nickName ALL LOWERCASE
+    })
+
+    player.pid = playerId || 'Err'
     return player
   },
   playerStats(rawData) {
@@ -232,7 +240,8 @@ module.exports = {
       firstName: player.person.firstName,
       lastName: player.person.lastName,
       number: player.jerseyNumber,
-      team: team.abbreviation,
+      // team: team.abbreviation, //WHEN SCRAPING PLAYERS FROM ROSTERS, ONLY LOWERCASE TEAM NICKNAME SEEMS TO BE PROVIDED
+      team: team.nickName.toLowerCase(),
     })
     //TODO: ANALYZE DATA LAYOUT, WHAT TO KEEP/REMOVE
     //COMBINE PLAYER & DST STATS?
