@@ -8,7 +8,6 @@ module.exports = {
   async gameDataset(name, data, gameData) {
     let parsedData = {}
     // console.log(name)
-    // if (name !== 'teams') return
     switch (name) {
       case 'game':
         //PAST MATCHUP RESPONSE IS LABELLED WITH GAME KEY, IGNORE THIS
@@ -55,10 +54,6 @@ module.exports = {
         } else {
           console.log('no gameData')
         }
-        // console.log(...gameData.teamStats)
-        // console.log(...parsedData)
-        // parsedData = { ...gameData.teamStats, ...parsedData }
-        // parsedData = { ...parsedData }
         break
       default:
         console.log('PARSING ERROR: :::default reached')
@@ -201,6 +196,7 @@ module.exports = {
   async logValue(data) {
     console.log('========  LOGGED VALUE ==========')
     console.log(data)
+    console.log('========  END ==========')
     return data
   },
   player(rawData, team = '') {
@@ -214,6 +210,7 @@ module.exports = {
       first_name: name['0'],
       headshot: rawData.headshot,
       pid: '',
+      player_id: '',
       last_name: name['1'],
       posiiton: rawData.pos,
       team: team,
@@ -234,10 +231,10 @@ module.exports = {
     })
 
     player.pid = playerId || 'Err'
+    player.player_id = playerId || 'Err'
     return player
   },
   playerStats(rawData) {
-    // console.log('playerStats PARSER~~~~~~~~~~~~~~')
     const { id, game, player, season, week } = rawData
     const { currentTeam: team } = player
     //MAP STATS TO EXISTING PLAYER_PLAY STRUCTURE
@@ -379,9 +376,15 @@ module.exports = {
     const standings = rawData.edges && rawData.edges['0'] ? rawData.edges['0'].node.teamRecords : []
     return standings
   },
-  async team(rawData) {
-    console.log('TEAM PARSER......')
-    console.log(rawData)
+  async team(team) {
+    return {
+      abbreviation: team.abbreviation,
+      fullName: team.fullName,
+      id: team.id,
+      nickName: team.nickName,
+      cityStateRegion: team.cityStateRegion,
+      slug: team.franchise.slug,
+    }
   },
   teamnameFromSlug(slug) {
     const segments = slug.split('-')
@@ -392,29 +395,12 @@ module.exports = {
   async teams(data) {
     //PARSES TEAMS RECEIVED FROM 'GAME' RESPONSE
     //TODO: VALIDATION
-    console.log(data)
-    return [
-      {
-        abbreviation: data.awayTeam.abbreviation,
-        fullName: data.awayTeam.fullName,
-        id: data.awayTeam.id,
-        nickName: data.awayTeam.nickName,
-        cityStateRegion: data.awayTeam.cityStateRegion,
-        slug: data.awayTeam.franchise.slug,
-      },
-      {
-        abbreviation: data.homeTeam.abbreviation,
-        fullName: data.homeTeam.fullName,
-        id: data.homeTeam.id,
-        nickName: data.homeTeam.nickName,
-        cityStateRegion: data.homeTeam.cityStateRegion,
-        slug: data.homeTeam.franchise.slug,
-      },
-    ]
-    // if (data && data.edges) {
-    //   return data.edges.map(i => i.node)
-    // }
-    // return []
+    const teams = []
+    if (data?.edges) {
+      data = data.edges.map(i => i.node)
+    }
+    data.forEach(team => teams.push(this.team(team)))
+    return teams
   },
   teamSlug(slug) {
     console.log(slug)
@@ -445,7 +431,7 @@ module.exports = {
       defense_sk: away.passingSacked,
     }
     const { away_abv, home_abv } = gameData
-    console.log({ [away_abv]: awayStats, [home_abv]: homeStats })
+    // console.log({ [away_abv]: awayStats, [home_abv]: homeStats })
     return { [away_abv]: awayStats, [home_abv]: homeStats }
   },
 }

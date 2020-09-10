@@ -6,7 +6,7 @@ const parsers = require('./parsers')
 const scrapers = require('./scrapers')
 
 //WILL BE PASSED TO BROWSER INSTANCE FOR DEBUGGING
-const isHeadless = false
+const isHeadless = true
 
 module.exports = {
   async gameDataGame(url, browserIn = null) {
@@ -54,7 +54,7 @@ module.exports = {
         }
       })
       await scrapers.gameTriggerStats(page)
-      await page.waitFor(5000) //await a few seconds to ensure we captured requests
+      await page.waitFor(3000) //await a few seconds to ensure we captured requests
       return gameData
     } catch (err) {
       console.log('error caught', err)
@@ -74,7 +74,7 @@ module.exports = {
       scheduleData.push(gameData)
       //DEBUGGING: LIMIT GAMES PULLED
       count++
-      if (count > 2) break
+      // if (count > 2) break
     }
     console.log('+++++++++++++++++++++++++++++=')
     // console.log(scheduleData)
@@ -121,7 +121,6 @@ module.exports = {
     }
     console.log('RAN ALL TEAMS, FINAL PLAYERS LENGTH: ', players.length)
     db.save(players, 'playersLeague')
-    console.log('DONE>>>>>')
     await browser.close()
   },
   async playerDataRoster(slug, browserIn = false, storeResults = true) {
@@ -160,11 +159,10 @@ module.exports = {
       players = scrapedData.filter(player => pos.includes(player.pos)).map(player => parsers.player(player, team))
 
       if (storeResults) {
-        console.log(players)
         await db.save(players, `players_${team}`)
       }
       if (!browserIn) {
-        // await browser.close()
+        await browser.close()
       }
     } catch (err) {
       console.log('error caught', err)
@@ -201,13 +199,13 @@ module.exports = {
         if (json?.data?.viewer?.game) {
           const game = json.data.viewer.game
           if (game.slug === slug) {
-            teams = parsers.teams(game)
+            teams = parsers.teams([game.awayTeam, game.homeTeam])
             // teams = [game.awayTeam, game.homeTeam]
           }
         }
       })
       await scrapers.gameTriggerStats(page)
-      await page.waitFor(5000) //await a few seconds to ensure we captured requests
+      await page.waitFor(3000) //await a few seconds to ensure we captured requests
       return teams
     } catch (err) {
       console.log('error caught', err)
@@ -227,10 +225,9 @@ module.exports = {
       teams = [...teams, ...data]
       //DEBUGGING: LIMIT GAMES PULLED
       count++
-      if (count > 2) break
+      // if (count > 2) break
     }
     await browser.close()
-    console.log(teams)
     db.save(teams, `teams_${seasonData.year}`)
     return teams
   },
