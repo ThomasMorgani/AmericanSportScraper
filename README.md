@@ -2,6 +2,6 @@
 
 personal use data retrieval
 
-#run
-npm install
-node ./index.js
+#run  
+npm install  
+node --harmony ./index.js  
