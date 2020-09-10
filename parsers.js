@@ -76,8 +76,9 @@ module.exports = {
       gsis_id: rawData.gsisId,
       home_abv: homeTeam.abbreviation,
       home_team: homeTeam.id, //CONFIRM THIS ID IS STANDARD THROUGHOUT OTHER DATA
-      season_value: week.seasonValue,
       season_type: week.seasonType,
+      season_value: week.seasonValue,
+      season_year: week.seasonValue,
       slug: rawData.slug, //'titans-at-browns-2019-reg-1',
       venue: JSON.stringify(rawData.venue),
       week: week.weekValue,
@@ -376,7 +377,7 @@ module.exports = {
     const standings = rawData.edges && rawData.edges['0'] ? rawData.edges['0'].node.teamRecords : []
     return standings
   },
-  async team(team) {
+  team(team) {
     return {
       abbreviation: team.abbreviation,
       fullName: team.fullName,
@@ -392,7 +393,7 @@ module.exports = {
     //account for washington team (washington-football-team)
     return name === 'team' ? 'washington' : name
   },
-  async teams(data) {
+  teams(data) {
     //PARSES TEAMS RECEIVED FROM 'GAME' RESPONSE
     //TODO: VALIDATION
     const teams = []

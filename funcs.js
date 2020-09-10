@@ -222,10 +222,11 @@ module.exports = {
     count = 1 //DEBUG, SEE LOOP
     for (let url of weekScheduleUrls) {
       data = await this.teamData(url.gameUrl, browser)
+      console.log(data)
       teams = [...teams, ...data]
       //DEBUGGING: LIMIT GAMES PULLED
       count++
-      // if (count > 2) break
+      if (count > 2) break
     }
     await browser.close()
     db.save(teams, `teams_${seasonData.year}`)
