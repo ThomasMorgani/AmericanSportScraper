@@ -5,6 +5,7 @@ const db = require('./db')
 const parsers = require('./parsers')
 const scrapers = require('./scrapers')
 
+//WILL BE PASSED TO BROWSER INSTANCE FOR DEBUGGING
 const isHeadless = false
 
 module.exports = {
@@ -61,10 +62,10 @@ module.exports = {
     }
   },
   async gameDataSeason() {},
-  async gameDataWeek(sesonData) {
+  async gameDataWeek(seasonData) {
     const browser = await puppeteer.launch({ headless: isHeadless })
     const scheduleData = []
-    const weekScheduleUrls = await this.gameScheduleWeek({ ...sesonData }, browser)
+    const weekScheduleUrls = await this.gameScheduleWeek({ ...seasonData }, browser)
     console.log('WEEK SCHEDULE URLS: ')
     console.log(weekScheduleUrls)
     count = 1 //DEBUG, SEE LOOP
@@ -78,7 +79,8 @@ module.exports = {
     console.log('+++++++++++++++++++++++++++++=')
     // console.log(scheduleData)
     await browser.close()
-    db.save(scheduleData, `week_${sesonData.type}${sesonData.week}_${sesonData.year}`)
+    db.save(scheduleData, `week_${seasonData.type}${seasonData.week}_${seasonData.year}`)
+    return scheduleData
   },
   async gameScheduleWeek({ type, week, year }, browser = null) {
     const endpoints = {
@@ -169,6 +171,68 @@ module.exports = {
     }
     return players
   },
-  async teamData() {},
+  async teamData(uri, browserIn = null) {
+    const url = process.env.baseUrl + uri
+    const slug = uri.split('/games/')['1'] //GAME SLUG REQUIRED TO CONFIRM WE PARSE CORRECT GAME RESPONSE
+    let teams = []
+    try {
+      const browser = browserIn ? browserIn : await puppeteer.launch({ headless: isHeadless })
+      const page = await browser.newPage()
+      console.log('FETCHING: ', url)
+      await page.goto(url)
+      await page.setRequestInterception(true)
+
+      //ABORT ALL REQUESTS NOT RELEVANT  //TODO: CREATE COMPLETE BLACKLIST
+      page.on('request', async request => {
+        if (request.type === 'image') {
+          request.abort()
+        } else {
+          request.continue()
+        }
+        return
+      })
+
+      page.on('response', async response => {
+        // console.log('on resp') //debugging
+        if (response.request().method() !== 'GET') return // Ignore all requests not GET
+        if (!response.url().includes(process.env.apiUrl)) return // we're only interested in calls to nfl api
+        // console.log('\n 🚀MATCH: ', response.url()) //debugging
+        const json = await response.json().catch(() => console.log('no json'))
+        if (json?.data?.viewer?.game) {
+          const game = json.data.viewer.game
+          if (game.slug === slug) {
+            teams = parsers.teams(game)
+            // teams = [game.awayTeam, game.homeTeam]
+          }
+        }
+      })
+      await scrapers.gameTriggerStats(page)
+      await page.waitFor(5000) //await a few seconds to ensure we captured requests
+      return teams
+    } catch (err) {
+      console.log('error caught', err)
+    }
+  },
+  async teamDataLeague(seasonData) {
+    //WILL SCRAPE ALL TEAM DATA FROM PROVIDED SEASON YEAR
+    //RETURNS ALL TEAMS WITH id, abbrv, cityStateRegion, fullname, nickname
+    const browser = await puppeteer.launch({ headless: isHeadless })
+    let teams = []
+    const weekScheduleUrls = await this.gameScheduleWeek({ ...seasonData }, browser)
+    console.log('WEEK SCHEDULE URLS: ')
+    console.log(weekScheduleUrls)
+    count = 1 //DEBUG, SEE LOOP
+    for (let url of weekScheduleUrls) {
+      data = await this.teamData(url.gameUrl, browser)
+      teams = [...teams, ...data]
+      //DEBUGGING: LIMIT GAMES PULLED
+      count++
+      if (count > 2) break
+    }
+    await browser.close()
+    console.log(teams)
+    db.save(teams, `teams_${seasonData.year}`)
+    return teams
+  },
   async weekData() {},
 }

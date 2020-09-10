@@ -7,14 +7,20 @@ const man = () => {
     ex: players pittsburgh-steelers
     team slug retrieved from nfl.com teams page url: nfl.com/teams/[team-slug]
 
+  teams [year]
+    ex: teams 2020
+
   week [week year type] 
     ex: week 1 2020 
     omitted args default to current week/year/type
   `)
   return
 }
-
+//ARGUMENTS PASSED TO SCRIPT AT RUN
 const args = process.argv.splice(3)
+//DEFAULT WEEK DATA
+const currentWeek = { week: 1, year: 2020, type: 'REG' }
+
 switch (process.argv['2']) {
   case 'players':
     if (!args['0']) {
@@ -32,15 +38,21 @@ switch (process.argv['2']) {
       funcs.playerDataRoster(args['0'])
     }
     break
+  case 'teams':
+    funcs.teamDataLeague({
+      week: currentWeek.week,
+      year: args['0'] || currentWeek.year,
+      type: currentWeek.type,
+    })
+    break
+
   case 'week':
     //TODO: CREATE METHOD TO GET CURRENT WEEK DATA FROM BACKEND
-    const currentWeek = { week: 1, year: 2020, type: 'REG' }
-    const seasonData = {
+    funcs.gameDataWeek({
       week: args['0'] || currentWeek.week,
       year: args['1'] || currentWeek.year,
       type: args['2'] || currentWeek.type,
-    }
-    funcs.gameDataWeek(seasonData)
+    })
     break
 
   default:

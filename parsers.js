@@ -7,6 +7,8 @@ module.exports = {
   */
   async gameDataset(name, data, gameData) {
     let parsedData = {}
+    // console.log(name)
+    // if (name !== 'teams') return
     switch (name) {
       case 'game':
         //PAST MATCHUP RESPONSE IS LABELLED WITH GAME KEY, IGNORE THIS
@@ -165,6 +167,11 @@ module.exports = {
       //playerGameStats
       if (viewer.playerGameStats && viewer.playerGameStats.edges) {
         const pos = ['QB', 'RB', 'FB', 'HB', 'TE', 'WR', 'K']
+        //NOTE: !!! WE MAY NEED TO DO THE PLAYER FILTERING ELSEWHERE
+        //OR AFTER DETERMINING TEAM STATS
+        //AS OF NOW IT APPEARS THE ONLY WAY TO DETERMINE DST TOUCHDOWNS
+        //IS TO FIND THEM FROM INDIVIDUAL PLAYER STATS
+        //TODO: CONFIRM THIS
         return { playerStats: viewer.playerGameStats.edges.filter(e => e.node && pos.includes(e.node.player.position)).map(e => e.node) }
       }
       return json.data.viewer
@@ -229,7 +236,7 @@ module.exports = {
     return player
   },
   playerStats(rawData) {
-    console.log('playerStats PARSER~~~~~~~~~~~~~~')
+    // console.log('playerStats PARSER~~~~~~~~~~~~~~')
     const { id, game, player, season, week } = rawData
     const { currentTeam: team } = player
     //MAP STATS TO EXISTING PLAYER_PLAY STRUCTURE
@@ -371,11 +378,42 @@ module.exports = {
     const standings = rawData.edges && rawData.edges['0'] ? rawData.edges['0'].node.teamRecords : []
     return standings
   },
+  async team(rawData) {
+    console.log('TEAM PARSER......')
+    console.log(rawData)
+  },
   teamnameFromSlug(slug) {
     const segments = slug.split('-')
     const name = segments[segments.length - 1]
     //account for washington team (washington-football-team)
     return name === 'team' ? 'washington' : name
+  },
+  async teams(data) {
+    //PARSES TEAMS RECEIVED FROM 'GAME' RESPONSE
+    //TODO: VALIDATION
+    console.log(data)
+    return [
+      {
+        abbreviation: data.awayTeam.abbreviation,
+        fullName: data.awayTeam.fullName,
+        id: data.awayTeam.id,
+        nickName: data.awayTeam.nickName,
+        cityStateRegion: data.awayTeam.cityStateRegion,
+        slug: data.awayTeam.franchise.slug,
+      },
+      {
+        abbreviation: data.homeTeam.abbreviation,
+        fullName: data.homeTeam.fullName,
+        id: data.homeTeam.id,
+        nickName: data.homeTeam.nickName,
+        cityStateRegion: data.homeTeam.cityStateRegion,
+        slug: data.homeTeam.franchise.slug,
+      },
+    ]
+    // if (data && data.edges) {
+    //   return data.edges.map(i => i.node)
+    // }
+    // return []
   },
   teamSlug(slug) {
     console.log(slug)
@@ -385,32 +423,25 @@ module.exports = {
 
     return split.filter(str => str.includes('-'))['0']
   },
-  async teams(data) {
-    if (data && data.edges) {
-      return data.edges.map(i => i.node)
-    }
-    return []
-  },
-
-  // parsedData = await this.teamStats(data, gameData.game)
-
   async teamStats(data, gameData) {
     //TODO: ADD NFL DATA AS WELL
+    //MOST LIKELY NEED TO CREATE SEPERATE FUNCTION FOR PARSING
+    //NFL TEAM DATA AS WELL AS DST SCORING DATA
     const { opponentGameStats, teamGameStats } = data
     const home = teamGameStats
     const away = opponentGameStats
     const awayStats = {
-      interceptions: home.passingInterceptions,
-      fumbles_recovered: home.fumblesLost,
+      defense_int: home.passingInterceptions,
+      defense_frec: home.fumblesLost,
       points_against: home.totalPointsScored,
-      sacks: home.passingSacked,
+      defense_sk: home.passingSacked,
     }
 
     const homeStats = {
-      interceptions: away.passingInterceptions,
-      fumbles_recovered: away.fumblesLost,
+      defense_int: away.passingInterceptions,
+      defense_frec: away.fumblesLost,
       points_against: away.totalPointsScored,
-      sacks: away.passingSacked,
+      defense_sk: away.passingSacked,
     }
     const { away_abv, home_abv } = gameData
     console.log({ [away_abv]: awayStats, [home_abv]: homeStats })
