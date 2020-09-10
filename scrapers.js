@@ -48,22 +48,34 @@ module.exports = {
   },
   async playersRoster() {
     console.log('FROM PLAYER ROSTER SCRAPER ')
-    const data = []
-    const tbody = document.querySelectorAll('tbody')
-    for (tr of tbody['0'].children) {
-      data.push({
-        name: tr.cells['0'].innerText,
-        number: tr.cells['1'].innerText,
-        pos: tr.cells['2'].innerText,
-        status: tr.cells['3'].innerText,
-        height: tr.cells['4'].innerText,
-        weight: tr.cells['5'].innerText,
-        birthdate: tr.cells['6'].innerText,
-        experience: tr.cells['7'].innerText,
-        college: tr.cells['8'].innerText,
-      })
-    }
-    return data
+    return new Promise((resolve, reject) => {
+      const data = []
+      //SCROLL INTO VIEW SO LAZY CONTENT LOADS
+      const footer = document.querySelector('footer')
+      footer.scrollIntoView()
+      setTimeout(() => {
+        const tbody = document.querySelectorAll('tbody')
+        for (tr of tbody['0'].children) {
+          const img = tr.cells['0'].querySelector('img')
+          const headshot = img ? img.getAttribute('src') : ''
+          console.log(img)
+          data.push({
+            headshot: headshot,
+            name: tr.cells['0'].innerText,
+            number: tr.cells['1'].innerText,
+            pos: tr.cells['2'].innerText,
+            status: tr.cells['3'].innerText,
+            height: tr.cells['4'].innerText,
+            weight: tr.cells['5'].innerText,
+            birthdate: tr.cells['6'].innerText,
+            experience: tr.cells['7'].innerText,
+            college: tr.cells['8'].innerText,
+          })
+        }
+        console.log(data)
+        resolve(data)
+      }, 5000)
+    })
   },
   async scheduleUrls() {
     //NOTE:
@@ -91,7 +103,6 @@ module.exports = {
         slugs.push({ teamUrl: el.getAttribute('href') })
       }
     })
-
     return slugs
   },
 }

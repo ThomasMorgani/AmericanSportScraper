@@ -139,7 +139,6 @@ module.exports = {
       const page = pages.length > 0 ? pages['0'] : await browser.newPage()
       console.log('FETCHING: ', fullUrl)
       await page.goto(fullUrl).catch(err => console.log(err))
-
       //ABORT ALL REQUESTS NOT RELEVANT  //TODO: CREATE COMPLETE BLACKLIST
       //CURRENTLY DISABLING SINCE THIS SEEMS TO BE CAUSING A BUG
       //"REQUEST ALREADY HANDLED"
@@ -161,10 +160,11 @@ module.exports = {
       players = scrapedData.filter(player => pos.includes(player.pos)).map(player => parsers.player(player, team))
 
       if (storeResults) {
+        console.log(players)
         await db.save(players, `players_${team}`)
       }
       if (!browserIn) {
-        await browser.close()
+        // await browser.close()
       }
     } catch (err) {
       console.log('error caught', err)

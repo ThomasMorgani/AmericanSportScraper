@@ -212,6 +212,7 @@ module.exports = {
     const player = {
       abv_name: nameAbv,
       first_name: name['0'],
+      headshot: rawData.headshot,
       pid: '',
       last_name: name['1'],
       posiiton: rawData.pos,
