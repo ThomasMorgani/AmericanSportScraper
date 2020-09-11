@@ -135,7 +135,7 @@ module.exports = {
       visitorTimeoutsUsed: rawData.visitorTimeoutsUsed,
       visitorTimeoutsRemaining: rawData.visitorTimeoutsRemaining,
       homePointsOvertimeTotal: rawData.homePointsOvertimeTotal,
-      weather: rawData.weather.shortDescription || '', //{
+      weather: rawData?.weather?.shortDescription || '', //{
       //   currentFahrenheit: null,
       //   location: null,
       //   longDescription: null,
@@ -213,7 +213,7 @@ module.exports = {
       pid: '',
       player_id: '',
       last_name: name['1'],
-      posiiton: rawData.pos,
+      position: rawData.pos,
       team: team,
       number: rawData.number,
       status: rawData.status,
@@ -384,7 +384,7 @@ module.exports = {
       id: team.id,
       nickName: team.nickName,
       cityStateRegion: team.cityStateRegion,
-      slug: team.franchise.slug,
+      slug: team?.franchise?.slug || '',
     }
   },
   teamnameFromSlug(slug) {
