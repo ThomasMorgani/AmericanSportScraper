@@ -9,7 +9,7 @@ const scrapers = require('./scrapers')
 const isHeadless = true
 
 module.exports = {
-  async gameDataGame(url, browserIn = null) {
+  async gameDataGame(url, browserIn = null, storeResults = true) {
     const gameData = {
       game: {},
       gameDetail: {},
@@ -20,9 +20,11 @@ module.exports = {
       teams: [],
       teamStats: {},
     }
-    fullUrl = process.env.baseUrl + url
+    const isSlug = !url.includes('/games/')
+    fullUrl = isSlug ? process.env.baseUrl + '/games/' + url : process.env.baseUrl + url
     //SET GAME SLUG, IT NEEDS TO BE PASSED TO PARSER TO DETECT CORRECT GAME IS BEING SET
-    gameData.slug = url.split('/games/')['1']
+    gameData.slug = isSlug ? url : url.split('/games/')['1']
+
     try {
       const browser = browserIn ? browserIn : await puppeteer.launch({ headless: isHeadless })
       const page = await browser.newPage()
@@ -49,12 +51,28 @@ module.exports = {
         // if (parsedData) Object.keys(parsedData).forEach(dataSet => (gameData[dataSet] = { ...parsedData[dataSet] }))
         if (parsedData) {
           for (let dataSet in parsedData) {
+            // console.log('====================DATA SET ===================')
+            // console.log(dataSet)
             gameData[dataSet] = parsedData[dataSet]
+            if (dataSet === 'game') {
+              //TODO: I DONT LIKE THIS
+              //SEPARATE PARSERS OUT OF REPSONSE SCRAPER
+              // console.log('====================IS GAME ===================')
+              const json = await response.json().catch(() => console.log('no json'))
+              const teams = await parsers.teams(json)
+              gameData.teams = [...gameData.teams, ...teams]
+            }
           }
         }
       })
       await scrapers.gameTriggerStats(page)
       await page.waitFor(3000) //await a few seconds to ensure we captured requests
+      if (storeResults) {
+        await db.save(gameData, gameData.slug)
+      }
+      if (!browserIn) {
+        await browser.close()
+      }
       return gameData
     } catch (err) {
       console.log('error caught', err)
@@ -74,7 +92,7 @@ module.exports = {
       scheduleData.push(gameData)
       //DEBUGGING: LIMIT GAMES PULLED
       count++
-      // if (count > 2) break
+      if (count > 2) break
     }
     console.log('+++++++++++++++++++++++++++++=')
     // console.log(scheduleData)

@@ -151,6 +151,10 @@ module.exports = {
   async gameResponse(json) {
     if (json && json.data && json.data.viewer) {
       const viewer = json.data.viewer
+      // console.log('viewer---')
+      // console.log(json)
+      // console.log(viewer)
+
       //teamStats
       if (viewer.stats && viewer.stats.teamGameStats && viewer.stats.teamGameStats.edges && viewer.stats.teamGameStats.edges['0'] && viewer.stats.teamGameStats.edges['0'].node) {
         return { teamStats: viewer.stats.teamGameStats.edges['0'].node }
@@ -399,6 +403,10 @@ module.exports = {
     const teams = []
     if (data?.edges) {
       data = data.edges.map(i => i.node)
+    }
+    if (data?.data?.viewer?.game) {
+      const game = data.data.viewer.game
+      data = [game.awayTeam, game.homeTeam]
     }
     data.forEach(team => teams.push(this.team(team)))
     return teams

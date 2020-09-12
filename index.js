@@ -1,7 +1,11 @@
+const db = require('./db')
 const funcs = require('./funcs')
 const man = () => {
   console.log(`
   ARGUMENT [OPTIONS]
+
+  game [gameSlug (required)]
+    ex: texans-at-chiefs-2020-reg-1
 
   players [all | teamslug]
     ex: players pittsburgh-steelers
@@ -22,6 +26,16 @@ const args = process.argv.splice(3)
 const currentWeek = { week: 1, year: 2020, type: 'REG' }
 
 switch (process.argv['2']) {
+  case 'game':
+    if (!args['0']) {
+      console.log('game slug required')
+      man()
+      return
+    }
+    const gameData = funcs.gameDataGame(args['0'])
+    db.save(gameData, args['0'])
+
+    break
   case 'players':
     if (!args['0']) {
       console.log(`
