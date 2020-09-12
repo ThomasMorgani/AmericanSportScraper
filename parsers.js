@@ -98,7 +98,7 @@ module.exports = {
       distance: rawData.distance,
       down: rawData.down,
       gameClock: rawData.gameClock, //'00:37'
-      gameid: gameData.id,
+      game_id: gameData.game_id || 'xx',
       goalToGo: rawData.goalToGo, //Bool
       homePointsOvertime: rawData.homePointsOvertime,
       homePointsTotal: rawData.homePointsTotal,
