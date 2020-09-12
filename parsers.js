@@ -99,6 +99,7 @@ module.exports = {
       down: rawData.down,
       gameClock: rawData.gameClock, //'00:37'
       game_id: gameData.game_id || 'xx',
+      // gameDetailId: rawData.id,
       goalToGo: rawData.goalToGo, //Bool
       homePointsOvertime: rawData.homePointsOvertime,
       homePointsTotal: rawData.homePointsTotal,
