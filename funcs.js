@@ -118,7 +118,6 @@ module.exports = {
     let content = await page.evaluate(scrapers.scheduleUrls)
     return content
   },
-  async playerData() {},
   async playerDataLeague() {
     const teamsUrl = process.env.baseUrl + '/teams'
     let players = []
@@ -141,7 +140,28 @@ module.exports = {
     db.save(players, 'playersLeague')
     await browser.close()
   },
+  async playerDataPlayer(slug, browserIn = false, storeResults = false) {
+    //RETRIEVES FROM PLAYER'S PAGE
+    const browser = browserIn ? browserIn : await puppeteer.launch({ headless: isHeadless })
+    const page = await browser.newPage()
+    //GET LIST OF TEAM URL SLUGS
+    const url = 'https://www.nfl.com/players/' + slug
+    await page.goto(url)
+    await page.waitFor(2000)
+    const scrapedData = await page.evaluate(scrapers.player)
+    console.log(scrapedData)
+    const playerData = await parsers.player(scrapedData, scrapedData.team)
+    console.log(JSON.stringify(playerData))
+    if (storeResults) {
+      await db.save(players, `player_${playerData.full_name}`)
+    }
+    if (!browserIn) {
+      await browser.close()
+    }
+    return playerData
+  },
   async playerDataRoster(slug, browserIn = false, storeResults = true) {
+    //RETRIEVES FROM TEAM'S ROSTER PAGE
     //STANDARDIZE SLUG
     slug = parsers.teamSlug(slug)
     const fullUrl = `${process.env.baseUrl}/teams/${slug}/roster`

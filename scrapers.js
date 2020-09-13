@@ -46,6 +46,51 @@ module.exports = {
     }
     return 'done'
   },
+  async player(player) {
+    //nfl-c-player-header__info
+    return new Promise((resolve, reject) => {
+      //THIS IS NOT RELIABLE
+      //TODO: REMOVE WHEN CONFIRMED
+      // const info = document.querySelector('.nfl-c-player-header__info')
+      // if (info?.children.length > 0) {
+      //   const childs = info.children
+      //   //childs['0']class of career status,  hidden
+      //   const name = childs['1'].innerText
+      //   const posNum = childs['2'].innerText.split(' • #')
+      //   const team = childs['3'] ? childs['3'].innerText.split(' ') : ''
+      //   const status = childs['4'] ? childs['4'].innerText.toLowerCase() : 'active'
+      const statusMap = {
+        active: 'ACT',
+      }
+
+      const name = document.querySelector('.nfl-c-player-header__title').innerText
+      const posNum = document.querySelector('.nfl-c-player-header__player-data').innerText
+      const teamFull = document.querySelectorAll('.nfl-c-player-header__team').innerText
+      const team = teamFull ? team.split(' ') : ['']
+      const statusText = document.querySelectorAll('.nfl-c-player-header__roster-status').innerText
+      const status = statusText ? statusText.toLowerCase() : 'active' //TODO: PROPERLY DETERMINE OLD POSSIBLE STATUSES
+      const imgs = document.querySelectorAll('.img-responsive')
+      const headshot = imgs['1'].getAttribute('src')
+
+      const playerData = {
+        id: '',
+        headshot,
+        name,
+        number: posNum['1'],
+        pos: posNum['0'],
+        status: statusMap[status],
+        team: team[team.length - 1].toLowerCase(),
+      }
+      // height: rawData.height : '',
+      // weight: rawData.weight : '',
+      // birthdate: rawData.birthdate : '',
+      // experience: rawData.experience : '',
+      // college: rawData.college : '',
+
+      console.log(playerData)
+      resolve(playerData)
+    })
+  },
   async playersRoster() {
     console.log('FROM PLAYER ROSTER SCRAPER ')
     return new Promise((resolve, reject) => {

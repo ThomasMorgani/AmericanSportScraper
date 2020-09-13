@@ -5,7 +5,10 @@ const man = () => {
   ARGUMENT [OPTIONS]
 
   game [gameSlug (required)]
-    ex: texans-at-chiefs-2020-reg-1
+    ex: steelers-at-giants-2020-reg-1
+  
+    player [playerSlug (required)]
+    ex: juju-smith-schuster
 
   players [all | teamslug]
     ex: players pittsburgh-steelers
@@ -36,14 +39,17 @@ switch (process.argv['2']) {
     db.save(gameData, args['0'])
 
     break
+  case 'player':
+    if (!args['0']) {
+      console.log('player slug required')
+      man()
+      return
+    }
+    funcs.playerDataPlayer(args['0'])
+    break
   case 'players':
     if (!args['0']) {
-      console.log(`
-      Expected an option to be provided
-      -players [all | teamslug]
-        ex: players pittsburgh-steelers
-        team slug retrieved from nfl.com team page url: nfl.com/teams/[team-slug]
-      `)
+      man()
       break
     }
     if (args['0'] === 'all') {

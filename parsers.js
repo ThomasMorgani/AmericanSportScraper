@@ -210,23 +210,24 @@ module.exports = {
     //SEE NOTES file
 
     const name = rawData.name.split(' ')
-    const nameAbv = `${name['0'].substring(0, 1)}. ${name['1']}`
+    const nameAbv = `${name['0'].substring(0, 1)}. ${name[name.length - 1]}`
     const player = {
       abv_name: nameAbv,
       first_name: name['0'],
+      full_name: name['0'] + ' ' + name['1'],
       headshot: rawData.headshot,
       pid: '',
       player_id: '',
-      last_name: name['1'],
+      last_name: name[name.length - 1],
       position: rawData.pos,
       team: team,
-      number: rawData.number,
-      status: rawData.status,
-      height: rawData.height,
-      weight: rawData.weight,
-      birthdate: rawData.birthdate,
-      experience: rawData.experience,
-      college: rawData.college,
+      number: rawData.number || '',
+      status: rawData.status || '',
+      height: rawData.height || '',
+      weight: rawData.weight || '',
+      birthdate: rawData.birthdate || '',
+      experience: rawData.experience || '',
+      college: rawData.college || '',
     }
 
     const playerId = utils.playerIdHash({
@@ -383,12 +384,15 @@ module.exports = {
     return standings
   },
   team(team) {
+    const name = team.fullName.split(' ')
     return {
       abbreviation: team.abbreviation,
-      fullName: team.fullName,
-      id: team.id,
-      nickName: team.nickName,
       cityStateRegion: team.cityStateRegion,
+      first_name: name['0'],
+      full_name: team.fullName,
+      id: team.id,
+      last_name: name['1'],
+      nickName: team.nickName,
       slug: team?.franchise?.slug || '',
     }
   },
