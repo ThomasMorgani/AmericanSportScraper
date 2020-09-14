@@ -1,0 +1,354 @@
+{
+  "data": {
+    "viewer": {
+      "gameInsight": {
+        "insightsByGames": [
+          {
+            "gameId": "10012020-0913-1035-120e-5eaf886bf2ed",
+            "headline": "For The Record",
+            "insight": "The Buccaneers have 9 wins or fewer in 13 of the last 14 seasons (9 straight).",
+            "id": "43302020-0913-1006-0801-7932c20219e6",
+            "insightType": "TEAM_FEATURE",
+            "createdDate": "2020-09-03T17:18:00.207Z",
+            "lastModifiedDate": "2020-09-03T17:18:51.833Z",
+            "items": [
+              {
+                "team": {
+                  "fullName": "Tampa Bay Buccaneers",
+                  "nickName": "Buccaneers",
+                  "abbreviation": "TB",
+                  "id": "10044900-2020-57ff-bc6f-3ae4642da5ff",
+                  "franchise": { "slug": "tampa-bay-buccaneers" }
+                },
+                "player": null,
+                "picker": "TEAM",
+                "facts": []
+              }
+            ]
+          },
+          {
+            "gameId": "10012020-0913-1035-120e-5eaf886bf2ed",
+            "headline": "Fun Fact",
+            "insight": "Tom Brady has as many Super Bowl wins (6) as the Buccaneers have playoff wins (6) in franchise history.",
+            "id": "43302020-0913-1006-0957-0717de1b23fe",
+            "insightType": "TEAM_FEATURE",
+            "createdDate": "2020-09-03T17:43:52.991Z",
+            "lastModifiedDate": "2020-09-11T01:51:38.307Z",
+            "items": [
+              {
+                "team": {
+                  "fullName": "Tampa Bay Buccaneers",
+                  "nickName": "Buccaneers",
+                  "abbreviation": "TB",
+                  "id": "10044900-2020-57ff-bc6f-3ae4642da5ff",
+                  "franchise": { "slug": "tampa-bay-buccaneers" }
+                },
+                "player": null,
+                "picker": "TEAM",
+                "facts": []
+              }
+            ]
+          },
+          {
+            "gameId": "10012020-0913-1035-120e-5eaf886bf2ed",
+            "headline": "Lights, Kamara, Action",
+            "insight": "Alvin Kamara is 1 of 2 players to finish top 8 in fantasy PPG among RB in each of the last 3 seasons (Other: Ezekiel Elliott).",
+            "id": "43302020-0913-1006-0973-6276a20e12ff",
+            "insightType": "PLAYER_FEATURE",
+            "createdDate": "2020-09-03T17:46:38.549Z",
+            "lastModifiedDate": "2020-09-11T01:52:14.652Z",
+            "items": [
+              {
+                "team": null,
+                "player": {
+                  "id": "32134b41-4d24-4058-2020-21a6ede5569c",
+                  "position": "RB",
+                  "esbId": "KAM244058",
+                  "currentTeam": { "abbreviation": "NO", "nickName": "Saints" },
+                  "person": {
+                    "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/rubeyrjz53yacwyjgycx" },
+                    "firstName": "Alvin",
+                    "lastName": "Kamara",
+                    "displayName": "Alvin Kamara",
+                    "slug": "alvin-kamara"
+                  }
+                },
+                "picker": "PLAYER",
+                "facts": []
+              }
+            ]
+          },
+          {
+            "gameId": "10012020-0913-1035-120e-5eaf886bf2ed",
+            "headline": "T. Brady (TB): 2 INT for first time since Week 16, 2018",
+            "insight": "T. Brady (TB): 2 INT for first time since Week 16, 2018",
+            "id": "43302020-0913-1009-7137-4986bcc3a29c",
+            "insightType": "GAMES_LIST_TEASER",
+            "createdDate": "2020-09-07T22:13:57.261Z",
+            "lastModifiedDate": "2020-09-13T22:26:36.125Z",
+            "items": null
+          },
+          {
+            "gameId": "10012020-0913-1035-120e-5eaf886bf2ed",
+            "headline": "Quarterback Comparison",
+            "insight": "Quarterback Comparison",
+            "id": "43302020-0913-1011-3883-5115650af59d",
+            "insightType": "PLAYER_COMPARISON",
+            "createdDate": "2020-09-09T20:44:57.388Z",
+            "lastModifiedDate": "2020-09-13T21:59:05.424Z",
+            "items": [
+              {
+                "team": null,
+                "player": {
+                  "id": "32134252-4137-1156-2020-e60d6d11d3d6",
+                  "position": "QB",
+                  "esbId": "BRA371156",
+                  "currentTeam": { "abbreviation": "TB", "nickName": "Buccaneers" },
+                  "person": {
+                    "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/sfehmfwtg9i5gdcpqzgf" },
+                    "firstName": "Thomas",
+                    "lastName": "Brady",
+                    "displayName": "Tom Brady",
+                    "slug": "tom-brady"
+                  }
+                },
+                "picker": "PLAYER",
+                "facts": ["First half", "8-12, 76 yds, 1 total TD, 1 INT, 7.24 fantasy pts"]
+              },
+              {
+                "team": null,
+                "player": {
+                  "id": "32134252-4522-9498-2020-807b8e432935",
+                  "position": "QB",
+                  "esbId": "BRE229498",
+                  "currentTeam": { "abbreviation": "NO", "nickName": "Saints" },
+                  "person": {
+                    "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/nnhvcikd59brb8jkglxj" },
+                    "firstName": "Drew",
+                    "lastName": "Brees",
+                    "displayName": "Drew Brees",
+                    "slug": "drew-brees"
+                  }
+                },
+                "picker": "PLAYER",
+                "facts": ["First half", "13-19, 94 yds, 1 total TD, 0 INT, 7.76 fantasy pts"]
+              }
+            ]
+          },
+          {
+            "gameId": "10012020-0913-1035-120e-5eaf886bf2ed",
+            "headline": "Historic Season Opener",
+            "insight": "This is the first game since 1950 between the top 2 all-time leaders in career pass TD (entering the game).",
+            "id": "43302020-0913-1011-3917-042587dd120d",
+            "insightType": "RESEARCH_FACT",
+            "createdDate": "2020-09-09T20:50:32.699Z",
+            "lastModifiedDate": "2020-09-09T20:50:32.699Z",
+            "items": null
+          },
+          {
+            "gameId": "10012020-0913-1035-120e-5eaf886bf2ed",
+            "headline": "Age Is Just A Number",
+            "insight": "Tom Brady is the 4th QB to start a game in the NFL at age 43+ (Testaverde, Moon, DeBerg).",
+            "id": "43302020-0913-1014-8349-21221ae4aa37",
+            "insightType": "TEAM_FEATURE",
+            "createdDate": "2020-09-13T20:29:14.395Z",
+            "lastModifiedDate": "2020-09-13T20:29:14.395Z",
+            "items": [
+              {
+                "team": {
+                  "fullName": "Tampa Bay Buccaneers",
+                  "nickName": "Buccaneers",
+                  "abbreviation": "TB",
+                  "id": "10044900-2020-57ff-bc6f-3ae4642da5ff",
+                  "franchise": { "slug": "tampa-bay-buccaneers" }
+                },
+                "player": null,
+                "picker": "TEAM",
+                "facts": []
+              }
+            ]
+          },
+          {
+            "gameId": "10012020-0913-1035-120e-5eaf886bf2ed",
+            "headline": "Fountain Of Youth",
+            "insight": "Tom Brady is the oldest player to score a TD since at least 1950 (43 years, 41 days).",
+            "id": "43302020-0913-1014-8522-5319f3b58ab8",
+            "insightType": "TEAM_FEATURE",
+            "createdDate": "2020-09-13T20:58:07.593Z",
+            "lastModifiedDate": "2020-09-13T20:58:07.593Z",
+            "items": [
+              {
+                "team": {
+                  "fullName": "Tampa Bay Buccaneers",
+                  "nickName": "Buccaneers",
+                  "abbreviation": "TB",
+                  "id": "10044900-2020-57ff-bc6f-3ae4642da5ff",
+                  "franchise": { "slug": "tampa-bay-buccaneers" }
+                },
+                "player": null,
+                "picker": "TEAM",
+                "facts": []
+              }
+            ]
+          },
+          {
+            "gameId": "10012020-0913-1035-120e-5eaf886bf2ed",
+            "headline": "Historic Start",
+            "insight": "Alvin Kamara is 1 of 4 players all-time with 2,000+ rush yards and 2,000+ rec yards over his first 3 seasons (Roger Craig, Herschel Walker, Christian McCaffrey).",
+            "id": "43302020-0913-1014-8561-3666d03aab16",
+            "insightType": "PLAYER_FEATURE",
+            "createdDate": "2020-09-13T21:04:35.940Z",
+            "lastModifiedDate": "2020-09-13T21:04:35.940Z",
+            "items": [
+              {
+                "team": null,
+                "player": {
+                  "id": "32134b41-4d24-4058-2020-21a6ede5569c",
+                  "position": "RB",
+                  "esbId": "KAM244058",
+                  "currentTeam": { "abbreviation": "NO", "nickName": "Saints" },
+                  "person": {
+                    "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/rubeyrjz53yacwyjgycx" },
+                    "firstName": "Alvin",
+                    "lastName": "Kamara",
+                    "displayName": "Alvin Kamara",
+                    "slug": "alvin-kamara"
+                  }
+                },
+                "picker": "PLAYER",
+                "facts": []
+              }
+            ]
+          },
+          {
+            "gameId": "10012020-0913-1035-120e-5eaf886bf2ed",
+            "headline": "Keeping Up With Kamara",
+            "insight": "Alvin Kamara has 1+ rush TD and 1+ rec TD in a game for the 7th time since entering the NFL in 2017 (2nd-most such games in that span).",
+            "id": "43302020-0913-1014-8783-90466f4aa8fb",
+            "insightType": "PLAYER_FEATURE",
+            "createdDate": "2020-09-13T21:41:41.319Z",
+            "lastModifiedDate": "2020-09-13T21:41:41.319Z",
+            "items": [
+              {
+                "team": null,
+                "player": {
+                  "id": "32134b41-4d24-4058-2020-21a6ede5569c",
+                  "position": "RB",
+                  "esbId": "KAM244058",
+                  "currentTeam": { "abbreviation": "NO", "nickName": "Saints" },
+                  "person": {
+                    "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/rubeyrjz53yacwyjgycx" },
+                    "firstName": "Alvin",
+                    "lastName": "Kamara",
+                    "displayName": "Alvin Kamara",
+                    "slug": "alvin-kamara"
+                  }
+                },
+                "picker": "PLAYER",
+                "facts": []
+              }
+            ]
+          },
+          {
+            "gameId": "10012020-0913-1035-120e-5eaf886bf2ed",
+            "headline": "When Trailing At Halftime",
+            "insight": "Tom Brady has a 3-11 record when trailing at halftime over the last 3 seasons, incl. playoffs (38-3 when tied or leading at half).",
+            "id": "43302020-0913-1014-8925-45949084356d",
+            "insightType": "TEAM_FEATURE",
+            "createdDate": "2020-09-13T22:05:16.868Z",
+            "lastModifiedDate": "2020-09-13T22:05:16.868Z",
+            "items": [
+              {
+                "team": {
+                  "fullName": "Tampa Bay Buccaneers",
+                  "nickName": "Buccaneers",
+                  "abbreviation": "TB",
+                  "id": "10044900-2020-57ff-bc6f-3ae4642da5ff",
+                  "franchise": { "slug": "tampa-bay-buccaneers" }
+                },
+                "player": null,
+                "picker": "TEAM",
+                "facts": []
+              }
+            ]
+          },
+          {
+            "gameId": "10012020-0913-1035-120e-5eaf886bf2ed",
+            "headline": "Giving 'Em Away",
+            "insight": "Tom Brady has 2+ INT in a game for the first time since Week 16, 2018.",
+            "id": "43302020-0913-1014-9009-968874108434",
+            "insightType": "TEAM_FEATURE",
+            "createdDate": "2020-09-13T22:19:21.961Z",
+            "lastModifiedDate": "2020-09-13T22:19:21.961Z",
+            "items": [
+              {
+                "team": {
+                  "fullName": "Tampa Bay Buccaneers",
+                  "nickName": "Buccaneers",
+                  "abbreviation": "TB",
+                  "id": "10044900-2020-57ff-bc6f-3ae4642da5ff",
+                  "franchise": { "slug": "tampa-bay-buccaneers" }
+                },
+                "player": null,
+                "picker": "TEAM",
+                "facts": []
+              }
+            ]
+          },
+          {
+            "gameId": "10012020-0913-1035-120e-5eaf886bf2ed",
+            "headline": "Strange But True",
+            "insight": "TB selected Antoine Winfield Jr. in the 2020 NFL draft (45th overall). In Week 9, 2001, his father intercepted new TB QB Tom Brady in a 21-11 Patriots win vs Bills.",
+            "id": "43302020-0913-1014-9113-164381eed891",
+            "insightType": "TEAM_FEATURE",
+            "createdDate": "2020-09-13T22:36:33.916Z",
+            "lastModifiedDate": "2020-09-13T22:36:33.916Z",
+            "items": [
+              {
+                "team": {
+                  "fullName": "Tampa Bay Buccaneers",
+                  "nickName": "Buccaneers",
+                  "abbreviation": "TB",
+                  "id": "10044900-2020-57ff-bc6f-3ae4642da5ff",
+                  "franchise": { "slug": "tampa-bay-buccaneers" }
+                },
+                "player": null,
+                "picker": "TEAM",
+                "facts": []
+              }
+            ]
+          },
+          {
+            "gameId": "10012020-0913-1035-120e-5eaf886bf2ed",
+            "headline": "Howard Finds End Zone",
+            "insight": "O.J. Howard scored on a 9-yard reception in the 3rd qtr. Howard had 1 rec TD on 53 targets in 2019 (fewest TD among TE with 50+ targets).",
+            "id": "43302020-0913-1014-9192-0501191548b4",
+            "insightType": "PLAYER_FEATURE",
+            "createdDate": "2020-09-13T22:49:42.775Z",
+            "lastModifiedDate": "2020-09-13T22:49:42.775Z",
+            "items": [
+              {
+                "team": null,
+                "player": {
+                  "id": "3213484f-5730-8864-2020-4a5e848d081e",
+                  "position": "TE",
+                  "esbId": "HOW308864",
+                  "currentTeam": { "abbreviation": "TB", "nickName": "Buccaneers" },
+                  "person": {
+                    "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/o3nbvwnnd0tvn23edcdf" },
+                    "firstName": "O'Terrius",
+                    "lastName": "Howard",
+                    "displayName": "O.J. Howard",
+                    "slug": "o-j-howard"
+                  }
+                },
+                "picker": "PLAYER",
+                "facts": []
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

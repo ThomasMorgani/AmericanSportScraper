@@ -51,13 +51,13 @@ module.exports = {
         // if (parsedData) Object.keys(parsedData).forEach(dataSet => (gameData[dataSet] = { ...parsedData[dataSet] }))
         if (parsedData) {
           for (let dataSet in parsedData) {
-            // console.log('====================DATA SET ===================')
-            // console.log(dataSet)
+            console.log('====================DATA SET ===================')
+            console.log(dataSet)
             gameData[dataSet] = parsedData[dataSet]
             if (dataSet === 'game') {
               //TODO: I DONT LIKE THIS
               //SEPARATE PARSERS OUT OF REPSONSE SCRAPER
-              // console.log('====================IS GAME ===================')
+              console.log('====================IS GAME ===================')
               const json = await response.json().catch(() => console.log('no json'))
               const teams = await parsers.teams(json)
               gameData.teams = [...gameData.teams, ...teams]
@@ -66,7 +66,7 @@ module.exports = {
         }
       })
       await scrapers.gameTriggerStats(page)
-      await page.waitFor(3000) //await a few seconds to ensure we captured requests
+      await page.waitForTimeout(3000) //await a few seconds to ensure we captured requests
       if (storeResults) {
         await db.save(gameData, gameData.slug)
       }
@@ -114,7 +114,7 @@ module.exports = {
     //get games for season week
     const page = await browser.newPage()
     await page.goto(url)
-    await page.waitFor(2000)
+    await page.waitForTimeout(2000)
     let content = await page.evaluate(scrapers.scheduleUrls)
     return content
   },
@@ -126,7 +126,7 @@ module.exports = {
     const page = await browser.newPage()
     //GET LIST OF TEAM URL SLUGS
     await page.goto(teamsUrl)
-    await page.waitFor(2000)
+    await page.waitForTimeout(2000)
     const teamSlugs = await page.evaluate(scrapers.teamUrls)
     console.log(teamSlugs)
     let count = 1 //DEBUGGING, SEE LOOP
@@ -147,7 +147,7 @@ module.exports = {
     //GET LIST OF TEAM URL SLUGS
     const url = 'https://www.nfl.com/players/' + slug
     await page.goto(url)
-    await page.waitFor(2000)
+    await page.waitForTimeout(2000)
     const scrapedData = await page.evaluate(scrapers.player)
     console.log(scrapedData)
     const playerData = await parsers.player(scrapedData, scrapedData.team)
@@ -243,7 +243,7 @@ module.exports = {
         }
       })
       await scrapers.gameTriggerStats(page)
-      await page.waitFor(5000) //await a few seconds to ensure we captured requests
+      await page.waitForTimeout(5000) //await a few seconds to ensure we captured requests
       return teams
     } catch (err) {
       console.log('error caught', err)

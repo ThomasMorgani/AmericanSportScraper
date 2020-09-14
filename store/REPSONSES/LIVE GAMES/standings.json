@@ -1,0 +1,49 @@
+{
+  "data": {
+    "viewer": {
+      "standings": {
+        "edges": [
+          {
+            "cursor": "c2ltcGxlLWN1cnNvcjA=",
+            "node": {
+              "teamRecords": [
+                { "teamId": "10043800-2020-6de2-d4a8-fc8cf0e8a3ad", "nickName": "Cardinals", "overallWin": 0, "overallTie": 0, "overallLoss": 0 },
+                { "teamId": "10040200-2020-b16a-466a-fec77d725cdb", "nickName": "Falcons", "overallWin": 0, "overallTie": 0, "overallLoss": 1 },
+                { "teamId": "10040325-2020-f26b-c5ea-18130c62994d", "nickName": "Ravens", "overallWin": 1, "overallTie": 0, "overallLoss": 0 },
+                { "teamId": "10040610-2020-4825-8987-6cddb86ce4d6", "nickName": "Bills", "overallWin": 1, "overallTie": 0, "overallLoss": 0 },
+                { "teamId": "10040750-2020-527f-28c3-4bd53b33f26e", "nickName": "Panthers", "overallWin": 0, "overallTie": 0, "overallLoss": 1 },
+                { "teamId": "10040810-2020-688a-93a0-2f8f95b485a0", "nickName": "Bears", "overallWin": 1, "overallTie": 0, "overallLoss": 0 },
+                { "teamId": "10040920-2020-bb1c-6273-272e6ebe1997", "nickName": "Bengals", "overallWin": 0, "overallTie": 0, "overallLoss": 0 },
+                { "teamId": "10041050-2020-ba1f-5288-d7badb60386f", "nickName": "Browns", "overallWin": 0, "overallTie": 0, "overallLoss": 1 },
+                { "teamId": "10041200-2020-e20c-acea-8b43f3713a66", "nickName": "Cowboys", "overallWin": 0, "overallTie": 0, "overallLoss": 0 },
+                { "teamId": "10041400-2020-f0d9-8251-5126acbf2746", "nickName": "Broncos", "overallWin": 0, "overallTie": 0, "overallLoss": 0 },
+                { "teamId": "10041540-2020-75ad-3bc8-aa772f3401fa", "nickName": "Lions", "overallWin": 0, "overallTie": 0, "overallLoss": 1 },
+                { "teamId": "10041800-2020-a8df-d28c-31af9e38f50f", "nickName": "Packers", "overallWin": 1, "overallTie": 0, "overallLoss": 0 },
+                { "teamId": "10042120-2020-b48b-be99-9b4c2ef7c3c0", "nickName": "Texans", "overallWin": 0, "overallTie": 0, "overallLoss": 1 },
+                { "teamId": "10042200-2020-adf0-7b91-6ae496fa690e", "nickName": "Colts", "overallWin": 0, "overallTie": 0, "overallLoss": 1 },
+                { "teamId": "10042250-2020-4c59-b998-17c186e3b481", "nickName": "Jaguars", "overallWin": 1, "overallTie": 0, "overallLoss": 0 },
+                { "teamId": "10042310-2020-644b-9c8a-a1d7e50e2bdf", "nickName": "Chiefs", "overallWin": 1, "overallTie": 0, "overallLoss": 0 },
+                { "teamId": "10042510-2020-b7df-2e70-b88d4d1e062f", "nickName": "Rams", "overallWin": 0, "overallTie": 0, "overallLoss": 0 },
+                { "teamId": "10044400-2020-fbac-1859-8e03a7a987df", "nickName": "Chargers", "overallWin": 0, "overallTie": 0, "overallLoss": 0 },
+                { "teamId": "10042520-2020-bc08-adff-ea4db8a52561", "nickName": "Raiders", "overallWin": 1, "overallTie": 0, "overallLoss": 0 },
+                { "teamId": "10042700-2020-60b3-c753-bc1bf669a02f", "nickName": "Dolphins", "overallWin": 0, "overallTie": 0, "overallLoss": 1 },
+                { "teamId": "10043000-2020-c6da-b120-d9d8ac444653", "nickName": "Vikings", "overallWin": 0, "overallTie": 0, "overallLoss": 1 },
+                { "teamId": "10043200-2020-9ba9-0828-049823295b70", "nickName": "Patriots", "overallWin": 1, "overallTie": 0, "overallLoss": 0 },
+                { "teamId": "10043300-2020-22de-ab2b-ee902f58b5e9", "nickName": "Saints", "overallWin": 0, "overallTie": 0, "overallLoss": 0 },
+                { "teamId": "10043410-2020-73f4-dbdf-85918b6463f8", "nickName": "Giants", "overallWin": 0, "overallTie": 0, "overallLoss": 0 },
+                { "teamId": "10043430-2020-15e1-7ce8-80bddcacf274", "nickName": "Jets", "overallWin": 0, "overallTie": 0, "overallLoss": 1 },
+                { "teamId": "10043700-2020-3696-5a83-d88a44306b38", "nickName": "Eagles", "overallWin": 0, "overallTie": 0, "overallLoss": 1 },
+                { "teamId": "10043900-2020-a07c-762f-f96f3f863d67", "nickName": "Steelers", "overallWin": 0, "overallTie": 0, "overallLoss": 0 },
+                { "teamId": "10044600-2020-6dcd-110e-566f0c0e66ec", "nickName": "Seahawks", "overallWin": 1, "overallTie": 0, "overallLoss": 0 },
+                { "teamId": "10044500-2020-647d-4ff7-d6a678d2a29d", "nickName": "49ers", "overallWin": 0, "overallTie": 0, "overallLoss": 0 },
+                { "teamId": "10044900-2020-57ff-bc6f-3ae4642da5ff", "nickName": "Buccaneers", "overallWin": 0, "overallTie": 0, "overallLoss": 0 },
+                { "teamId": "10042100-2020-daee-c63c-a0ce9427152f", "nickName": "Titans", "overallWin": 0, "overallTie": 0, "overallLoss": 0 },
+                { "teamId": "10045110-2020-c906-b60c-9aecf9010be9", "nickName": "Football Team", "overallWin": 1, "overallTie": 0, "overallLoss": 0 }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+}

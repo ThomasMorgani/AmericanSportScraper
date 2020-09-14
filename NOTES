@@ -3,3 +3,14 @@ Players:
     internal: name + team + pos hashed, this is to have a unique key in the backend until we propogate all official ids
     id: from nfl.com... cant find ids for rookies due to no game data exisiting yet
         hopefully once the seaoson starts should get ids for all players eventually
+
+
+GameDataWeek:
+    Sometimes page times out or certain data is not
+    loaded/missed
+
+    figure out how to handle missing data
+    OPTIONS:
+        -ignore and assume subsequent scrapes will eventually get it (which has been the case)
+        -check if data is missing and push game slug back onto array
+            -or better new array of missing games and try those at end if length > 0 (avoids endless loop)

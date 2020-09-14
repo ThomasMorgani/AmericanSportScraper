@@ -1,0 +1,466 @@
+{
+  "data": {
+    "viewer": {
+      "team": {
+        "id": "10043300-2020-22de-ab2b-ee902f58b5e9",
+        "players": [
+          {
+            "person": {
+              "firstName": "Gus",
+              "lastName": "Cumberlander",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/lgheaxaarph1uuxxnl5w" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "Marcus",
+              "lastName": "Williams",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/sacnjjdqjsadjjjcynmw" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "William",
+              "lastName": "Clapp",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/a1ijkcbxszbkuqqbvvtd" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "Margus",
+              "lastName": "Hunt",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/gb5y0bmynzljqjl9xskd" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "Juantavius",
+              "lastName": "Gray",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/xeqb57boi9xpgitwlvsq" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "Thomas",
+              "lastName": "Morstead",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/abxdjon00scmscbetcso" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "Justin",
+              "lastName": "Hardee",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/nwbs9uwj4ix1hgpifyvt" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "Marcus",
+              "lastName": "Davenport",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/pjamicoffenubrrgcvnj" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "Ty",
+              "lastName": "Montgomery",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/kzispvii2eagvq1tqaar" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "Alvin",
+              "lastName": "Kamara",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/rubeyrjz53yacwyjgycx" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "Chase",
+              "lastName": "Hansen",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/hluxdq5t1n7rvmtocj6n" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "Deatrick",
+              "lastName": "Nichols",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/bdl7rio9sfysdv9slw2b" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "Adam",
+              "lastName": "Trautman",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/vhnc2qh1uodg9va9aa2x" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "Jameis",
+              "lastName": "Winston",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/jwljhx516yyxd8lz0hdd" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "Michael",
+              "lastName": "Thomas",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/liuzt7209f2hqa9mu1zw" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "Keith",
+              "lastName": "Kirkwood",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/kxexjuq5ncc1tdzx7myq" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "Chauncey",
+              "lastName": "Gardner-Johnson",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/rhc1xsoviwpq3npznqp0" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "Christopher",
+              "lastName": "Johnson",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/auf5i3nictojeh4hqfdm" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "Deonte",
+              "lastName": "Harris",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/wxyccieacg2ajnegxdtj" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "Kenneth",
+              "lastName": "Williams",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/fd4rdi08dmobrn6c7ux5" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "Carl",
+              "lastName": "Granderson",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/txojvvbr6k7rlddens4m" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "Marquez",
+              "lastName": "Callaway",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/ydu8lvszgayayddtnt44" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "Erik",
+              "lastName": "McCoy",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/hio0agu6l7rdhnt253pw" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "Patrick",
+              "lastName": "Robinson",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/movisxigazsjsehb1qhl" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "Latavius",
+              "lastName": "Murray",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/keze6gbkt5ipoqtpq7dl" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "Malcolm",
+              "lastName": "Roach",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/kp9ur1lwfegyu3vyw5dm" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "Ethan",
+              "lastName": "Greenidge",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/rsnfqtvq9jac4hm9pxsw" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "Michael",
+              "lastName": "Burton",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/vygtobqwbirew1llyzby" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "Malcom",
+              "lastName": "Brown",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/bskgyv3ndisk5arrkzpb" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "Mitchell",
+              "lastName": "Loewen",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/zefnexoqdsiqehljhj9q" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "Taysom",
+              "lastName": "Hill",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/bmfc5jvnbwehv7wtaual" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "Emmanuel",
+              "lastName": "Sanders",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/a7y4lor47rsusu08bise" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "Ebuka",
+              "lastName": "Onyemata",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/wloqaztmot0sspix8hrp" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "Janoris",
+              "lastName": "Jenkins",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/grigmzax1twdyiuf1w6u" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "Taylor",
+              "lastName": "Stallworth",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/zygzzufyshfpvg4i7ucn" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "Drew",
+              "lastName": "Brees",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/nnhvcikd59brb8jkglxj" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "Marshon",
+              "lastName": "Lattimore",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/us8i3vlsksnh3itghq3n" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "Kaden",
+              "lastName": "Elliss",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/wa2o6dqbgjz8tubawgum" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "Dayario",
+              "lastName": "Swearinger",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/ccwj8s59egpgmchmm3lq" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "Ryan",
+              "lastName": "Ramczyk",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/hthvqnc0qrxowuzdwfiw" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "Collins",
+              "lastName": "Hendrickson",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/w82zwvunhpyawictqloh" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "Demario",
+              "lastName": "Davis",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/zvrre74w3szjrh5tmaop" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "Alexander",
+              "lastName": "Anzalone",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/us6bpcepisbzrqmnyrf8" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "Jared",
+              "lastName": "Cook",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/hek6kwvkzqj2dvgc5ob6" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "William",
+              "lastName": "Lutz",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/kfkbeikchn3p7k1skkvz" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "Taquan",
+              "lastName": "Mizzell",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/hgm2eiin7bfergfrjhxi" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "Terron",
+              "lastName": "Armstead",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/k7kydxomseut8olochf2" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "Andrus",
+              "lastName": "Peat",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/ou6qmdlupqzljcwe050b" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "Cameron",
+              "lastName": "Jordan",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/vqueg8v0vpsxoxb96zjz" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "Sheldon",
+              "lastName": "Rankins",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/vdichtdet5xa5tmoyj7o" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "Zack",
+              "lastName": "Baun",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/o2ij0pe7u1sz8fohg7cy" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "Malcolm",
+              "lastName": "Jenkins",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/mjxi12jh15analtvesbl" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "Adrian",
+              "lastName": "Magee",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/xb0txasnldc3l6ojqrtc" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "Shyheim",
+              "lastName": "Tuttle",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/q9tk0kwj5d9ezfkfsqwh" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "Derrick",
+              "lastName": "Kelly",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/m2rdxflvu1yt3z3v0ksd" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "Tommylee",
+              "lastName": "Lewis",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/qvf3ud6rgqusejdd4f5u" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "Joshua",
+              "lastName": "Hill",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/vdva7m1fxklv6gxbsg7q" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "Zachary",
+              "lastName": "Wood",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/hnr9ty80iyqiimct9w4m" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "Richard",
+              "lastName": "Ortiz",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/zywbct8dl0j21f3ezj5x" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "Nicholas",
+              "lastName": "Easton",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/jwev0m938trq6bkmxj9o" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "William",
+              "lastName": "Robertson",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/ywehmogx68cifpxizv9a" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "Timothy",
+              "lastName": "White",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/caxmcdcvqnix2vkutbq4" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "Bennie",
+              "lastName": "Fowler",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/lwll8mvjupqhpihovyja" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "Tre'Quan",
+              "lastName": "Smith",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/kahblkco0b8ustozftur" }
+            }
+          },
+          {
+            "person": {
+              "firstName": "Cesar",
+              "lastName": "Ruiz",
+              "headshot": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/zueligp82rsyv7cct5ht" }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

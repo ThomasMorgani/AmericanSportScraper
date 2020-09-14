@@ -20,7 +20,7 @@ module.exports = {
   },
   async gameTriggerStats(page) {
     //ClICK ON "STATS TAB" TO TRIGGER AJAX CALLS (live, teamPlayerStats, teamGameStats)
-    await page.waitFor(3000)
+    await page.waitForTimeout(3000)
     try {
       await page.$eval(`[data-testid="gamecenter-tabs-container"]`, elem => {
         console.log(elem)
@@ -33,7 +33,7 @@ module.exports = {
       })
     } catch (err) {
       console.log('failed finding tab div, waiting 5 more seconds')
-      await page.waitFor(5000)
+      await page.waitForTimeout(5000)
       await page.$eval(`[data-testid="gamecenter-tabs-container"]`, elem => {
         console.log(elem)
         elem.children.forEach(ch => {
@@ -45,6 +45,11 @@ module.exports = {
       })
     }
     return 'done'
+  },
+  async plays() {
+    //css-view-1dbjc4n //WHOLE PLAY DIV
+    //css-view-1dbjc4n //INNER ITEMS AS WELL USE THIS
+    //h3 is play title ('Touchdown', 'Field Goal')
   },
   async player(player) {
     //nfl-c-player-header__info

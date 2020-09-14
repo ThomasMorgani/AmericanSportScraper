@@ -1,0 +1,30 @@
+{
+  "data": {
+    "viewer": {
+      "live": {
+        "teamGameStats": [
+          {
+            "team": { "abbreviation": "TB" },
+            "teamGameStats": {
+              "passingNetYards": 152,
+              "scrimmageYds": 220,
+              "passingAverageYards": 6.33,
+              "rushingAverageYards": 3.0,
+              "scrimmagePlays": 48,
+              "totalPointsScored": 17,
+              "fumblesLost": 0,
+              "rushingYards": 68,
+              "passingInterceptions": 2,
+              "passingSacked": null,
+              "down3rdAttempted": 9,
+              "down3rdFdMade": 4,
+              "timeOfPossSeconds": 1417,
+              "penaltiesTotal": 8,
+              "gamesPlayed": null
+            }
+          }
+        ]
+      }
+    }
+  }
+}

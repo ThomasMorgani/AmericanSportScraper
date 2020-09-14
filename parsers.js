@@ -36,7 +36,7 @@ module.exports = {
       case 'playerStats':
         console.log('processing dataset:::playerStats')
         // return //disabled for now
-        return data.map(player => this.playerStats(player))
+        return data.map(player => this.playerStats(player, gameData))
         break
       case 'standings':
         console.log('processing dataset:::standings')
@@ -80,6 +80,7 @@ module.exports = {
       season_value: week.seasonValue,
       season_year: week.seasonValue,
       slug: rawData.slug, //'titans-at-browns-2019-reg-1',
+      start_time: rawData.gameTime, //2019-09-08T17:00:00.000Z
       venue: JSON.stringify(rawData.venue),
       week: week.weekValue,
       week_id: week.id, //CONFIRM THIS ID IS STANDARD
@@ -162,8 +163,9 @@ module.exports = {
       }
       //playerStats //playerGameStats includes much more data.
       //TODO: monitor to ensure we can rely on playerGameStats
-      if (viewer.live && viewer.live.playerGameStats) {
-        // return   viewer.live
+      if (viewer?.live?.playerGameStats) {
+        // console.log(viewer.live.playerGameStats)
+        return { playerStats: viewer.live.playerGameStats }
       }
       //playerGameStats
       if (viewer.playerGameStats && viewer.playerGameStats.edges) {
@@ -241,126 +243,152 @@ module.exports = {
     player.player_id = playerId || 'Err'
     return player
   },
-  playerStats(rawData) {
-    const { id, game, player, season, week } = rawData
-    const { currentTeam: team } = player
+  playerStats(rawData, gameData) {
+    // console.log(rawData)
+    const { id, game, gameStats, player, season, week } = rawData
+    //LIVE AND PAST DATA FORMAT DIFFER
+    //LIVE DATA DOES NOT PROVIDE GAME ID
+    //IF ONE IS NOT PROVIDED FROM GAME DATA IT IS HANDLED SERVER SIDE TO LOOKUP BY TEAM/WEEK
     //MAP STATS TO EXISTING PLAYER_PLAY STRUCTURE
     //ADDITIONAL AVAILABLE SLOTS AT END OF METHOD
+    // console.log(game)
+    // console.log(gameData)
+    let game_id = ''
+    if (game) {
+      game_id = game.id
+    } else if (gameData?.game?.id) {
+      game_id = gameData.game.id
+    } else {
+      game_id = ''
+    }
+    let team = ''
+    if (rawData.team) {
+      team = rawData.team.nickName
+    } else if (player?.currentTeam?.nickName) {
+      team = player.currentTeam.nickName
+    } else {
+      //??
+    }
 
+    //TODO: PLAYER
+
+    //TODO: IMPORTANT!! LIVE DATA DOESNT INCLUDE JERSEY#
+    //CHANGE ID GENERATOR? firt, last, position, team
     //TODO: PREFIX ID IF DST?
     const playerId = utils.playerIdHash({
       firstName: player.person.firstName,
       lastName: player.person.lastName,
       number: player.jerseyNumber,
       // team: team.abbreviation, //WHEN SCRAPING PLAYERS FROM ROSTERS, ONLY LOWERCASE TEAM NICKNAME SEEMS TO BE PROVIDED
-      team: team.nickName.toLowerCase(),
+      team: team.toLowerCase(),
     })
     //TODO: ANALYZE DATA LAYOUT, WHAT TO KEEP/REMOVE
     //COMBINE PLAYER & DST STATS?
+    // console.log(rawData)
     const stats = {
-      game_id: game.id || 0,
+      game_id: game_id || 0,
       play_id: id || 0,
       player_id: playerId || 'ERR',
-      team: player.currentTeam.abbreviation || 0,
-      season_id: season.id || 0,
-      week_id: week.id || 0,
-      defense_ast: rawData.defensiveAssists || 0,
-      defense_ffum: rawData.defensiveForcedFumble || 0,
-      defense_fgblk: rawData.xxxx || 0,
-      defense_frec: rawData.xxxx || 0,
-      defense_frec_tds: rawData.xxxx || 0,
-      defense_frec_yds: rawData.xxxx || 0,
-      defense_int: rawData.defensiveInterceptions || 0,
-      defense_int_tds: rawData.xxxx || 0,
-      defense_int_yds: rawData.defensiveInterceptionsYards || 0,
-      defense_misc_tds: rawData.xxxx || 0,
-      defense_misc_yds: rawData.xxxx || 0,
-      defense_pass_def: rawData.defensivePassesDefensed || 0,
-      defense_puntblk: rawData.xxxx || 0,
-      defense_qbhit: rawData.xxxx || 0,
-      defense_safe: rawData.defensiveSafeties || 0,
-      defense_sk: rawData.defensiveSacks || 0,
-      defense_sk_yds: rawData.xxxx || 0,
-      defense_tkl: rawData.defensiveTotalTackles || 0,
-      defense_tkl_loss: rawData.defensiveTacklesForALoss || 0,
-      defense_tkl_loss_yds: rawData.xxxx || 0,
-      defense_tkl_primary: rawData.xxxx || 0,
-      defense_xpblk: rawData.xxxx || 0,
-      fumbles_forced: rawData.xxxx || 0,
-      fumbles_lost: rawData.fumblesLost || 0,
-      fumbles_notforced: rawData.xxxx || 0,
-      fumbles_oob: rawData.xxxx || 0,
-      fumbles_rec: rawData.xxxx || 0,
-      fumbles_rec_tds: rawData.xxxx || 0,
-      fumbles_rec_yds: rawData.xxxx || 0,
-      fumbles_tot: rawData.fumblesTotal || 0,
-      kicking_all_yds: rawData.xxxx || 0,
-      kicking_downed: rawData.xxxx || 0,
-      kicking_fga: rawData.kickingFgAtt || 0,
-      kicking_fgb: rawData.xxxx || 0,
-      kicking_fgm: rawData.kickingFgMade || 0,
-      kicking_fgm_yds: rawData.xxxx || 0,
-      kicking_fgmissed: rawData.xxxx || 0,
-      kicking_fgmissed_yds: rawData.xxxx || 0,
-      kicking_i20: rawData.xxxx || 0,
-      kicking_rec: rawData.xxxx || 0,
-      kicking_rec_tds: rawData.xxxx || 0,
-      kicking_tot: rawData.xxxx || 0,
-      kicking_touchback: rawData.xxxx || 0,
-      kicking_xpa: rawData.kickingXkAtt || 0,
-      kicking_xpb: rawData.xxxx || 0,
-      kicking_xpmade: rawData.kickingXkMade || 0,
-      kicking_xpmissed: rawData.xxxx || 0,
-      kicking_yds: rawData.xxxx || 0,
-      kickret_fair: rawData.xxxx || 0,
-      kickret_oob: rawData.xxxx || 0,
-      kickret_ret: rawData.kickReturns || 0,
-      kickret_tds: rawData.kickReturnsTouchdowns || 0,
-      kickret_touchback: rawData.xxxx || 0,
-      kickret_yds: rawData.kickReturnsYards || 0,
-      passing_att: rawData.passingAttempts || 0,
-      passing_cmp: rawData.passingCompletions || 0,
-      passing_cmp_air_yds: rawData.xxxx || 0,
-      passing_incmp: rawData.xxxx || 0,
-      passing_incmp_air_yds: rawData.xxxx || 0,
-      passing_int: rawData.passingInterceptions || 0,
-      passing_sk: rawData.xxxx || 0,
-      passing_sk_yds: rawData.xxxx || 0,
-      passing_tds: rawData.passingTouchdowns || 0,
-      passing_twopta: rawData.xxxx || 0,
-      passing_twoptm: rawData.xxxx || 0,
-      passing_twoptmissed: rawData.xxxx || 0,
-      passing_yds: rawData.passingYards || 0,
-      punting_blk: rawData.xxxx || 0,
-      punting_i20: rawData.puntingPuntsInside20 || 0,
-      punting_tot: rawData.puntingPunts || 0,
-      punting_touchback: rawData.xxxx || 0,
-      punting_yds: rawData.xxxx || 0,
-      puntret_downed: rawData.xxxx || 0,
-      puntret_fair: rawData.xxxx || 0,
-      puntret_oob: rawData.xxxx || 0,
-      puntret_tds: rawData.puntReturnsTouchdowns || 0,
-      puntret_tot: rawData.puntReturns || 0,
-      puntret_touchback: rawData.xxxx || 0,
-      puntret_yds: rawData.xxxx || 0,
-      receiving_rec: rawData.receivingReceptions || 0,
-      receiving_tar: rawData.receivingTarget || 0,
-      receiving_tds: rawData.receivingTouchdowns || 0,
-      receiving_twopta: rawData.xxxx || 0,
-      receiving_twoptm: rawData.xxxx || 0,
-      receiving_twoptmissed: rawData.xxxx || 0,
-      receiving_yac_yds: rawData.xxxx || 0,
-      receiving_yds: rawData.receivingYards || 0,
-      rushing_att: rawData.rushingAttempts || 0,
-      rushing_loss: rawData.xxxx || 0,
-      rushing_loss_yds: rawData.xxxx || 0,
-      rushing_tds: rawData.rushingTouchdowns || 0,
-      rushing_twopta: rawData.xxxx || 0,
-      rushing_twoptm: rawData.xxxx || 0,
-      rushing_twoptmissed: rawData.xxxx || 0,
-      rushing_yds: rawData.rushingYards || 0,
+      team: team || 0,
+      season_id: season?.id || 0,
+      week_id: week?.id || 0,
+      defense_ast: gameStats.defensiveAssists || 0,
+      defense_ffum: gameStats.defensiveForcedFumble || 0,
+      defense_fgblk: gameStats.xxxx || 0,
+      defense_frec: gameStats.xxxx || 0,
+      defense_frec_tds: gameStats.xxxx || 0,
+      defense_frec_yds: gameStats.xxxx || 0,
+      defense_int: gameStats.defensiveInterceptions || 0,
+      defense_int_tds: gameStats.xxxx || 0,
+      defense_int_yds: gameStats.defensiveInterceptionsYards || 0,
+      defense_misc_tds: gameStats.xxxx || 0,
+      defense_misc_yds: gameStats.xxxx || 0,
+      defense_pass_def: gameStats.defensivePassesDefensed || 0,
+      defense_puntblk: gameStats.xxxx || 0,
+      defense_qbhit: gameStats.xxxx || 0,
+      defense_safe: gameStats.defensiveSafeties || 0,
+      defense_sk: gameStats.defensiveSacks || 0,
+      defense_sk_yds: gameStats.xxxx || 0,
+      defense_tkl: gameStats.defensiveTotalTackles || 0,
+      defense_tkl_loss: gameStats.defensiveTacklesForALoss || 0,
+      defense_tkl_loss_yds: gameStats.xxxx || 0,
+      defense_tkl_primary: gameStats.xxxx || 0,
+      defense_xpblk: gameStats.xxxx || 0,
+      fumbles_forced: gameStats.xxxx || 0,
+      fumbles_lost: gameStats.fumblesLost || 0,
+      fumbles_notforced: gameStats.xxxx || 0,
+      fumbles_oob: gameStats.xxxx || 0,
+      fumbles_rec: gameStats.xxxx || 0,
+      fumbles_rec_tds: gameStats.xxxx || 0,
+      fumbles_rec_yds: gameStats.xxxx || 0,
+      fumbles_tot: gameStats.fumblesTotal || 0,
+      kicking_all_yds: gameStats.xxxx || 0,
+      kicking_downed: gameStats.xxxx || 0,
+      kicking_fga: gameStats.kickingFgAtt || 0,
+      kicking_fgb: gameStats.xxxx || 0,
+      kicking_fgm: gameStats.kickingFgMade || 0,
+      kicking_fgm_yds: gameStats.xxxx || 0,
+      kicking_fgmissed: gameStats.xxxx || 0,
+      kicking_fgmissed_yds: gameStats.xxxx || 0,
+      kicking_i20: gameStats.xxxx || 0,
+      kicking_rec: gameStats.xxxx || 0,
+      kicking_rec_tds: gameStats.xxxx || 0,
+      kicking_tot: gameStats.xxxx || 0,
+      kicking_touchback: gameStats.xxxx || 0,
+      kicking_xpa: gameStats.kickingXkAtt || 0,
+      kicking_xpb: gameStats.xxxx || 0,
+      kicking_xpmade: gameStats.kickingXkMade || 0,
+      kicking_xpmissed: gameStats.xxxx || 0,
+      kicking_yds: gameStats.xxxx || 0,
+      kickret_fair: gameStats.xxxx || 0,
+      kickret_oob: gameStats.xxxx || 0,
+      kickret_ret: gameStats.kickReturns || 0,
+      kickret_tds: gameStats.kickReturnsTouchdowns || 0,
+      kickret_touchback: gameStats.xxxx || 0,
+      kickret_yds: gameStats.kickReturnsYards || 0,
+      passing_att: gameStats.passingAttempts || 0,
+      passing_cmp: gameStats.passingCompletions || 0,
+      passing_cmp_air_yds: gameStats.xxxx || 0,
+      passing_incmp: gameStats.xxxx || 0,
+      passing_incmp_air_yds: gameStats.xxxx || 0,
+      passing_int: gameStats.passingInterceptions || 0,
+      passing_sk: gameStats.xxxx || 0,
+      passing_sk_yds: gameStats.xxxx || 0,
+      passing_tds: gameStats.passingTouchdowns || 0,
+      passing_twopta: gameStats.xxxx || 0,
+      passing_twoptm: gameStats.xxxx || 0,
+      passing_twoptmissed: gameStats.xxxx || 0,
+      passing_yds: gameStats.passingYards || 0,
+      punting_blk: gameStats.xxxx || 0,
+      punting_i20: gameStats.puntingPuntsInside20 || 0,
+      punting_tot: gameStats.puntingPunts || 0,
+      punting_touchback: gameStats.xxxx || 0,
+      punting_yds: gameStats.xxxx || 0,
+      puntret_downed: gameStats.xxxx || 0,
+      puntret_fair: gameStats.xxxx || 0,
+      puntret_oob: gameStats.xxxx || 0,
+      puntret_tds: gameStats.puntReturnsTouchdowns || 0,
+      puntret_tot: gameStats.puntReturns || 0,
+      puntret_touchback: gameStats.xxxx || 0,
+      puntret_yds: gameStats.xxxx || 0,
+      receiving_rec: gameStats.receivingReceptions || 0,
+      receiving_tar: gameStats.receivingTarget || 0,
+      receiving_tds: gameStats.receivingTouchdowns || 0,
+      receiving_twopta: gameStats.xxxx || 0,
+      receiving_twoptm: gameStats.xxxx || 0,
+      receiving_twoptmissed: gameStats.xxxx || 0,
+      receiving_yac_yds: gameStats.xxxx || 0,
+      receiving_yds: gameStats.receivingYards || 0,
+      rushing_att: gameStats.rushingAttempts || 0,
+      rushing_loss: gameStats.xxxx || 0,
+      rushing_loss_yds: gameStats.xxxx || 0,
+      rushing_tds: gameStats.rushingTouchdowns || 0,
+      rushing_twopta: gameStats.xxxx || 0,
+      rushing_twoptm: gameStats.xxxx || 0,
+      rushing_twoptmissed: gameStats.xxxx || 0,
+      rushing_yds: gameStats.rushingYards || 0,
     }
-
+    // console.log(stats)
     return stats
     //ADDIITONAL STATS NOT CURRENTLY IN DB
     // "defensiveSoloTackles": null,

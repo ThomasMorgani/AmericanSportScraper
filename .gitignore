@@ -1,6 +1,7 @@
 # Custom
 ENDPOINTS
 store/*.json
+store/BACK/
 
 
 # Logs

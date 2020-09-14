@@ -1,0 +1,42 @@
+{
+  "data": {
+    "viewer": {
+      "game": {
+        "id": "10012020-0913-1035-120e-5eaf886bf2ed",
+        "networkChannels": ["FOX"],
+        "gameTime": "2020-09-13T20:25:00.000Z",
+        "gsisId": "58179",
+        "slug": "buccaneers-at-saints-2020-reg-1",
+        "awayTeam": {
+          "abbreviation": "TB",
+          "fullName": "Tampa Bay Buccaneers",
+          "id": "10044900-2020-57ff-bc6f-3ae4642da5ff",
+          "nickName": "Buccaneers",
+          "cityStateRegion": "Tampa Bay",
+          "franchise": {
+            "id": "10404900-d59e-b449-ef75-961e09ca027e",
+            "slug": "tampa-bay-buccaneers",
+            "currentLogo": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/v8uqiualryypwqgvwcih" }
+          }
+        },
+        "homeTeam": {
+          "abbreviation": "NO",
+          "fullName": "New Orleans Saints",
+          "id": "10043300-2020-22de-ab2b-ee902f58b5e9",
+          "nickName": "Saints",
+          "cityStateRegion": "New Orleans",
+          "franchise": {
+            "id": "10403300-f235-cf9b-6d3a-2f182be48dd1",
+            "slug": "new-orleans-saints",
+            "currentLogo": { "url": "https://static.www.nfl.com/image/private/{formatInstructions}/league/grhjkahghjkk17v43hdx" }
+          }
+        },
+        "week": { "seasonValue": 2020, "id": "00020120-2020-5245-476e-5b6c967c5fdb", "seasonType": "REG", "weekValue": 1, "weekType": "REG" },
+        "radioLinks": null,
+        "ticketUrl": "https://www.ticketmaster.com/event/1B005896F54689B1?utm_source=NFL.com&utm_medium=client&utm_campaign=NFL_LEAGUE",
+        "venue": { "fullName": "Mercedes-Benz Superdome", "city": "New Orleans", "state": "LA" },
+        "gameDetailId": "10160000-0581-7945-48e7-e030167a42eb"
+      }
+    }
+  }
+}
