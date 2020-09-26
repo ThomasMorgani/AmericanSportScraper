@@ -235,7 +235,7 @@ module.exports = {
     const playerId = utils.playerIdHash({
       firstName: player.first_name,
       lastName: player.last_name,
-      number: player.number,
+      position: player.position,
       team: team, //TEAM APPEARS TO BE nickName ALL LOWERCASE
     })
 
@@ -275,13 +275,37 @@ module.exports = {
     //TODO: IMPORTANT!! LIVE DATA DOESNT INCLUDE JERSEY#
     //CHANGE ID GENERATOR? firt, last, position, team
     //TODO: PREFIX ID IF DST?
+    if (Array.isArray(player)) player = player['0']
+    // console.log('=============')
+    // console.log(player)
+    if (player) {
+      if (player?.person?.firstName) {
+        player.firstName = player.person.firstName
+      } else {
+        player.firstName = player.firstName || 'UNK'
+      }
+      if (player?.person?.lastName) {
+        player.lastName = player.person.lastName
+      } else {
+        player.lastName = player.lastName || 'UNK'
+      }
+    }
+
+    // console.log(player)
+
     const playerId = utils.playerIdHash({
-      firstName: player.person.firstName,
-      lastName: player.person.lastName,
-      number: player.jerseyNumber,
+      firstName: player.firstName || 'UNK',
+      lastName: player.lastName || 'UNK',
+      position: player.position || '',
       // team: team.abbreviation, //WHEN SCRAPING PLAYERS FROM ROSTERS, ONLY LOWERCASE TEAM NICKNAME SEEMS TO BE PROVIDED
-      team: team.toLowerCase(),
+      team: team.toLowerCase() || 'UNK',
     })
+    if (player.lastName === 'Thompson') {
+      console.log(player)
+      console.log(playerId)
+      console.log(team)
+      console.log(rawData)
+    }
     //TODO: ANALYZE DATA LAYOUT, WHAT TO KEEP/REMOVE
     //COMBINE PLAYER & DST STATS?
     // console.log(rawData)
@@ -389,6 +413,9 @@ module.exports = {
       rushing_yds: gameStats.rushingYards || 0,
     }
     // console.log(stats)
+    if (stats.player_id === '636872697374686f6d70736f6e52426a616775617273') {
+      console.log(stats)
+    }
     return stats
     //ADDIITONAL STATS NOT CURRENTLY IN DB
     // "defensiveSoloTackles": null,

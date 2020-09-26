@@ -65,6 +65,20 @@ switch (process.argv['2']) {
       type: currentWeek.type,
     })
     break
+  case 'test':
+    funcs.testing({
+      week: currentWeek.week,
+      year: args['0'] || currentWeek.year,
+      type: currentWeek.type,
+    })
+    break
+  case 'updatePlayerIds':
+    funcs.updatePlayerIds({
+      week: currentWeek.week,
+      year: args['0'] || currentWeek.year,
+      type: currentWeek.type,
+    })
+    break
 
   case 'week':
     //TODO: CREATE METHOD TO GET CURRENT WEEK DATA FROM BACKEND

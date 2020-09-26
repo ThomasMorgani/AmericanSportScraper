@@ -57,7 +57,16 @@
             },
             "lastModifiedDate": "2020-09-13T22:52:56.353Z",
             "team": { "nickName": "Saints" },
-            "player": { "person": { "displayName": "Drew Brees", "slug": "drew-brees" }, "position": "QB", "firstName": "Drew", "nickName": "Drew", "lastName": "Brees" }
+            "player": {
+              "person": {
+                "displayName": "Drew Brees",
+                "slug": "drew-brees"
+              },
+              "position": "QB",
+              "firstName": "Drew",
+              "nickName": "Drew",
+              "lastName": "Brees"
+            }
           },
           {
             "createdDate": "2020-09-13T21:22:17.247Z",

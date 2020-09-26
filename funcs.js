@@ -1,9 +1,11 @@
 require('dotenv').config()
 const puppeteer = require('puppeteer')
+const fs = require('fs') //USED FOR TESTING, REMOVE
 
 const db = require('./db')
 const parsers = require('./parsers')
 const scrapers = require('./scrapers')
+const utils = require('./utils')
 
 //WILL BE PASSED TO BROWSER INSTANCE FOR DEBUGGING
 const isHeadless = true
@@ -76,6 +78,10 @@ module.exports = {
       return gameData
     } catch (err) {
       console.log('error caught', err)
+
+      if (!browserIn && browser !== undefined) {
+        await browser.close()
+      }
       return gameData
     }
   },
@@ -268,6 +274,39 @@ module.exports = {
     await browser.close()
     db.save(teams, `teams_${seasonData.year}`)
     return teams
+  },
+  async testing() {
+    let rawdata = fs.readFileSync('./store/REPSONSES/LIVE_GAMES/dolphins-at-jaguars-2020-reg-3.json')
+    let json = JSON.parse(rawdata)
+    // console.log(json)
+    let data = await parsers.gameResponse(json)
+    const name = Object.keys(data)['0']
+    // console.log(data)
+    let playerData = {}
+    playerData['playerStats'] = await parsers.gameDataset(name, data[name])
+    db.save(playerData, 'test_live_game_data')
+  },
+
+  async updatePlayerIds() {
+    //Live game data does not include player jersey number
+    //This function pulls all players and returns an array of
+    //players with the old id and the new one
+    //new one hashes firstName, lastName, position (replaces number), team
+    //poor choice of values to use in the first place,
+    //REMINDER: when players change teams, playerid needs to be updated across all tables
+    //help function server side (requires originalId, newId)
+    let rawdata = fs.readFileSync('./store/playersMissing.json')
+    // let rawdata = fs.readFileSync('./store/playersLeague.json')
+    let json = JSON.parse(rawdata)
+    const ids = json.map(player => {
+      const { first_name: firstName, last_name: lastName, number, position, team } = player
+      return {
+        original: utils.playerIdHashOld({ firstName, lastName, number, team }),
+        new: utils.playerIdHash({ firstName, lastName, position, team }),
+      }
+    })
+    db.save(ids, 'playersMissingIdsUpdate')
+    console.log(ids)
   },
   async weekData() {},
 }
