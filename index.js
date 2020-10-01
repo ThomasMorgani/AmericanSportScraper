@@ -45,7 +45,13 @@ switch (process.argv['2']) {
       man()
       return
     }
-    funcs.playerDataPlayer(args['0'])
+    const player = funcs
+      .playerDataPlayer(args['0'])
+      .then(player => {
+        db.save(player, player.full_name)
+        console.log(player)
+      })
+      .catch(err => console.log(err))
     break
   case 'players':
     if (!args['0']) {
@@ -73,11 +79,8 @@ switch (process.argv['2']) {
     })
     break
   case 'updatePlayerIds':
-    funcs.updatePlayerIds({
-      week: currentWeek.week,
-      year: args['0'] || currentWeek.year,
-      type: currentWeek.type,
-    })
+    const playerJson = args['0'] || 'players'
+    funcs.updatePlayerIds(playerJson)
     break
 
   case 'week':

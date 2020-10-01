@@ -50,6 +50,7 @@ module.exports = {
       case 'teamStats':
         console.log('processing dataset:::teamStats')
         if (gameData.game) {
+          // parsedData = await this.teamStats(data, gameData)
           parsedData = await this.teamStats(data, gameData.game)
         } else {
           console.log('no gameData')
@@ -151,6 +152,7 @@ module.exports = {
     return details
   },
   async gameResponse(json) {
+    console.log(json)
     if (json && json.data && json.data.viewer) {
       const viewer = json.data.viewer
       // console.log('viewer---')
@@ -174,8 +176,9 @@ module.exports = {
         //OR AFTER DETERMINING TEAM STATS
         //AS OF NOW IT APPEARS THE ONLY WAY TO DETERMINE DST TOUCHDOWNS
         //IS TO FIND THEM FROM INDIVIDUAL PLAYER STATS
-        //TODO: CONFIRM THIS
-        return { playerStats: viewer.playerGameStats.edges.filter(e => e.node && pos.includes(e.node.player.position)).map(e => e.node) }
+        //TODO: //RETURNING ALL PLAYERS FOR NOW, STATS SERVERSIDE
+        // return { playerStats: viewer.playerGameStats.edges.filter(e => e.node && pos.includes(e.node.player.position)).map(e => e.node) }
+        return { playerStats: viewer.playerGameStats.edges.map(e => e.node) }
       }
       return json.data.viewer
     }
@@ -241,6 +244,7 @@ module.exports = {
 
     player.pid = playerId || 'Err'
     player.player_id = playerId || 'Err'
+
     return player
   },
   playerStats(rawData, gameData) {
@@ -253,6 +257,7 @@ module.exports = {
     //ADDITIONAL AVAILABLE SLOTS AT END OF METHOD
     // console.log(game)
     // console.log(gameData)
+    // console.log(player)
     let game_id = ''
     if (game) {
       game_id = game.id
@@ -267,45 +272,101 @@ module.exports = {
     } else if (player?.currentTeam?.nickName) {
       team = player.currentTeam.nickName
     } else {
+      console.log('playerStats team not found')
       //??
     }
 
     //TODO: PLAYER
 
     //TODO: IMPORTANT!! LIVE DATA DOESNT INCLUDE JERSEY#
-    //CHANGE ID GENERATOR? firt, last, position, team
-    //TODO: PREFIX ID IF DST?
+    //TODO: IMPORTANT!! PLAYER "First names" differ,
+    //NFL USES LEGAL FIRSTNAME AND NICKNAME INTERCHANGEABLY THROUGHOUT SITE
+    //NICKNAME IS MOST OFTEN USED AND FIRST NAME APPEARS TO ONLY BE IN THE DATA
+    //NOT USED IN UI(as far as we can tell as of now)
+    //SET FIRST_NAME TO NICKNAME
+    //ex
+    // firstName: 'Robert',
+    // lastName: 'Dobbs',
+    // displayName: 'Joshua Dobbs',
+
+    //make sure pla
     if (Array.isArray(player)) player = player['0']
     // console.log('=============')
     // console.log(player)
-    if (player) {
-      if (player?.person?.firstName) {
-        player.firstName = player.person.firstName
+    let playerFirst = null
+    let playerFirstNickname = null
+    let playerLast = null
+    let playerPosition = null
+
+    //LIVE DATA PLAYER STRUCTURE
+    if (player.firstName) {
+      playerFirst = player.firstName
+    }
+    if (player.nickName) {
+      playerFirstNickname = player.nickName
+    }
+    if (player.lastName) {
+      playerLast = player.lastName
+    }
+    if (player.position) {
+      playerPosition = player.position || ''
+    }
+
+    //FINISHED DATA PLAYER STRUCTURE
+    if (!playerFirst) {
+      if (player.person) {
+        playerFirst = player.person.firstName
       } else {
-        player.firstName = player.firstName || 'UNK'
+        playerFirst = 'UNK'
       }
-      if (player?.person?.lastName) {
-        player.lastName = player.person.lastName
+    }
+
+    if (!playerFirstNickname) {
+      if (player.person) {
+        if (player.person.displayName) {
+          playerFirstNickname = player.person.displayName.split(' ')['0']
+        }
+        if (!playerFirstNickname) {
+          playerFirstNickname = player.person.firstName || 'UNK'
+        }
       } else {
-        player.lastName = player.lastName || 'UNK'
+        playerFirstNickname = player.firstName || 'UNK'
+      }
+    }
+
+    //FINISHED DATA PLAYER STRUCTURE
+    if (!playerLast) {
+      if (player.person) {
+        playerLast = player.person.lastName || 'UNK'
+      } else {
+        playerLast = 'UNK'
       }
     }
 
     // console.log(player)
 
     const playerId = utils.playerIdHash({
-      firstName: player.firstName || 'UNK',
-      lastName: player.lastName || 'UNK',
-      position: player.position || '',
+      firstName: playerFirstNickname || 'UNK',
+      lastName: playerLast || 'UNK',
+      position: playerPosition || '',
       // team: team.abbreviation, //WHEN SCRAPING PLAYERS FROM ROSTERS, ONLY LOWERCASE TEAM NICKNAME SEEMS TO BE PROVIDED
       team: team.toLowerCase() || 'UNK',
     })
-    if (player.lastName === 'Thompson') {
-      console.log(player)
-      console.log(playerId)
-      console.log(team)
-      console.log(rawData)
-    }
+    const playerIdOld = utils.playerIdHash({
+      firstName: playerFirst || 'UNK',
+      lastName: playerLast || 'UNK',
+      position: playerPosition || '',
+      // team: team.abbreviation, //WHEN SCRAPING PLAYERS FROM ROSTERS, ONLY LOWERCASE TEAM NICKNAME SEEMS TO BE PROVIDED
+      team: team.toLowerCase() || 'UNK',
+    })
+    // if (playerPosition == 'RB') {
+    //   console.log(playerFirst + ' ' + playerLast)
+    //   console.log(playerFirstNickname + ' ' + playerLast)
+    //   console.log('new: ' + playerId)
+    //   console.log('old: ' + playerIdOld)
+    //   console.log('  ')
+    //   console.log(gameStats)
+    // }
     //TODO: ANALYZE DATA LAYOUT, WHAT TO KEEP/REMOVE
     //COMBINE PLAYER & DST STATS?
     // console.log(rawData)
@@ -313,6 +374,7 @@ module.exports = {
       game_id: game_id || 0,
       play_id: id || 0,
       player_id: playerId || 'ERR',
+      player_id_old: playerIdOld || 'ERR',
       team: team || 0,
       season_id: season?.id || 0,
       week_id: week?.id || 0,
@@ -413,9 +475,7 @@ module.exports = {
       rushing_yds: gameStats.rushingYards || 0,
     }
     // console.log(stats)
-    if (stats.player_id === '636872697374686f6d70736f6e52426a616775617273') {
-      console.log(stats)
-    }
+
     return stats
     //ADDIITONAL STATS NOT CURRENTLY IN DB
     // "defensiveSoloTackles": null,
@@ -483,24 +543,58 @@ module.exports = {
     //TODO: ADD NFL DATA AS WELL
     //MOST LIKELY NEED TO CREATE SEPERATE FUNCTION FOR PARSING
     //NFL TEAM DATA AS WELL AS DST SCORING DATA
-    const { opponentGameStats, teamGameStats } = data
-    const home = teamGameStats
-    const away = opponentGameStats
-    const awayStats = {
-      defense_int: home.passingInterceptions,
-      defense_frec: home.fumblesLost,
-      points_against: home.totalPointsScored,
-      defense_sk: home.passingSacked,
+    console.log('=====teamStats PARSER')
+    console.log(data)
+    console.log(gameData)
+    const { opponentGameStats: away, teamGameStats: home } = data
+    // const home = teamGameStats
+    // const away = opponentGameStats
+    $home_team = data?.team?.abbreviation ? data.team.abbreviation : 'UNK'
+    const away_abv = gameData?.away_abv ? gameData.away_abv : 'UNK'
+    const home_abv = gameData?.home_abv ? gameData.home_abv : $home_team
+    console.log(away_abv)
+    console.log(home_abv)
+    let teamData = {}
+
+    if (away_abv !== 'UNK' && home_abv !== 'UNK') {
+      teamData = {
+        awayStats: {
+          team_abv: away_abv,
+          defense_int: home.passingInterceptions,
+          defense_frec: home.fumblesLost,
+          pts_against: home.totalPointsScored,
+          defense_sk: home.passingSacked,
+        },
+        homeStats: {
+          team_abv: home_abv,
+          defense_int: away.passingInterceptions,
+          defense_frec: away.fumblesLost,
+          pts_against: away.totalPointsScored,
+          defense_sk: away.passingSacked,
+        },
+      }
+    } else {
+      teamData = {
+        team1Stats: {
+          team_abv: away_abv,
+          defense_int: away.passingInterceptions,
+          defense_frec: away.fumblesLost,
+          pts_against: away.totalPointsScored,
+          defense_sk: away.passingSacked,
+        },
+        team2Stats: {
+          team_abv: home_abv,
+          defense_int: home.passingInterceptions,
+          defense_frec: home.fumblesLost,
+          pts_against: home.totalPointsScored,
+          defense_sk: home.passingSacked,
+        },
+      }
     }
 
-    const homeStats = {
-      defense_int: away.passingInterceptions,
-      defense_frec: away.fumblesLost,
-      points_against: away.totalPointsScored,
-      defense_sk: away.passingSacked,
-    }
-    const { away_abv, home_abv } = gameData
+    // const { away_abv, home_abv } = gameData
     // console.log({ [away_abv]: awayStats, [home_abv]: homeStats })
-    return { [away_abv]: awayStats, [home_abv]: homeStats }
+    // return { awayTeam: awayStats, homeTeam: homeStats }
+    return teamData
   },
 }

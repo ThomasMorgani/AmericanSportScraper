@@ -70,13 +70,13 @@ module.exports = {
 
       const name = document.querySelector('.nfl-c-player-header__title').innerText
       const posNum = document.querySelector('.nfl-c-player-header__player-data').innerText
-      const teamFull = document.querySelectorAll('.nfl-c-player-header__team').innerText
-      const team = teamFull ? team.split(' ') : ['']
-      const statusText = document.querySelectorAll('.nfl-c-player-header__roster-status').innerText
+      const teamFull = document.querySelector('.nfl-c-player-header__team').innerText
+      const team = teamFull ? teamFull.split(' ') : ['']
+      const statusText = document.querySelector('.nfl-c-player-header__roster-status').innerText
       const status = statusText ? statusText.toLowerCase() : 'active' //TODO: PROPERLY DETERMINE OLD POSSIBLE STATUSES
       const imgs = document.querySelectorAll('.img-responsive')
       const headshot = imgs['1'].getAttribute('src')
-
+      console.log(teamFull)
       const playerData = {
         id: '',
         headshot,
