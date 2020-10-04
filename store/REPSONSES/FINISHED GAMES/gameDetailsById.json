@@ -1,0 +1,985 @@
+{
+  "data": {
+    "viewer": {
+      "gameDetailsByIds": [
+        {
+          "id": "10160000-0582-164c-2998-2bd15eab4a45",
+          "gameClock": "00:03",
+          "period": null,
+          "homeTeam": {
+            "id": "10043430-2020-15e1-7ce8-80bddcacf274",
+            "fullName": "New York Jets",
+            "nickName": "Jets",
+            "abbreviation": "NYJ",
+            "division": "AFC_EAST",
+            "conference": "AFC",
+            "cityStateRegion": "N.Y. Jets",
+            "teamType": "TEAM"
+          },
+          "visitorTeam": {
+            "id": "10041400-2020-f0d9-8251-5126acbf2746",
+            "fullName": "Denver Broncos",
+            "nickName": "Broncos",
+            "abbreviation": "DEN",
+            "division": "AFC_WEST",
+            "conference": "AFC",
+            "cityStateRegion": "Denver",
+            "teamType": "TEAM"
+          },
+          "homePointsTotal": 28,
+          "homePointsQ1": 7,
+          "homePointsQ2": 6,
+          "homePointsQ3": 3,
+          "homePointsQ4": 12,
+          "homePointsOvertimeTotal": 0,
+          "homeTimeoutsRemaining": 0,
+          "visitorPointsTotal": 37,
+          "visitorPointsQ1": 3,
+          "visitorPointsQ2": 14,
+          "visitorPointsQ3": 7,
+          "visitorPointsQ4": 13,
+          "visitorPointsOvertimeTotal": 0,
+          "visitorTimeoutsRemaining": 1,
+          "redzone": false,
+          "yardsToGo": 0,
+          "yardLine": null,
+          "phase": "FINAL",
+          "gameKey": "58216",
+          "gameTime": "2020-10-02T00:20:00.000Z",
+          "down": 0,
+          "stadium": "MetLife Stadium",
+          "possessionTeam": { "id": "10041400-2020-f0d9-8251-5126acbf2746", "abbreviation": "DEN" },
+          "plays": [
+            { "playId": 1, "isBigPlay": null, "quarter": 1, "clockTime": "", "playDescription": "GAME" },
+            { "playId": 40, "isBigPlay": null, "quarter": 1, "clockTime": "15:00", "playDescription": "B.McManus kicks 65 yards from DEN 35 to end zone, Touchback." },
+            {
+              "playId": 55,
+              "isBigPlay": false,
+              "quarter": 1,
+              "clockTime": "15:00",
+              "playDescription": "(15:00) (Shotgun) F.Gore up the middle to NYJ 24 for -1 yards (M.Purcell)."
+            },
+            {
+              "playId": 76,
+              "isBigPlay": false,
+              "quarter": 1,
+              "clockTime": "14:42",
+              "playDescription": "(14:42) (Shotgun) S.Darnold pass short right to C.Hogan to NYJ 34 for 10 yards (B.Callahan)."
+            },
+            { "playId": 100, "isBigPlay": false, "quarter": 1, "clockTime": "14:07", "playDescription": "(14:07) S.Darnold up the middle to NYJ 37 for 3 yards (J.Jewell)." },
+            {
+              "playId": 121,
+              "isBigPlay": false,
+              "quarter": 1,
+              "clockTime": "13:32",
+              "playDescription": "(13:32) S.Darnold pass incomplete short middle to J.Crowder. NYJ-C.Edoga was injured during the play."
+            },
+            {
+              "playId": 143,
+              "isBigPlay": false,
+              "quarter": 1,
+              "clockTime": "13:28",
+              "playDescription": "(13:28) (Shotgun) S.Darnold pass short middle to F.Gore to NYJ 43 for 6 yards (M.Purcell; A.Johnson)."
+            },
+            {
+              "playId": 171,
+              "isBigPlay": false,
+              "quarter": 1,
+              "clockTime": "13:02",
+              "playDescription": "(13:02) (No Huddle, Shotgun) S.Darnold scrambles up the middle to DEN 49 for 8 yards (J.Simmons)."
+            },
+            { "playId": 192, "isBigPlay": false, "quarter": 1, "clockTime": "12:19", "playDescription": "(12:19) S.Darnold pass incomplete deep right to B.Berrios." },
+            {
+              "playId": 214,
+              "isBigPlay": false,
+              "quarter": 1,
+              "clockTime": "12:14",
+              "playDescription": "(12:14) F.Gore right tackle to DEN 46 for 3 yards (D.Williams; B.Callahan)."
+            },
+            {
+              "playId": 235,
+              "isBigPlay": true,
+              "quarter": 1,
+              "clockTime": "11:37",
+              "playDescription": "(11:37) (Shotgun) S.Darnold scrambles right guard for 46 yards, TOUCHDOWN."
+            },
+            { "playId": 257, "isBigPlay": null, "quarter": 1, "clockTime": "11:25", "playDescription": "S.Ficken extra point is GOOD, Center-T.Hennessy, Holder-B.Mann." },
+            {
+              "playId": 273,
+              "isBigPlay": null,
+              "quarter": 1,
+              "clockTime": "11:25",
+              "playDescription": "S.Ficken kicks 67 yards from NYJ 35 to DEN -2. D.Spencer to DEN 20 for 22 yards (D.Brown). PENALTY on DEN-L.Bellamy, Illegal Double-Team Block, 7 yards, enforced at DEN 15."
+            },
+            { "playId": 295, "isBigPlay": false, "quarter": 1, "clockTime": "11:20", "playDescription": "(11:20) M.Gordon up the middle to DEN 13 for 5 yards (P.Desir)." },
+            { "playId": 328, "isBigPlay": false, "quarter": 1, "clockTime": "10:41", "playDescription": "(10:41) M.Gordon left end to DEN 28 for 15 yards (N.Hewitt; B.Austin)." },
+            {
+              "playId": 349,
+              "isBigPlay": false,
+              "quarter": 1,
+              "clockTime": "09:58",
+              "playDescription": "(9:58) (Shotgun) M.Gordon left guard to DEN 33 for 5 yards (B.Austin; M.Maye)."
+            },
+            {
+              "playId": 370,
+              "isBigPlay": false,
+              "quarter": 1,
+              "clockTime": "09:22",
+              "playDescription": "(9:22) (Shotgun) B.Rypien pass short left to M.Gordon to DEN 34 for 1 yard (A.Williamson)."
+            },
+            {
+              "playId": 394,
+              "isBigPlay": null,
+              "quarter": 1,
+              "clockTime": "08:39",
+              "playDescription": "(8:39) (Shotgun) B.Rypien pass incomplete short left to K.Hamler. PENALTY on NYJ-B.Austin, Defensive Pass Interference, 8 yards, enforced at DEN 34 - No Play."
+            },
+            {
+              "playId": 428,
+              "isBigPlay": null,
+              "quarter": 1,
+              "clockTime": "08:34",
+              "playDescription": "(8:34) B.Rypien pass incomplete short right to D.Hamilton [T.Basham]. PENALTY on NYJ-T.Basham, Roughing the Passer, 15 yards, enforced at DEN 42 - No Play."
+            },
+            {
+              "playId": 461,
+              "isBigPlay": false,
+              "quarter": 1,
+              "clockTime": "08:29",
+              "playDescription": "(8:29) M.Gordon up the middle to NYJ 44 for -1 yards (M.Maye, H.Anderson)."
+            },
+            {
+              "playId": 482,
+              "isBigPlay": true,
+              "quarter": 1,
+              "clockTime": "07:52",
+              "playDescription": "(7:52) (Shotgun) B.Rypien pass deep left to T.Patrick pushed ob at NYJ 23 for 21 yards (B.McDougald)."
+            },
+            {
+              "playId": 506,
+              "isBigPlay": false,
+              "quarter": 1,
+              "clockTime": "07:18",
+              "playDescription": "(7:18) (Shotgun) M.Gordon right tackle to NYJ 21 for 2 yards (N.Hewitt)."
+            },
+            {
+              "playId": 527,
+              "isBigPlay": false,
+              "quarter": 1,
+              "clockTime": "06:42",
+              "playDescription": "(6:42) (Shotgun) B.Rypien pass short right to N.Fant to NYJ 15 for 6 yards (B.McDougald) [N.Hewitt]."
+            },
+            {
+              "playId": 551,
+              "isBigPlay": null,
+              "quarter": 1,
+              "clockTime": "05:56",
+              "playDescription": "(5:56) (Shotgun) PENALTY on DEN-N.Vannett, False Start, 5 yards, enforced at NYJ 15 - No Play."
+            },
+            {
+              "playId": 574,
+              "isBigPlay": false,
+              "quarter": 1,
+              "clockTime": "05:30",
+              "playDescription": "(5:30) (Shotgun) B.Rypien pass short right to R.Freeman to NYJ 22 for -2 yards (B.Huff, A.Williamson)."
+            },
+            {
+              "playId": 598,
+              "isBigPlay": null,
+              "quarter": 1,
+              "clockTime": "04:48",
+              "playDescription": "(4:48) B.McManus 40 yard field goal is GOOD, Center-J.Bobenmoyer, Holder-S.Martin. NYJ-S.McLendon was injured during the play."
+            },
+            { "playId": 621, "isBigPlay": null, "quarter": 1, "clockTime": "04:45", "playDescription": "B.McManus kicks 65 yards from DEN 35 to end zone, Touchback." },
+            { "playId": 636, "isBigPlay": false, "quarter": 1, "clockTime": "04:45", "playDescription": "(4:45) F.Gore right tackle to NYJ 23 for -2 yards (M.Reed, J.Jewell)." },
+            {
+              "playId": 657,
+              "isBigPlay": false,
+              "quarter": 1,
+              "clockTime": "04:21",
+              "playDescription": "(4:21) (Shotgun) S.Darnold pass short right to R.Griffin to NYJ 26 for 3 yards (J.Simmons)."
+            },
+            {
+              "playId": 686,
+              "isBigPlay": false,
+              "quarter": 1,
+              "clockTime": "03:49",
+              "playDescription": "(3:49) (Shotgun) S.Darnold pass short left to J.Crowder to NYJ 35 for 9 yards (E.Bassey)."
+            },
+            {
+              "playId": 716,
+              "isBigPlay": false,
+              "quarter": 1,
+              "clockTime": "03:07",
+              "playDescription": "(3:07) (Shotgun) S.Darnold pass short left to C.Hogan ran ob at NYJ 40 for 5 yards."
+            },
+            {
+              "playId": 745,
+              "isBigPlay": false,
+              "quarter": 1,
+              "clockTime": "02:39",
+              "playDescription": "(2:39) (No Huddle) S.Darnold pass short left to J.Smith pushed ob at DEN 42 for 18 yards (B.Callahan)."
+            },
+            { "playId": 774, "isBigPlay": null, "quarter": 1, "clockTime": "02:06", "playDescription": "(2:06) S.Darnold sacked at NYJ 48 for -10 yards (A.Johnson)." },
+            {
+              "playId": 793,
+              "isBigPlay": null,
+              "quarter": 1,
+              "clockTime": "01:20",
+              "playDescription": "(1:20) F.Gore right tackle to DEN 39 for 13 yards (E.Bassey). PENALTY on NYJ-A.Lewis, Offensive Holding, 10 yards, enforced at NYJ 48 - No Play. Darnold injured on previous play, stays in for the snap."
+            },
+            {
+              "playId": 825,
+              "isBigPlay": false,
+              "quarter": 1,
+              "clockTime": "00:59",
+              "playDescription": "(:59) #5 Joe Flacco in at QB. (Shotgun) L.Perine up the middle to NYJ 43 for 5 yards (M.Purcell, K.Jackson)."
+            },
+            {
+              "playId": 850,
+              "isBigPlay": null,
+              "quarter": 1,
+              "clockTime": "00:24",
+              "playDescription": "(:24) PENALTY on NYJ, Offensive Too Many Men on Field, 5 yards, enforced at NYJ 43 - No Play."
+            },
+            {
+              "playId": 873,
+              "isBigPlay": false,
+              "quarter": 1,
+              "clockTime": "00:13",
+              "playDescription": "(:13) (Shotgun) J.Flacco pass short middle to J.Smith to NYJ 49 for 11 yards (J.Jewell)."
+            },
+            { "playId": 897, "isBigPlay": null, "quarter": 1, "clockTime": "", "playDescription": "END QUARTER 1" },
+            {
+              "playId": 916,
+              "isBigPlay": null,
+              "quarter": 2,
+              "clockTime": "15:00",
+              "playDescription": "(15:00) B.Mann punts 51 yards to end zone, Center-T.Hennessy, Touchback. Penalty on NYJ-K.Ballage, Player Out of Bounds on Kick, declined. PENALTY on NYJ-F.Luvu, Offensive Holding, 10 yards, enforced at DEN 20."
+            },
+            { "playId": 964, "isBigPlay": false, "quarter": 2, "clockTime": "14:53", "playDescription": "(14:53) M.Gordon right end to DEN 30 for no gain (M.Maye)." },
+            {
+              "playId": 996,
+              "isBigPlay": false,
+              "quarter": 2,
+              "clockTime": "14:10",
+              "playDescription": "(14:10) (Shotgun) B.Rypien pass short middle to N.Vannett to DEN 37 for 7 yards (B.Poole)."
+            },
+            {
+              "playId": 1032,
+              "isBigPlay": null,
+              "quarter": 2,
+              "clockTime": "13:22",
+              "playDescription": "(13:22) (Shotgun) B.Rypien pass incomplete deep left to T.Patrick [Q.Williams]. PENALTY on NYJ-Q.Williams, Roughing the Passer, 15 yards, enforced at DEN 37 - No Play. Penalty on NYJ-M.Maye, Defensive Holding, declined."
+            },
+            { "playId": 1065, "isBigPlay": true, "quarter": 2, "clockTime": "13:17", "playDescription": "(13:17) B.Rypien pass deep right to J.Jeudy for 48 yards, TOUCHDOWN." },
+            { "playId": 1090, "isBigPlay": null, "quarter": 2, "clockTime": "13:09", "playDescription": "B.McManus extra point is GOOD, Center-J.Bobenmoyer, Holder-S.Martin." },
+            { "playId": 1106, "isBigPlay": null, "quarter": 2, "clockTime": "13:09", "playDescription": "B.McManus kicks 65 yards from DEN 35 to end zone, Touchback." },
+            { "playId": 1121, "isBigPlay": false, "quarter": 2, "clockTime": "13:09", "playDescription": "(13:09) L.Perine left tackle to NYJ 25 for no gain (M.Reed; S.Harris)." },
+            {
+              "playId": 1142,
+              "isBigPlay": false,
+              "quarter": 2,
+              "clockTime": "12:35",
+              "playDescription": "(12:35) (Shotgun) J.Flacco pass short left to J.Smith to NYJ 30 for 5 yards (M.Ojemudia)."
+            },
+            {
+              "playId": 1166,
+              "isBigPlay": null,
+              "quarter": 2,
+              "clockTime": "12:00",
+              "playDescription": "(12:00) #14 Darnold in at QB. (Shotgun) S.Darnold sacked at NYJ 22 for -8 yards (sack split by S.Harris and B.Chubb). DEN-S.Harris was injured during the play."
+            },
+            {
+              "playId": 1203,
+              "isBigPlay": null,
+              "quarter": 2,
+              "clockTime": "11:46",
+              "playDescription": "(11:46) B.Mann punts 53 yards to DEN 25, Center-T.Hennessy. D.Spencer to DEN 35 for 10 yards (T.Hennessy)."
+            },
+            {
+              "playId": 1228,
+              "isBigPlay": false,
+              "quarter": 2,
+              "clockTime": "11:34",
+              "playDescription": "(11:34) (Shotgun) M.Gordon left tackle to DEN 35 for no gain (H.Anderson). PENALTY on NYJ-A.Ogletree, Unnecessary Roughness, 15 yards, enforced at DEN 35."
+            },
+            {
+              "playId": 1261,
+              "isBigPlay": false,
+              "quarter": 2,
+              "clockTime": "11:11",
+              "playDescription": "(11:11) (Shotgun) B.Rypien pass incomplete short right to D.Hamilton. New York Jets challenged the incomplete pass ruling, and the play was REVERSED. (Shotgun) B.Rypien pass short right intended for D.Hamilton INTERCEPTED by P.Desir at NYJ 37. P.Desir ran ob at NYJ 37 for no gain."
+            },
+            {
+              "playId": 1283,
+              "isBigPlay": false,
+              "quarter": 2,
+              "clockTime": "11:05",
+              "playDescription": "(11:05) (Shotgun) S.Darnold pass short left to R.Griffin pushed ob at NYJ 40 for 3 yards (K.Jackson)."
+            },
+            {
+              "playId": 1348,
+              "isBigPlay": false,
+              "quarter": 2,
+              "clockTime": "10:41",
+              "playDescription": "(10:41) (No Huddle, Shotgun) S.Darnold scrambles right end to NYJ 46 for 6 yards (J.Simmons)."
+            },
+            {
+              "playId": 1375,
+              "isBigPlay": false,
+              "quarter": 2,
+              "clockTime": "09:55",
+              "playDescription": "(9:55) F.Gore left guard to NYJ 48 for 2 yards (A.Chickillo; J.Jewell)."
+            },
+            {
+              "playId": 1396,
+              "isBigPlay": true,
+              "quarter": 2,
+              "clockTime": "09:18",
+              "playDescription": "(9:18) S.Darnold pass deep right to J.Smith ran ob at DEN 31 for 21 yards."
+            },
+            { "playId": 1425, "isBigPlay": false, "quarter": 2, "clockTime": "08:37", "playDescription": "(8:37) (Shotgun) S.Darnold pass incomplete deep right to L.Cager." },
+            { "playId": 1447, "isBigPlay": false, "quarter": 2, "clockTime": "08:31", "playDescription": "(8:31) (Shotgun) F.Gore left guard to DEN 28 for 3 yards (A.Johnson)." },
+            {
+              "playId": 1468,
+              "isBigPlay": false,
+              "quarter": 2,
+              "clockTime": "07:53",
+              "playDescription": "(7:53) (Shotgun) S.Darnold pass incomplete deep left to L.Cager. NYJ-L.Cager was injured during the play."
+            },
+            {
+              "playId": 1490,
+              "isBigPlay": null,
+              "quarter": 2,
+              "clockTime": "07:48",
+              "playDescription": "(7:48) S.Ficken 46 yard field goal is No Good, Wide Left, Center-T.Hennessy, Holder-B.Mann. PENALTY on DEN-J.Jones, Unnecessary Roughness, 14 yards, enforced at DEN 28 - No Play."
+            },
+            {
+              "playId": 1531,
+              "isBigPlay": false,
+              "quarter": 2,
+              "clockTime": "07:44",
+              "playDescription": "(7:44) (Shotgun) F.Gore right guard to DEN 10 for 4 yards (M.Reed; M.Purcell)."
+            },
+            { "playId": 1552, "isBigPlay": null, "quarter": 2, "clockTime": "07:11", "playDescription": "Timeout #1 by NYJ at 07:11." },
+            { "playId": 1580, "isBigPlay": false, "quarter": 2, "clockTime": "07:11", "playDescription": "(7:11) F.Gore up the middle to DEN 8 for 2 yards (A.Johnson)." },
+            {
+              "playId": 1601,
+              "isBigPlay": false,
+              "quarter": 2,
+              "clockTime": "06:32",
+              "playDescription": "(6:32) (Shotgun) S.Darnold pass incomplete short left to C.Hogan [B.Chubb]."
+            },
+            {
+              "playId": 1635,
+              "isBigPlay": null,
+              "quarter": 2,
+              "clockTime": "06:24",
+              "playDescription": "(6:24) S.Ficken 26 yard field goal is GOOD, Center-T.Hennessy, Holder-B.Mann."
+            },
+            { "playId": 1655, "isBigPlay": null, "quarter": 2, "clockTime": "06:21", "playDescription": "S.Ficken kicks 65 yards from NYJ 35 to end zone, Touchback." },
+            { "playId": 1670, "isBigPlay": false, "quarter": 2, "clockTime": "06:21", "playDescription": "(6:21) (Shotgun) B.Rypien pass incomplete short right." },
+            { "playId": 1692, "isBigPlay": false, "quarter": 2, "clockTime": "06:15", "playDescription": "(6:15) M.Gordon left guard to DEN 28 for 3 yards (B.Poole)." },
+            {
+              "playId": 1713,
+              "isBigPlay": true,
+              "quarter": 2,
+              "clockTime": "05:35",
+              "playDescription": "(5:35) (Shotgun) B.Rypien pass deep right to T.Patrick to NYJ 32 for 40 yards (P.Desir)."
+            },
+            { "playId": 1737, "isBigPlay": false, "quarter": 2, "clockTime": "04:49", "playDescription": "(4:49) R.Freeman up the middle to NYJ 29 for 3 yards (N.Hewitt)." },
+            {
+              "playId": 1758,
+              "isBigPlay": null,
+              "quarter": 2,
+              "clockTime": "04:05",
+              "playDescription": "(4:05) M.Gordon right tackle to NYJ 23 for 6 yards (P.Desir). PENALTY on DEN-G.Glasgow, Offensive Holding, 10 yards, enforced at NYJ 29 - No Play."
+            },
+            {
+              "playId": 1790,
+              "isBigPlay": false,
+              "quarter": 2,
+              "clockTime": "03:44",
+              "playDescription": "(3:44) (Shotgun) B.Rypien pass short right to N.Fant pushed ob at NYJ 28 for 11 yards (P.Desir)."
+            },
+            {
+              "playId": 1814,
+              "isBigPlay": false,
+              "quarter": 2,
+              "clockTime": "03:04",
+              "playDescription": "(3:04) (Shotgun) B.Rypien pass short right to D.Hamilton to NYJ 19 for 9 yards (P.Desir)."
+            },
+            {
+              "playId": 1838,
+              "isBigPlay": false,
+              "quarter": 2,
+              "clockTime": "02:20",
+              "playDescription": "(2:20) #9 Driskel in at QB. (Shotgun) J.Driskel right end to NYJ 10 for 9 yards (B.McDougald). PENALTY on NYJ-B.McDougald, Unnecessary Roughness, 5 yards, enforced at NYJ 10."
+            },
+            { "playId": 1874, "isBigPlay": null, "quarter": 2, "clockTime": "02:00", "playDescription": "Two-Minute Warning" },
+            {
+              "playId": 1891,
+              "isBigPlay": false,
+              "quarter": 2,
+              "clockTime": "02:00",
+              "playDescription": "(2:00) #4 Rypien in at QB. M.Gordon up the middle to NYJ 1 for 4 yards (B.McDougald, N.Hewitt)."
+            },
+            { "playId": 1922, "isBigPlay": null, "quarter": 2, "clockTime": "01:39", "playDescription": "Timeout #2 by NYJ at 01:39." },
+            {
+              "playId": 1939,
+              "isBigPlay": false,
+              "quarter": 2,
+              "clockTime": "01:39",
+              "playDescription": "(1:39) M.Gordon up the middle to NYJ 1 for no gain (A.Ogletree). The Replay Official reviewed the short of the goal line ruling, and the play was REVERSED. M.Gordon up the middle for 1 yard, TOUCHDOWN."
+            },
+            { "playId": 1960, "isBigPlay": null, "quarter": 2, "clockTime": "01:37", "playDescription": "B.McManus extra point is GOOD, Center-J.Bobenmoyer, Holder-S.Martin." },
+            { "playId": 1977, "isBigPlay": null, "quarter": 2, "clockTime": "01:37", "playDescription": "B.McManus kicks 65 yards from DEN 35 to end zone, Touchback." },
+            {
+              "playId": 2044,
+              "isBigPlay": false,
+              "quarter": 2,
+              "clockTime": "01:37",
+              "playDescription": "(1:37) (Shotgun) S.Darnold pass incomplete short middle to C.Herndon (J.Jewell)."
+            },
+            {
+              "playId": 2066,
+              "isBigPlay": true,
+              "quarter": 2,
+              "clockTime": "01:33",
+              "playDescription": "(1:33) (Shotgun) S.Darnold pass short left to J.Crowder pushed ob at DEN 48 for 27 yards (K.Jackson) [B.Chubb]."
+            },
+            { "playId": 2095, "isBigPlay": false, "quarter": 2, "clockTime": "01:25", "playDescription": "(1:25) (Shotgun) S.Darnold pass incomplete deep left to J.Smith." },
+            {
+              "playId": 2117,
+              "isBigPlay": false,
+              "quarter": 2,
+              "clockTime": "01:20",
+              "playDescription": "(1:20) (Shotgun) S.Darnold pass short left to K.Ballage ran ob at DEN 44 for 4 yards (J.Jewell)."
+            },
+            {
+              "playId": 2146,
+              "isBigPlay": false,
+              "quarter": 2,
+              "clockTime": "01:16",
+              "playDescription": "(1:16) (Shotgun) S.Darnold pass short right to J.Crowder to DEN 34 for 10 yards (E.Bassey)."
+            },
+            {
+              "playId": 2170,
+              "isBigPlay": false,
+              "quarter": 2,
+              "clockTime": "00:56",
+              "playDescription": "(:56) (No Huddle, Shotgun) S.Darnold pass short right to C.Hogan to DEN 31 for 3 yards (B.Callahan)."
+            },
+            {
+              "playId": 2194,
+              "isBigPlay": false,
+              "quarter": 2,
+              "clockTime": "00:39",
+              "playDescription": "(:39) (No Huddle, Shotgun) S.Darnold pass short left to C.Herndon ran ob at DEN 20 for 11 yards (E.Bassey). DEN-S.Harris was injured during the play."
+            },
+            { "playId": 2225, "isBigPlay": false, "quarter": 2, "clockTime": "00:34", "playDescription": "(:34) (Shotgun) S.Darnold pass incomplete deep left to K.Ballage." },
+            {
+              "playId": 2253,
+              "isBigPlay": false,
+              "quarter": 2,
+              "clockTime": "00:29",
+              "playDescription": "(:29) (Shotgun) S.Darnold pass incomplete deep right to C.Hogan (D.Bausby). DEN-B.Chubb was injured during the play."
+            },
+            { "playId": 2278, "isBigPlay": null, "quarter": 2, "clockTime": "00:24", "playDescription": "Timeout #2 by DEN at 00:24." },
+            {
+              "playId": 2295,
+              "isBigPlay": false,
+              "quarter": 2,
+              "clockTime": "00:24",
+              "playDescription": "(:24) (Shotgun) S.Darnold pass incomplete deep left to C.Hogan (M.Ojemudia)."
+            },
+            {
+              "playId": 2317,
+              "isBigPlay": null,
+              "quarter": 2,
+              "clockTime": "00:19",
+              "playDescription": "(:19) S.Ficken 38 yard field goal is GOOD, Center-T.Hennessy, Holder-B.Mann."
+            },
+            { "playId": 2339, "isBigPlay": null, "quarter": 2, "clockTime": "00:34", "playDescription": "Timeout #1 by DEN at 00:34." },
+            { "playId": 2349, "isBigPlay": null, "quarter": 2, "clockTime": "00:15", "playDescription": "S.Ficken kicks 65 yards from NYJ 35 to end zone, Touchback." },
+            { "playId": 2365, "isBigPlay": false, "quarter": 2, "clockTime": "00:15", "playDescription": "(:15) B.Rypien kneels to DEN 24 for -1 yards." },
+            { "playId": 2386, "isBigPlay": null, "quarter": 2, "clockTime": "", "playDescription": "END QUARTER 2" },
+            { "playId": 2406, "isBigPlay": null, "quarter": 3, "clockTime": "15:00", "playDescription": "S.Ficken kicks 65 yards from NYJ 35 to end zone, Touchback." },
+            { "playId": 2421, "isBigPlay": false, "quarter": 3, "clockTime": "15:00", "playDescription": "(15:00) M.Gordon right guard to DEN 24 for -1 yards (Q.Williams)." },
+            {
+              "playId": 2442,
+              "isBigPlay": false,
+              "quarter": 3,
+              "clockTime": "14:20",
+              "playDescription": "(14:20) (Shotgun) B.Rypien pass short right to N.Fant pushed ob at DEN 27 for 3 yards (P.Desir)."
+            },
+            {
+              "playId": 2466,
+              "isBigPlay": false,
+              "quarter": 3,
+              "clockTime": "13:40",
+              "playDescription": "(13:40) (Shotgun) B.Rypien pass incomplete short right to T.Patrick (L.Jackson)."
+            },
+            {
+              "playId": 2494,
+              "isBigPlay": null,
+              "quarter": 3,
+              "clockTime": "13:34",
+              "playDescription": "(13:34) (Punt formation) PENALTY on DEN-J.Bobenmoyer, False Start, 5 yards, enforced at DEN 27 - No Play."
+            },
+            {
+              "playId": 2517,
+              "isBigPlay": null,
+              "quarter": 3,
+              "clockTime": "13:34",
+              "playDescription": "(13:34) S.Martin punts 49 yards to NYJ 29, Center-J.Bobenmoyer. B.Berrios to NYJ 40 for 11 yards (M.Reed)."
+            },
+            {
+              "playId": 2542,
+              "isBigPlay": false,
+              "quarter": 3,
+              "clockTime": "13:23",
+              "playDescription": "(13:23) (Shotgun) F.Gore up the middle to NYJ 42 for 2 yards (B.Callahan)."
+            },
+            {
+              "playId": 2563,
+              "isBigPlay": null,
+              "quarter": 3,
+              "clockTime": "12:57",
+              "playDescription": "(12:57) (No Huddle) S.Darnold pass incomplete deep left to J.Smith (M.Ojemudia). PENALTY on DEN-M.Ojemudia, Defensive Pass Interference, 38 yards, enforced at NYJ 42 - No Play."
+            },
+            { "playId": 2596, "isBigPlay": false, "quarter": 3, "clockTime": "12:50", "playDescription": "(12:50) F.Gore right end to DEN 15 for 5 yards (J.Jewell)." },
+            { "playId": 2617, "isBigPlay": false, "quarter": 3, "clockTime": "12:11", "playDescription": "(12:11) F.Gore right guard to DEN 14 for 1 yard (J.Simmons)." },
+            { "playId": 2638, "isBigPlay": false, "quarter": 3, "clockTime": "11:30", "playDescription": "(11:30) (Shotgun) S.Darnold pass incomplete short right to F.Gore." },
+            {
+              "playId": 2660,
+              "isBigPlay": null,
+              "quarter": 3,
+              "clockTime": "11:26",
+              "playDescription": "(11:26) S.Ficken 32 yard field goal is GOOD, Center-T.Hennessy, Holder-B.Mann."
+            },
+            { "playId": 2679, "isBigPlay": null, "quarter": 3, "clockTime": "11:23", "playDescription": "S.Ficken kicks 65 yards from NYJ 35 to end zone, Touchback." },
+            {
+              "playId": 2694,
+              "isBigPlay": false,
+              "quarter": 3,
+              "clockTime": "11:23",
+              "playDescription": "(11:23) (Shotgun) B.Rypien pass incomplete short middle to N.Fant (A.Williamson)."
+            },
+            {
+              "playId": 2716,
+              "isBigPlay": false,
+              "quarter": 3,
+              "clockTime": "11:17",
+              "playDescription": "(11:17) M.Gordon left guard to DEN 31 for 6 yards (A.Williamson; N.Hewitt)."
+            },
+            { "playId": 2737, "isBigPlay": null, "quarter": 3, "clockTime": "10:28", "playDescription": "Timeout #1 by DEN at 10:28." },
+            {
+              "playId": 2754,
+              "isBigPlay": false,
+              "quarter": 3,
+              "clockTime": "10:28",
+              "playDescription": "(10:28) (Shotgun) B.Rypien pass short left to R.Freeman to DEN 39 for 8 yards (L.Jackson)."
+            },
+            {
+              "playId": 2778,
+              "isBigPlay": false,
+              "quarter": 3,
+              "clockTime": "09:49",
+              "playDescription": "(9:49) R.Freeman up the middle to DEN 40 for 1 yard (Q.Williams; B.Huff)."
+            },
+            { "playId": 2799, "isBigPlay": false, "quarter": 3, "clockTime": "09:09", "playDescription": "(9:09) M.Gordon left guard to NYJ 41 for 19 yards (B.Poole)." },
+            {
+              "playId": 2820,
+              "isBigPlay": false,
+              "quarter": 3,
+              "clockTime": "08:29",
+              "playDescription": "(8:29) (Shotgun) B.Rypien pass short right to N.Fant to NYJ 35 for 6 yards (A.Williamson)."
+            },
+            {
+              "playId": 2844,
+              "isBigPlay": false,
+              "quarter": 3,
+              "clockTime": "07:42",
+              "playDescription": "(7:42) (Shotgun) B.Rypien pass short middle to J.Jeudy to NYJ 22 for 13 yards (B.Poole)."
+            },
+            {
+              "playId": 2868,
+              "isBigPlay": false,
+              "quarter": 3,
+              "clockTime": "06:58",
+              "playDescription": "(6:58) M.Gordon up the middle to NYJ 20 for 2 yards (B.Huff, A.Williamson)."
+            },
+            { "playId": 2889, "isBigPlay": false, "quarter": 3, "clockTime": "06:11", "playDescription": "(6:11) (Shotgun) B.Rypien pass incomplete short left to J.Jeudy." },
+            {
+              "playId": 2911,
+              "isBigPlay": false,
+              "quarter": 3,
+              "clockTime": "06:06",
+              "playDescription": "(6:06) (Shotgun) B.Rypien pass short left to N.Fant to NYJ 11 for 9 yards (B.McDougald) [T.Basham]. DEN-N.Fant was injured during the play."
+            },
+            { "playId": 2935, "isBigPlay": false, "quarter": 3, "clockTime": "05:24", "playDescription": "(5:24) (Shotgun) B.Rypien pass incomplete short right." },
+            { "playId": 2957, "isBigPlay": false, "quarter": 3, "clockTime": "05:19", "playDescription": "(5:19) M.Gordon left tackle to NYJ 7 for 4 yards (A.Williamson)." },
+            {
+              "playId": 2978,
+              "isBigPlay": false,
+              "quarter": 3,
+              "clockTime": "04:35",
+              "playDescription": "(4:35) (Shotgun) B.Rypien pass short middle to T.Patrick for 7 yards, TOUCHDOWN."
+            },
+            { "playId": 3003, "isBigPlay": null, "quarter": 3, "clockTime": "04:31", "playDescription": "B.McManus extra point is GOOD, Center-J.Bobenmoyer, Holder-S.Martin." },
+            { "playId": 3019, "isBigPlay": null, "quarter": 3, "clockTime": "04:31", "playDescription": "B.McManus kicks 65 yards from DEN 35 to end zone, Touchback." },
+            { "playId": 3038, "isBigPlay": false, "quarter": 3, "clockTime": "04:31", "playDescription": "(4:31) (Shotgun) S.Darnold pass incomplete short right to B.Berrios." },
+            {
+              "playId": 3060,
+              "isBigPlay": false,
+              "quarter": 3,
+              "clockTime": "04:28",
+              "playDescription": "(4:28) (Shotgun) L.Perine left guard to NYJ 29 for 4 yards (J.Jewell, B.Chubb)."
+            },
+            {
+              "playId": 3085,
+              "isBigPlay": false,
+              "quarter": 3,
+              "clockTime": "04:04",
+              "playDescription": "(4:04) (Shotgun) S.Darnold pass short right to J.Crowder to NYJ 38 for 9 yards (D.Bausby)."
+            },
+            {
+              "playId": 3109,
+              "isBigPlay": false,
+              "quarter": 3,
+              "clockTime": "03:31",
+              "playDescription": "(3:31) (Shotgun) S.Darnold pass short right to J.Smith to NYJ 46 for 8 yards (D.Bausby)."
+            },
+            {
+              "playId": 3133,
+              "isBigPlay": false,
+              "quarter": 3,
+              "clockTime": "03:13",
+              "playDescription": "(3:13) (No Huddle, Shotgun) L.Perine up the middle to NYJ 48 for 2 yards (M.Agim; D.Williams)."
+            },
+            {
+              "playId": 3154,
+              "isBigPlay": false,
+              "quarter": 3,
+              "clockTime": "02:32",
+              "playDescription": "(2:32) L.Perine right tackle to DEN 48 for 4 yards (A.Johnson; D.Williams)."
+            },
+            {
+              "playId": 3175,
+              "isBigPlay": false,
+              "quarter": 3,
+              "clockTime": "01:55",
+              "playDescription": "(1:55) (Shotgun) S.Darnold pass incomplete short left to B.Berrios (B.Callahan)."
+            },
+            { "playId": 3197, "isBigPlay": null, "quarter": 3, "clockTime": "01:50", "playDescription": "(1:50) (Shotgun) S.Darnold sacked at NYJ 43 for -9 yards (J.Jewell)." },
+            {
+              "playId": 3216,
+              "isBigPlay": null,
+              "quarter": 3,
+              "clockTime": "01:07",
+              "playDescription": "(1:07) B.Mann punts 42 yards to DEN 15, Center-T.Hennessy. D.Spencer to NYJ 44 for 41 yards (B.Mann)."
+            },
+            { "playId": 3241, "isBigPlay": false, "quarter": 3, "clockTime": "00:52", "playDescription": "(:52) (Shotgun) M.Gordon left guard to NYJ 42 for 2 yards (N.Hewitt)." },
+            {
+              "playId": 3262,
+              "isBigPlay": false,
+              "quarter": 3,
+              "clockTime": "00:17",
+              "playDescription": "(:17) (Shotgun) M.Gordon right tackle to NYJ 43 for -1 yards (N.Hewitt)."
+            },
+            { "playId": 3283, "isBigPlay": null, "quarter": 3, "clockTime": "", "playDescription": "END QUARTER 3" },
+            {
+              "playId": 3302,
+              "isBigPlay": false,
+              "quarter": 4,
+              "clockTime": "15:00",
+              "playDescription": "(15:00) (Shotgun) B.Rypien pass short left to T.Patrick to NYJ 36 for 7 yards (P.Desir) [T.Basham]."
+            },
+            {
+              "playId": 3326,
+              "isBigPlay": null,
+              "quarter": 4,
+              "clockTime": "14:15",
+              "playDescription": "(14:15) B.McManus 54 yard field goal is GOOD, Center-J.Bobenmoyer, Holder-S.Martin."
+            },
+            { "playId": 3345, "isBigPlay": null, "quarter": 4, "clockTime": "14:11", "playDescription": "B.McManus kicks 65 yards from DEN 35 to end zone, Touchback." },
+            {
+              "playId": 3360,
+              "isBigPlay": true,
+              "quarter": 4,
+              "clockTime": "14:11",
+              "playDescription": "(14:11) (Shotgun) S.Darnold pass deep left to J.Crowder pushed ob at DEN 40 for 35 yards (K.Jackson)."
+            },
+            {
+              "playId": 3384,
+              "isBigPlay": false,
+              "quarter": 4,
+              "clockTime": "13:55",
+              "playDescription": "(13:55) (No Huddle, Shotgun) F.Gore up the middle to DEN 36 for 4 yards (M.Purcell)."
+            },
+            {
+              "playId": 3405,
+              "isBigPlay": false,
+              "quarter": 4,
+              "clockTime": "13:33",
+              "playDescription": "(13:33) (Shotgun) S.Darnold pass short right to J.Smith to DEN 29 for 7 yards (D.Bausby) [S.Harris]."
+            },
+            {
+              "playId": 3435,
+              "isBigPlay": false,
+              "quarter": 4,
+              "clockTime": "13:05",
+              "playDescription": "(13:05) F.Gore right guard to DEN 23 for 6 yards (D.Williams, A.Johnson)."
+            },
+            { "playId": 3456, "isBigPlay": false, "quarter": 4, "clockTime": "12:35", "playDescription": "(12:35) (Shotgun) S.Darnold pass incomplete short left to J.Crowder." },
+            { "playId": 3478, "isBigPlay": null, "quarter": 4, "clockTime": "12:28", "playDescription": "(12:28) (Shotgun) S.Darnold sacked at DEN 36 for -13 yards (B.Chubb)." },
+            {
+              "playId": 3497,
+              "isBigPlay": null,
+              "quarter": 4,
+              "clockTime": "11:48",
+              "playDescription": "(11:48) S.Ficken 54 yard field goal is GOOD, Center-T.Hennessy, Holder-B.Mann."
+            },
+            { "playId": 3516, "isBigPlay": null, "quarter": 4, "clockTime": "11:44", "playDescription": "S.Ficken kicks 65 yards from NYJ 35 to end zone, Touchback." },
+            {
+              "playId": 3531,
+              "isBigPlay": false,
+              "quarter": 4,
+              "clockTime": "11:44",
+              "playDescription": "(11:44) (Shotgun) B.Rypien pass incomplete short left to J.Butt (F.Fatukasi)."
+            },
+            { "playId": 3553, "isBigPlay": false, "quarter": 4, "clockTime": "11:39", "playDescription": "(11:39) M.Gordon left end to DEN 25 for no gain (Q.Williams)." },
+            {
+              "playId": 3574,
+              "isBigPlay": false,
+              "quarter": 4,
+              "clockTime": "10:56",
+              "playDescription": "(10:56) (Shotgun) B.Rypien pass short right intended for J.Jeudy INTERCEPTED by P.Desir [J.Franklin] at DEN 35. P.Desir for 35 yards, TOUCHDOWN."
+            },
+            {
+              "playId": 3601,
+              "isBigPlay": null,
+              "quarter": 4,
+              "clockTime": "10:45",
+              "playDescription": "(Pass formation) TWO-POINT CONVERSION ATTEMPT. S.Darnold pass to C.Herndon is incomplete. ATTEMPT FAILS."
+            },
+            { "playId": 3615, "isBigPlay": null, "quarter": 4, "clockTime": "10:45", "playDescription": "S.Ficken kicks 65 yards from NYJ 35 to end zone, Touchback." },
+            {
+              "playId": 3630,
+              "isBigPlay": false,
+              "quarter": 4,
+              "clockTime": "10:45",
+              "playDescription": "(10:45) M.Gordon right guard to DEN 27 for 2 yards (S.McLendon, K.Phillips)."
+            },
+            {
+              "playId": 3651,
+              "isBigPlay": false,
+              "quarter": 4,
+              "clockTime": "10:03",
+              "playDescription": "(10:03) (Shotgun) B.Rypien pass short right to M.Gordon to DEN 37 for 10 yards (P.Desir)."
+            },
+            {
+              "playId": 3675,
+              "isBigPlay": false,
+              "quarter": 4,
+              "clockTime": "09:23",
+              "playDescription": "(9:23) R.Freeman up the middle to DEN 39 for 2 yards (N.Hewitt; P.Desir)."
+            },
+            {
+              "playId": 3696,
+              "isBigPlay": false,
+              "quarter": 4,
+              "clockTime": "08:43",
+              "playDescription": "(8:43) (Shotgun) B.Rypien pass short right intended for N.Vannett INTERCEPTED by B.Poole at DEN 46. B.Poole to DEN 44 for 2 yards (N.Vannett)."
+            },
+            {
+              "playId": 3722,
+              "isBigPlay": false,
+              "quarter": 4,
+              "clockTime": "08:37",
+              "playDescription": "(8:37) (Shotgun) S.Darnold pass short left to C.Hogan to DEN 39 for 5 yards (M.Ojemudia)."
+            },
+            {
+              "playId": 3758,
+              "isBigPlay": false,
+              "quarter": 4,
+              "clockTime": "08:12",
+              "playDescription": "(8:12) (Shotgun) S.Darnold pass short right to J.Smith to DEN 28 for 11 yards (K.Jackson)."
+            },
+            { "playId": 3782, "isBigPlay": false, "quarter": 4, "clockTime": "07:49", "playDescription": "(7:49) (No Huddle) F.Gore right guard to DEN 27 for 1 yard (B.Chubb)." },
+            {
+              "playId": 3803,
+              "isBigPlay": false,
+              "quarter": 4,
+              "clockTime": "07:16",
+              "playDescription": "(7:16) (Shotgun) S.Darnold pass short left to R.Griffin to DEN 23 for 4 yards (K.Jackson)."
+            },
+            {
+              "playId": 3827,
+              "isBigPlay": false,
+              "quarter": 4,
+              "clockTime": "06:36",
+              "playDescription": "(6:36) (Shotgun) S.Darnold pass short left to J.Crowder to DEN 18 for 5 yards (B.Callahan). Denver challenged the first down ruling, and the play was REVERSED. (Shotgun) S.Darnold pass short left to J.Crowder to DEN 19 for 4 yards (B.Callahan)."
+            },
+            {
+              "playId": 3851,
+              "isBigPlay": null,
+              "quarter": 4,
+              "clockTime": "06:33",
+              "playDescription": "(6:33) S.Ficken 36 yard field goal is GOOD, Center-T.Hennessy, Holder-B.Mann."
+            },
+            { "playId": 3905, "isBigPlay": null, "quarter": 4, "clockTime": "06:23", "playDescription": "S.Ficken kicks 65 yards from NYJ 35 to end zone, Touchback." },
+            {
+              "playId": 3920,
+              "isBigPlay": false,
+              "quarter": 4,
+              "clockTime": "06:23",
+              "playDescription": "(6:23) (Shotgun) M.Gordon left tackle to DEN 22 for -3 yards (A.Ogletree)."
+            },
+            {
+              "playId": 3941,
+              "isBigPlay": false,
+              "quarter": 4,
+              "clockTime": "05:49",
+              "playDescription": "(5:49) (Shotgun) B.Rypien pass short left to T.Patrick to DEN 29 for 7 yards (N.Hewitt)."
+            },
+            {
+              "playId": 3965,
+              "isBigPlay": null,
+              "quarter": 4,
+              "clockTime": "05:04",
+              "playDescription": "(5:04) (Shotgun) B.Rypien sacked at DEN 19 for -10 yards (Q.Williams). PENALTY on NYJ-Q.Williams, Face Mask (15 Yards), 15 yards, enforced at DEN 29 - No Play."
+            },
+            {
+              "playId": 3995,
+              "isBigPlay": false,
+              "quarter": 4,
+              "clockTime": "04:59",
+              "playDescription": "(4:59) (Shotgun) M.Gordon right guard to DEN 47 for 3 yards (K.Phillips; S.McLendon)."
+            },
+            {
+              "playId": 4016,
+              "isBigPlay": false,
+              "quarter": 4,
+              "clockTime": "04:18",
+              "playDescription": "(4:18) (Shotgun) B.Rypien pass incomplete deep left to D.Hamilton [J.Franklin]."
+            },
+            {
+              "playId": 4038,
+              "isBigPlay": true,
+              "quarter": 4,
+              "clockTime": "04:11",
+              "playDescription": "(4:11) (Shotgun) B.Rypien pass deep left to T.Patrick ran ob at NYJ 22 for 31 yards."
+            },
+            { "playId": 4067, "isBigPlay": false, "quarter": 4, "clockTime": "04:06", "playDescription": "(4:06) M.Gordon left end to NYJ 25 for -3 yards (L.Jackson)." },
+            { "playId": 4088, "isBigPlay": false, "quarter": 4, "clockTime": "03:21", "playDescription": "(3:21) (Shotgun) B.Rypien pass incomplete short middle to M.Gordon." },
+            {
+              "playId": 4110,
+              "isBigPlay": false,
+              "quarter": 4,
+              "clockTime": "03:17",
+              "playDescription": "(3:17) (Shotgun) B.Rypien pass incomplete short left. PENALTY on DEN-B.Rypien, Intentional Grounding, 10 yards, enforced at NYJ 25."
+            },
+            {
+              "playId": 4143,
+              "isBigPlay": null,
+              "quarter": 4,
+              "clockTime": "03:13",
+              "playDescription": "(3:13) B.McManus 53 yard field goal is GOOD, Center-J.Bobenmoyer, Holder-S.Martin."
+            },
+            { "playId": 4162, "isBigPlay": null, "quarter": 4, "clockTime": "03:08", "playDescription": "B.McManus kicks 65 yards from DEN 35 to end zone, Touchback." },
+            {
+              "playId": 4177,
+              "isBigPlay": false,
+              "quarter": 4,
+              "clockTime": "03:08",
+              "playDescription": "(3:08) (Shotgun) S.Darnold scrambles left end pushed ob at NYJ 33 for 8 yards (M.Reed)."
+            },
+            {
+              "playId": 4203,
+              "isBigPlay": false,
+              "quarter": 4,
+              "clockTime": "03:01",
+              "playDescription": "(3:01) (Shotgun) S.Darnold pass incomplete short right to C.Hogan (D.Bausby)."
+            },
+            {
+              "playId": 4225,
+              "isBigPlay": false,
+              "quarter": 4,
+              "clockTime": "02:58",
+              "playDescription": "(2:58) (Shotgun) S.Darnold pass short middle to J.Crowder to NYJ 43 for 10 yards (B.Callahan)."
+            },
+            {
+              "playId": 4249,
+              "isBigPlay": false,
+              "quarter": 4,
+              "clockTime": "02:20",
+              "playDescription": "(2:20) (No Huddle, Shotgun) S.Darnold pass incomplete short middle to C.Herndon."
+            },
+            {
+              "playId": 4271,
+              "isBigPlay": false,
+              "quarter": 4,
+              "clockTime": "02:14",
+              "playDescription": "(2:14) (Shotgun) S.Darnold pass short left to K.Ballage ran ob at 50 for 7 yards (J.Jewell)."
+            },
+            {
+              "playId": 4300,
+              "isBigPlay": false,
+              "quarter": 4,
+              "clockTime": "02:09",
+              "playDescription": "(2:09) (Shotgun) S.Darnold pass incomplete short right to J.Smith (D.Bausby)."
+            },
+            { "playId": 4322, "isBigPlay": null, "quarter": 4, "clockTime": "02:05", "playDescription": "(2:05) (Shotgun) S.Darnold sacked at NYJ 43 for -7 yards (B.Chubb)." },
+            { "playId": 4341, "isBigPlay": null, "quarter": 4, "clockTime": "02:00", "playDescription": "Two-Minute Warning" },
+            { "playId": 4358, "isBigPlay": true, "quarter": 4, "clockTime": "02:00", "playDescription": "(2:00) M.Gordon left end for 43 yards, TOUCHDOWN." },
+            { "playId": 4380, "isBigPlay": null, "quarter": 4, "clockTime": "01:48", "playDescription": "B.McManus extra point is GOOD, Center-J.Bobenmoyer, Holder-S.Martin." },
+            { "playId": 4396, "isBigPlay": null, "quarter": 4, "clockTime": "01:48", "playDescription": "B.McManus kicks 65 yards from DEN 35 to end zone, Touchback." },
+            { "playId": 4411, "isBigPlay": null, "quarter": 4, "clockTime": "01:48", "playDescription": "(1:48) (Shotgun) S.Darnold sacked at NYJ 18 for -7 yards (J.Jewell)." },
+            {
+              "playId": 4430,
+              "isBigPlay": false,
+              "quarter": 4,
+              "clockTime": "01:25",
+              "playDescription": "(1:25) (No Huddle, Shotgun) S.Darnold scrambles up the middle to NYJ 31 for 13 yards (J.Simmons)."
+            },
+            { "playId": 4451, "isBigPlay": null, "quarter": 4, "clockTime": "01:15", "playDescription": "Timeout #1 by NYJ at 01:15." },
+            { "playId": 4468, "isBigPlay": false, "quarter": 4, "clockTime": "01:15", "playDescription": "(1:15) (Shotgun) S.Darnold pass incomplete short left." },
+            { "playId": 4490, "isBigPlay": false, "quarter": 4, "clockTime": "01:08", "playDescription": "(1:08) (Shotgun) S.Darnold pass incomplete short left to J.Crowder." },
+            { "playId": 4512, "isBigPlay": false, "quarter": 4, "clockTime": "01:03", "playDescription": "(1:03) B.Rypien kneels to NYJ 32 for -1 yards." },
+            { "playId": 4533, "isBigPlay": null, "quarter": 4, "clockTime": "00:59", "playDescription": "Timeout #2 by NYJ at 00:59." },
+            { "playId": 4550, "isBigPlay": false, "quarter": 4, "clockTime": "00:59", "playDescription": "(:59) B.Rypien kneels to NYJ 33 for -1 yards." },
+            { "playId": 4571, "isBigPlay": null, "quarter": 4, "clockTime": "00:57", "playDescription": "Timeout #3 by NYJ at 00:57." },
+            { "playId": 4588, "isBigPlay": false, "quarter": 4, "clockTime": "00:57", "playDescription": "(:57) B.Rypien kneels to NYJ 34 for -1 yards." },
+            {
+              "playId": 4609,
+              "isBigPlay": null,
+              "quarter": 4,
+              "clockTime": "00:13",
+              "playDescription": "(:13) (Pass formation) PENALTY on DEN, Delay of Game, 5 yards, enforced at NYJ 34 - No Play."
+            },
+            { "playId": 4632, "isBigPlay": null, "quarter": 4, "clockTime": "00:13", "playDescription": "Timeout #2 by DEN at 00:13." },
+            {
+              "playId": 4649,
+              "isBigPlay": null,
+              "quarter": 4,
+              "clockTime": "00:13",
+              "playDescription": "(:13) (Shotgun) B.Rypien pass incomplete deep right [S.McLendon]. PENALTY on NYJ-A.Ogletree, Defensive Offside, 5 yards, enforced at NYJ 39 - No Play."
+            },
+            {
+              "playId": 4682,
+              "isBigPlay": null,
+              "quarter": 4,
+              "clockTime": "00:08",
+              "playDescription": "(:08) (Shotgun) B.Rypien pass incomplete deep right [S.McLendon]. PENALTY on NYJ-S.McLendon, Roughing the Passer, 15 yards, enforced at NYJ 34 - No Play."
+            },
+            { "playId": 4715, "isBigPlay": false, "quarter": 4, "clockTime": "00:03", "playDescription": "(:03) B.Rypien kneels to NYJ 20 for -1 yards." },
+            { "playId": 4736, "isBigPlay": null, "quarter": 4, "clockTime": "00:00", "playDescription": "END GAME" }
+          ]
+        }
+      ]
+    }
+  }
+}

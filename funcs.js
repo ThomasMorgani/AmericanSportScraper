@@ -8,7 +8,7 @@ const scrapers = require('./scrapers')
 const utils = require('./utils')
 
 //WILL BE PASSED TO BROWSER INSTANCE FOR DEBUGGING
-const isHeadless = true
+const isHeadless = false
 
 module.exports = {
   async gameDataGame(url, browserIn = null, storeResults = true) {
@@ -80,7 +80,7 @@ module.exports = {
       }
       return gameData
     } catch (err) {
-      console.log('error caught', err)
+      console.log('error caught', err.message)
 
       if (!browserIn && browser !== undefined) {
         await browser.close()
