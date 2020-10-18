@@ -36,7 +36,6 @@ switch (process.argv['2']) {
       return
     }
     const gameData = funcs.gameDataGame(args['0'])
-    db.save(gameData, args['0'])
 
     break
   case 'player':

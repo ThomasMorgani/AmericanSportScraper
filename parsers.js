@@ -7,7 +7,7 @@ module.exports = {
   */
   async gameDataset(name, data, gameData) {
     let parsedData = {}
-    // console.log(name)
+    console.log(name)
     switch (name) {
       case 'game':
         //PAST MATCHUP RESPONSE IS LABELLED WITH GAME KEY, IGNORE THIS
@@ -22,6 +22,14 @@ module.exports = {
         if (data && Object.keys(data).length > 3) {
           parsedData = await this.gameDetails(data, gameData.game)
         }
+        break
+      case 'gameDetailsByIds':
+        console.log('processing dataset:::gameDetailsByIds')
+        // parsedData = await this.gameDetailsByIds(data, gameData.game, gameData.slug)
+        //RETURN  data as is. Will be parsed, addressed at end of gameData or gameWeek function
+
+        //RE-ENABLE WHEN READY TO TEST
+        // return await this.gameDetailsByIds(data)
         break
       case 'league':
         ///CURRENTLY ONLY RETURNS milestonePlayers: []
@@ -74,6 +82,7 @@ module.exports = {
       game_id: rawData.id,
       gameDetailId: rawData.gameDetailId,
       gameTime: rawData.gameTime, //2019-09-08T17:00:00.000Z
+      gameTimeStr: '', //will be scraped after if this game exists
       gsis_id: rawData.gsisId,
       home_abv: homeTeam.abbreviation,
       home_team: homeTeam.id, //CONFIRM THIS ID IS STANDARD THROUGHOUT OTHER DATA
@@ -100,6 +109,7 @@ module.exports = {
       distance: rawData.distance,
       down: rawData.down,
       gameClock: rawData.gameClock, //'00:37'
+      gameTimeStr: '', //WILL BE ADDED AFTER IF THIS DETAILS EXISTS
       game_id: gameData.game_id || 'xx',
       // gameDetailId: rawData.id,
       goalToGo: rawData.goalToGo, //Bool
@@ -151,6 +161,14 @@ module.exports = {
 
     return details
   },
+  async gameDetailsByIds(details, gameData, slug) {
+    let plays = []
+    if (details.plays) {
+      plays = [...details.plays]
+      Object.delete(details.plays)
+    }
+    return { gameDetails: details, plays }
+  },
   async gameResponse(json) {
     console.log(json)
     if (json && json.data && json.data.viewer) {
@@ -159,9 +177,18 @@ module.exports = {
       // console.log(json)
       // console.log(viewer)
 
+      //gameDetailsByIds
+      if (viewer.gameDetailsByIds) {
+        console.log('IS gameDetailsByIds -----')
+        return { gameDetailsByIds: viewer.gameDetailsByIds }
+      }
+
       //teamStats
       if (viewer.stats && viewer.stats.teamGameStats && viewer.stats.teamGameStats.edges && viewer.stats.teamGameStats.edges['0'] && viewer.stats.teamGameStats.edges['0'].node) {
         return { teamStats: viewer.stats.teamGameStats.edges['0'].node }
+      }
+      if (viewer.live && viewer.live.teamGameStats && viewer.live.teamGameStats['0']) {
+        return { teamStats: viewer.live.teamGameStats['0'] }
       }
       //playerStats //playerGameStats includes much more data.
       //TODO: monitor to ensure we can rely on playerGameStats
@@ -474,6 +501,9 @@ module.exports = {
       rushing_twoptmissed: gameStats.xxxx || 0,
       rushing_yds: gameStats.rushingYards || 0,
     }
+    if (stats.player_id === '7061747269636b6d61686f6d65735142636869656673') {
+      console.log(gameStats)
+    }
     // console.log(stats)
 
     return stats
@@ -549,9 +579,9 @@ module.exports = {
     const { opponentGameStats: away, teamGameStats: home } = data
     // const home = teamGameStats
     // const away = opponentGameStats
-    $home_team = data?.team?.abbreviation ? data.team.abbreviation : 'UNK'
+    const home_team = data?.team?.abbreviation ? data.team.abbreviation : 'UNK'
     const away_abv = gameData?.away_abv ? gameData.away_abv : 'UNK'
-    const home_abv = gameData?.home_abv ? gameData.home_abv : $home_team
+    const home_abv = gameData?.home_abv ? gameData.home_abv : home_team
     console.log(away_abv)
     console.log(home_abv)
     let teamData = {}
@@ -574,21 +604,33 @@ module.exports = {
         },
       }
     } else {
-      teamData = {
-        team1Stats: {
+      if (away_abv !== 'UNK') {
+        console.log('xxx AWAY NOT UNK')
+        teamData.team1Stats = {
           team_abv: away_abv,
           defense_int: away.passingInterceptions,
           defense_frec: away.fumblesLost,
           pts_against: away.totalPointsScored,
           defense_sk: away.passingSacked,
-        },
-        team2Stats: {
+        }
+      } else {
+        teamData.team1Stats = {
+          team_abv: away_abv,
+        }
+      }
+      if (home_abv !== 'UNK') {
+        console.log('xxx HOME NOT UNK')
+        teamData.team2Stats = {
           team_abv: home_abv,
           defense_int: home.passingInterceptions,
           defense_frec: home.fumblesLost,
           pts_against: home.totalPointsScored,
           defense_sk: home.passingSacked,
-        },
+        }
+      } else {
+        teamData.team2Stats = {
+          team_abv: home_abv,
+        }
       }
     }
 

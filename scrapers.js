@@ -11,12 +11,17 @@ module.exports = {
     const data = await parsers.gameResponse(json)
     if (data) {
       const dataSet = Object.keys(data)['0']
-      if (await utils.isEmpty(gameData[dataSet])) {
+      if (utils.isEmpty(gameData[dataSet])) {
         parsedData = await parsers.gameDataset(dataSet, data[dataSet], gameData)
         return { [dataSet]: parsedData }
       }
     }
     return
+  },
+  async gameTimeStr() {
+    console.log('FROM GAMETIMESTR -')
+    const text = document.querySelector('.css-18p0yty')?.innerText || ''
+    return text
   },
   async gameTriggerStats(page) {
     //ClICK ON "STATS TAB" TO TRIGGER AJAX CALLS (live, teamPlayerStats, teamGameStats)
@@ -139,6 +144,11 @@ module.exports = {
       results.push(gameData)
     })
     return results
+  },
+
+  async scrollToFooter() {
+    const footer = document.querySelector('footer')
+    footer.scrollIntoView()
   },
   async teamUrls() {
     //NOTE:

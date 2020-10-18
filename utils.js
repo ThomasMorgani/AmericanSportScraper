@@ -1,5 +1,5 @@
 module.exports = {
-  async isEmpty(obj) {
+  isEmpty(obj) {
     return typeof obj === 'object' && Object.keys(obj).length === 0
   },
   playerIdHash({ firstName, lastName, position, team }) {

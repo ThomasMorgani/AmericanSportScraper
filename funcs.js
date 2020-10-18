@@ -8,13 +8,14 @@ const scrapers = require('./scrapers')
 const utils = require('./utils')
 
 //WILL BE PASSED TO BROWSER INSTANCE FOR DEBUGGING
-const isHeadless = false
+const isHeadless = true
 
 module.exports = {
   async gameDataGame(url, browserIn = null, storeResults = true) {
     const gameData = {
       game: {},
       gameDetail: {},
+      gameDetailsByIds: [], //ONLY THE FIRST ITEM OF THE GAMES ARRAY(if looping) WILL HAVE THIS SET
       league: {},
       playerStats: [],
       slug: '',
@@ -31,7 +32,9 @@ module.exports = {
       const browser = browserIn ? browserIn : await puppeteer.launch({ headless: isHeadless })
       const page = await browser.newPage()
       console.log('FETCHING: ', url)
-      await page.goto(fullUrl)
+      await page.goto(fullUrl).catch(err => console.log('err, prob timeout', err))
+      await page.evaluate(scrapers.scrollToFooter)
+
       await page.setRequestInterception(true)
 
       //ABORT ALL REQUESTS NOT RELEVANT  //TODO: CREATE COMPLETE BLACKLIST
@@ -47,7 +50,7 @@ module.exports = {
       page.on('response', async response => {
         // console.log('on resp') //debugging
         if (response.request().method() !== 'GET') return // Ignore all requests not GET
-        if (!response.url().includes(process.env.apiUrl)) return // we're only interested in calls to nfl api
+        if (!response.url().includes(process.env.apiUrl)) return // we're only interested in calls to  api
         // console.log('\n 🚀MATCH: ', response.url()) //debugging
         const parsedData = await scrapers.gameResponse(response, gameData)
         // if (parsedData) Object.keys(parsedData).forEach(dataSet => (gameData[dataSet] = { ...parsedData[dataSet] }))
@@ -68,7 +71,19 @@ module.exports = {
         }
       })
       await scrapers.gameTriggerStats(page)
-      await page.waitForTimeout(3000) //await a few seconds to ensure we captured requests
+      await page.waitForTimeout(10000) //await a few seconds to ensure we captured requests
+      //pull gameString if game started
+      if (Object.keys(gameData.game).length > 0) {
+        gameData.game.gameTimeStr = await page.evaluate(scrapers.gameTimeStr)
+        console.log('=================gameString(gameData.game')
+        console.log(gameData.game.gameTimeStr)
+      }
+      if (Object.keys(gameData.gameDetail).length > 0) {
+        gameData.gameDetail.gameTimeStr = await page.evaluate(scrapers.gameTimeStr)
+        console.log('=================gameString(gameDetail.game')
+        console.log(gameData.gameDetail.gameTimeStr)
+      }
+
       // if (gameData?.playerStats.length > 0) {
       //   gameData.teamStats = await teamStats(gameData)
       // }
@@ -83,7 +98,7 @@ module.exports = {
       console.log('error caught', err.message)
 
       if (!browserIn && browser !== undefined) {
-        await browser.close()
+        // await browser.close()
       }
       return gameData
     }
@@ -99,6 +114,19 @@ module.exports = {
     for (let url of weekScheduleUrls) {
       gameData = await this.gameDataGame(url.gameUrl, browser)
       scheduleData.push(gameData)
+      //PICKUP gameDetailsByIds HERE
+      // if (weekScheduleUrls.length < 1) {
+      //   scheduleData.push(gameData)
+      // } else {
+      //   if (gameData?.gameDetailsByIds?.length > 0) {
+      //     if (scheduleData[0]?.gameDetailsByIds?.length < 1) {
+      //       scheduleData[0].gameDetailsByIds = [...gameData.gameDetailsByIds]
+      //     }
+
+      //     Delete(gameData.gameDetailsByIds)
+      //   }
+      // }
+
       //DEBUGGING: LIMIT GAMES PULLED
       count++
       // if (count > 2) break
