@@ -11,10 +11,11 @@ const utils = require('./utils')
 const isHeadless = true
 
 module.exports = {
-  async gameDataGame(url, browserIn = null, pageIn = null, storeResults = true) {
+  async gameDataGame(url, browserIn = null, storeResults = true) {
     const gameData = {
       game: {},
       gameDetail: {},
+      gameDetailsByIds: [], //ONLY THE FIRST ITEM OF THE GAMES ARRAY(if looping) WILL HAVE THIS SET
       league: {},
       playerStats: [],
       slug: '',
@@ -22,6 +23,20 @@ module.exports = {
       teams: [],
       teamStats: {},
     }
+    //TRYING METHODS TO STOP SCRIPT FROM GETTING "STUCK"
+    //SOMETIMES CONNECTIONS NEVER TIMNEOUT AND IT RUNS ON 1 GAME INDEF...
+    let timeoutReached = false
+    // setTimeout(async () => {
+    //   if (!timeoutReached) {
+    //     if (storeResults) {
+    //       await db.save(gameData, gameData.slug)
+    //     }
+    //     if (!browserIn) {
+    //       await browser.close()
+    //     }
+    //     return gameData
+    //   }
+    // }, 120000)
     const isSlug = !url.includes('/games/')
     fullUrl = isSlug ? process.env.baseUrl + '/games/' + url : process.env.baseUrl + url
     //SET GAME SLUG, IT NEEDS TO BE PASSED TO PARSER TO DETECT CORRECT GAME IS BEING SET
@@ -29,27 +44,27 @@ module.exports = {
 
     try {
       const browser = browserIn ? browserIn : await puppeteer.launch({ headless: isHeadless })
-      //TODO: Come back to this, pages dont load when passing in page or trying to set tab
-      // const page = pageIn ? pageIn : await browser.newPage()
       const page = await browser.newPage()
       console.log('FETCHING: ', url)
-      await page.goto(fullUrl)
+      await page.goto(fullUrl).catch(err => console.log('err, prob timeout', err))
+      await page.evaluate(scrapers.scrollToFooter)
+
       await page.setRequestInterception(true)
 
       //ABORT ALL REQUESTS NOT RELEVANT  //TODO: CREATE COMPLETE BLACKLIST
-      // page.on('request', async request => {
-      //   if (request.type === 'image') {
-      //     request.abort()
-      //   } else {
-      //     request.continue()
-      //   }
-      //   return
-      // })
+      page.on('request', async request => {
+        if (request.type === 'image') {
+          request.abort()
+        } else {
+          request.continue()
+        }
+        return
+      })
 
       page.on('response', async response => {
         // console.log('on resp') //debugging
         if (response.request().method() !== 'GET') return // Ignore all requests not GET
-        if (!response.url().includes(process.env.apiUrl)) return // we're only interested in calls to nfl api
+        if (!response.url().includes(process.env.apiUrl)) return // we're only interested in calls to  api
         // console.log('\n 🚀MATCH: ', response.url()) //debugging
         const parsedData = await scrapers.gameResponse(response, gameData)
         // if (parsedData) Object.keys(parsedData).forEach(dataSet => (gameData[dataSet] = { ...parsedData[dataSet] }))
@@ -70,50 +85,64 @@ module.exports = {
         }
       })
       await scrapers.gameTriggerStats(page)
-      await page.waitForTimeout(3000) //await a few seconds to ensure we captured requests
+      await page.waitForTimeout(10000) //await a few seconds to ensure we captured requests
+      //pull gameString if game started
+      if (Object.keys(gameData.game).length > 0) {
+        gameData.game.gameTimeStr = await page.evaluate(scrapers.gameTimeStr)
+        console.log('=================gameString(gameData.game')
+        console.log(gameData.game.gameTimeStr)
+      }
+      if (Object.keys(gameData.gameDetail).length > 0) {
+        gameData.gameDetail.gameTimeStr = await page.evaluate(scrapers.gameTimeStr)
+        console.log('=================gameString(gameDetail.game')
+        console.log(gameData.gameDetail.gameTimeStr)
+      }
+
       // if (gameData?.playerStats.length > 0) {
       //   gameData.teamStats = await teamStats(gameData)
       // }
       if (storeResults) {
         await db.save(gameData, gameData.slug)
       }
-      if (!pageIn) {
-        await page.close()
-      }
       if (!browserIn) {
         await browser.close()
       }
+      timeoutReached = true
       return gameData
     } catch (err) {
       console.log('error caught', err.message)
 
       if (!browserIn && browser !== undefined) {
-        await browser.close()
+        // await browser.close()
       }
+      timeoutReached = true
       return gameData
     }
   },
   async gameDataSeason() {},
   async gameDataWeek(seasonData) {
     const browser = await puppeteer.launch({ headless: isHeadless })
-    // const page = await browser.newPage()
-
-    // await page.setViewport({
-    //   width: 5000,
-    //   height: 3000,
-    // })
-    // await page.setUserAgent('Your user agent Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36')
-
     const scheduleData = []
     const weekScheduleUrls = await this.gameScheduleWeek({ ...seasonData }, browser)
-    // const weekScheduleUrls = await this.gameScheduleWeek({ ...seasonData }, browser, page)
     console.log('WEEK SCHEDULE URLS: ')
     console.log(weekScheduleUrls)
     count = 1 //DEBUG, SEE LOOP
     for (let url of weekScheduleUrls) {
       gameData = await this.gameDataGame(url.gameUrl, browser)
-      // gameData = await this.gameDataGame(url.gameUrl, browser, page)
       scheduleData.push(gameData)
+      //PICKUP gameDetailsByIds HERE
+      // if (weekScheduleUrls.length < 1) {
+      //   scheduleData.push(gameData)
+      // } else {
+      //   if (gameData?.gameDetailsByIds?.length > 0) {
+      //     if (scheduleData[0]?.gameDetailsByIds?.length < 1) {
+      //       scheduleData[0].gameDetailsByIds = [...gameData.gameDetailsByIds]
+      //     }
+
+      //     Delete(gameData.gameDetailsByIds)
+      //   }
+      // }
+
       //DEBUGGING: LIMIT GAMES PULLED
       count++
       // if (count > 2) break
@@ -124,7 +153,7 @@ module.exports = {
     db.save(scheduleData, `week_${seasonData.type}${seasonData.week}_${seasonData.year}`)
     return scheduleData
   },
-  async gameScheduleWeek({ type, week, year }, browserIn = null, pageIn = null) {
+  async gameScheduleWeek({ type, week, year }, browser = null) {
     const endpoints = {
       scheduleWeek: `${process.env.baseUrl}/schedules/${year}/${type}${week}/`,
       scheduleWeekLazy: `https://www.nfl.com/api/lazy/load?json={%22Name%22:%22Schedules%22,%22Module%22:{%22seasonFromUrl%22:2020,%22SeasonType%22:%22REG1%22,%22WeekFromUrl%22:1,%22PreSeasonPlacement%22:0,%22RegularSeasonPlacement%22:0,%22PostSeasonPlacement%22:0,%22TimeZoneID%22:%22America/New_York%22}}`,
@@ -132,28 +161,15 @@ module.exports = {
     }
     const url = endpoints.scheduleWeek
     console.log('getting schedules from: ', url)
-
-    try {
-      const browser = browserIn ? browserIn : await puppeteer.launch({ headless: isHeadless })
-      const page = pageIn ? pageIn : await browser.newPage()
-
-      //get games for season week
-      await page.goto(url)
-      await page.waitForTimeout(2000)
-      let content = await page.evaluate(scrapers.scheduleUrls)
-
-      if (!browserIn) {
-        await browser.close()
-      }
-      return content
-    } catch (err) {
-      console.log('error caught', err.message)
-
-      if (!browserIn && browser !== undefined) {
-        await browser.close()
-      }
-      return gameData
+    if (!browser) {
+      const browser = await puppeteer.launch({ headless: isHeadless })
     }
+    //get games for season week
+    const page = await browser.newPage()
+    await page.goto(url)
+    await page.waitForTimeout(2000)
+    let content = await page.evaluate(scrapers.scheduleUrls)
+    return content
   },
   async playerDataLeague() {
     const teamsUrl = process.env.baseUrl + '/teams'
@@ -231,8 +247,12 @@ module.exports = {
       //SCRAPE PLAYERS, SET TEAM NAME SCRAPING, RETURN PLAYERS FILTERED BY POSITION AND FORMATTED
       const scrapedData = await page.evaluate(scrapers.playersRoster)
       const team = parsers.teamnameFromSlug(slug)
-      players = scrapedData.filter(player => pos.includes(player.pos)).map(player => parsers.player(player, team))
-      players = scrapedData.filter(player => !pos.includes(player.pos)).map(player => parsers.player(player, team))
+      //ALL PLAYERS
+      players = scrapedData.map(player => parsers.player(player, team))
+      //OFFENSE ONLY
+      // players = scrapedData.filter(player => pos.includes(player.pos)).map(player => parsers.player(player, team))
+      //DEFENSE ONLY
+      // players = scrapedData.filter(player => !pos.includes(player.pos)).map(player => parsers.player(player, team))
 
       if (storeResults) {
         await db.save(players, `players_${team}`)
@@ -241,7 +261,7 @@ module.exports = {
         await browser.close()
       }
     } catch (err) {
-      console.log('error caught', err.message)
+      console.log('error caught', err)
     }
     return players
   },
@@ -284,7 +304,7 @@ module.exports = {
       await page.waitForTimeout(5000) //await a few seconds to ensure we captured requests
       return teams
     } catch (err) {
-      console.log('error caught', err.message)
+      console.log('error caught', err)
     }
   },
   async teamDataLeague(seasonData) {

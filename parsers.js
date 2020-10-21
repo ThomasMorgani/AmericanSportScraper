@@ -29,7 +29,7 @@ module.exports = {
         //RETURN  data as is. Will be parsed, addressed at end of gameData or gameWeek function
 
         //RE-ENABLE WHEN READY TO TEST
-        // return await this.gameDetailsByIds(data)
+        parsedData = this.gameDetailsByIds(data)
         break
       case 'league':
         ///CURRENTLY ONLY RETURNS milestonePlayers: []
@@ -53,7 +53,8 @@ module.exports = {
         break
       case 'teams':
         console.log('processing dataset:::teams')
-        parsedData = await this.teams(data)
+        // parsedData = await this.teams(data)
+        // disabling, already have teams saved
         break
       case 'teamStats':
         console.log('processing dataset:::teamStats')
@@ -163,11 +164,15 @@ module.exports = {
   },
   async gameDetailsByIds(details, gameData, slug) {
     let plays = []
-    if (details.plays) {
-      plays = [...details.plays]
-      Object.delete(details.plays)
-    }
-    return { gameDetails: details, plays }
+    let detailsFiltered = []
+    // details.forEach(detail => {
+    //   if (detail.plays) {
+    //     plays = [...detail.plays].filter(play => player.isBigPlayer === true)
+    //     Object.delete(detail.plays)
+    //   }
+    // })
+
+    return { gameDetailsByIds: detailsFiltered, plays }
   },
   async gameResponse(json) {
     console.log(json)
