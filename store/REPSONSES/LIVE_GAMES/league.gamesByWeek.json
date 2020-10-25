@@ -1,0 +1,426 @@
+{
+  "data": {
+    "viewer": {
+      "league": {
+        "gamesByWeek": [
+          {
+            "esbId": "2020102200",
+            "gameTime": "2020-10-23T00:20:00.000Z",
+            "gsisId": "58261",
+            "homeTeam": {
+              "abbreviation": "PHI",
+              "cityStateRegion": "Philadelphia",
+              "conference": "NFC",
+              "division": "NFC_EAST",
+              "fullName": "Philadelphia Eagles",
+              "nickName": "Eagles",
+              "id": "10043700-2020-3696-5a83-d88a44306b38",
+              "teamType": "TEAM"
+            },
+            "awayTeam": {
+              "abbreviation": "NYG",
+              "cityStateRegion": "N.Y. Giants",
+              "conference": "NFC",
+              "division": "NFC_EAST",
+              "fullName": "New York Giants",
+              "nickName": "Giants",
+              "id": "10043410-2020-73f4-dbdf-85918b6463f8",
+              "teamType": "TEAM"
+            },
+            "venue": {
+              "id": "00092020-2769-5e92-d551-c97e03e9a189",
+              "displayName": "Lincoln Financial Field",
+              "fullName": "Lincoln Financial Field",
+              "state": "PA",
+              "city": "Philadelphia"
+            },
+            "gameDetailId": "10160000-0582-613c-79cf-dbccae5ac12b",
+            "slug": "giants-at-eagles-2020-reg-7"
+          },
+          {
+            "esbId": "2020102512",
+            "gameTime": "2020-10-25T17:00:00.000Z",
+            "gsisId": "58225",
+            "homeTeam": {
+              "abbreviation": "TEN",
+              "cityStateRegion": "Tennessee",
+              "conference": "AFC",
+              "division": "AFC_SOUTH",
+              "fullName": "Tennessee Titans",
+              "nickName": "Titans",
+              "id": "10042100-2020-daee-c63c-a0ce9427152f",
+              "teamType": "TEAM"
+            },
+            "awayTeam": {
+              "abbreviation": "PIT",
+              "cityStateRegion": "Pittsburgh",
+              "conference": "AFC",
+              "division": "AFC_NORTH",
+              "fullName": "Pittsburgh Steelers",
+              "nickName": "Steelers",
+              "id": "10043900-2020-a07c-762f-f96f3f863d67",
+              "teamType": "TEAM"
+            },
+            "venue": { "id": "00092020-2350-63c8-b5f7-753d249c3abc", "displayName": "Nissan Stadium", "fullName": "Nissan Stadium", "state": "TN", "city": "Nashville" },
+            "gameDetailId": null,
+            "slug": "steelers-at-titans-2020-reg-7"
+          },
+          {
+            "esbId": "2020102507",
+            "gameTime": "2020-10-25T17:00:00.000Z",
+            "gsisId": "58269",
+            "homeTeam": {
+              "abbreviation": "WAS",
+              "cityStateRegion": "Washington",
+              "conference": "NFC",
+              "division": "NFC_EAST",
+              "fullName": "Washington Football Team",
+              "nickName": "Football Team",
+              "id": "10045110-2020-c906-b60c-9aecf9010be9",
+              "teamType": "TEAM"
+            },
+            "awayTeam": {
+              "abbreviation": "DAL",
+              "cityStateRegion": "Dallas",
+              "conference": "NFC",
+              "division": "NFC_EAST",
+              "fullName": "Dallas Cowboys",
+              "nickName": "Cowboys",
+              "id": "10041200-2020-e20c-acea-8b43f3713a66",
+              "teamType": "TEAM"
+            },
+            "venue": { "id": "00092020-2389-70d4-c43a-7e670695307a", "displayName": "FedExField", "fullName": "FedExField", "state": "MD", "city": "Landover" },
+            "gameDetailId": null,
+            "slug": "cowboys-at-football-team-2020-reg-7"
+          },
+          {
+            "esbId": "2020102506",
+            "gameTime": "2020-10-25T17:00:00.000Z",
+            "gsisId": "58268",
+            "homeTeam": {
+              "abbreviation": "NYJ",
+              "cityStateRegion": "N.Y. Jets",
+              "conference": "AFC",
+              "division": "AFC_EAST",
+              "fullName": "New York Jets",
+              "nickName": "Jets",
+              "id": "10043430-2020-15e1-7ce8-80bddcacf274",
+              "teamType": "TEAM"
+            },
+            "awayTeam": {
+              "abbreviation": "BUF",
+              "cityStateRegion": "Buffalo",
+              "conference": "AFC",
+              "division": "AFC_EAST",
+              "fullName": "Buffalo Bills",
+              "nickName": "Bills",
+              "id": "10040610-2020-4825-8987-6cddb86ce4d6",
+              "teamType": "TEAM"
+            },
+            "venue": { "id": "00092020-3757-a5b2-89f5-cc2a2ff45b8a", "displayName": "MetLife Stadium", "fullName": "MetLife Stadium", "state": "NJ", "city": "East Rutherford" },
+            "gameDetailId": null,
+            "slug": "bills-at-jets-2020-reg-7"
+          },
+          {
+            "esbId": "2020102505",
+            "gameTime": "2020-10-25T17:00:00.000Z",
+            "gsisId": "58267",
+            "homeTeam": {
+              "abbreviation": "NO",
+              "cityStateRegion": "New Orleans",
+              "conference": "NFC",
+              "division": "NFC_SOUTH",
+              "fullName": "New Orleans Saints",
+              "nickName": "Saints",
+              "id": "10043300-2020-22de-ab2b-ee902f58b5e9",
+              "teamType": "TEAM"
+            },
+            "awayTeam": {
+              "abbreviation": "CAR",
+              "cityStateRegion": "Carolina",
+              "conference": "NFC",
+              "division": "NFC_SOUTH",
+              "fullName": "Carolina Panthers",
+              "nickName": "Panthers",
+              "id": "10040750-2020-527f-28c3-4bd53b33f26e",
+              "teamType": "TEAM"
+            },
+            "venue": {
+              "id": "00092020-2870-7a1f-ecc3-8d116accd4af",
+              "displayName": "Mercedes-Benz Superdome",
+              "fullName": "Mercedes-Benz Superdome",
+              "state": "LA",
+              "city": "New Orleans"
+            },
+            "gameDetailId": null,
+            "slug": "panthers-at-saints-2020-reg-7"
+          },
+          {
+            "esbId": "2020102503",
+            "gameTime": "2020-10-25T17:00:00.000Z",
+            "gsisId": "58265",
+            "homeTeam": {
+              "abbreviation": "HOU",
+              "cityStateRegion": "Houston",
+              "conference": "AFC",
+              "division": "AFC_SOUTH",
+              "fullName": "Houston Texans",
+              "nickName": "Texans",
+              "id": "10042120-2020-b48b-be99-9b4c2ef7c3c0",
+              "teamType": "TEAM"
+            },
+            "awayTeam": {
+              "abbreviation": "GB",
+              "cityStateRegion": "Green Bay",
+              "conference": "NFC",
+              "division": "NFC_NORTH",
+              "fullName": "Green Bay Packers",
+              "nickName": "Packers",
+              "id": "10041800-2020-a8df-d28c-31af9e38f50f",
+              "teamType": "TEAM"
+            },
+            "venue": { "id": "00092020-3698-4ef0-2e02-90292dbf5bf6", "displayName": "NRG Stadium", "fullName": "NRG Stadium", "state": "TX", "city": "Houston" },
+            "gameDetailId": null,
+            "slug": "packers-at-texans-2020-reg-7"
+          },
+          {
+            "esbId": "2020102502",
+            "gameTime": "2020-10-25T17:00:00.000Z",
+            "gsisId": "58264",
+            "homeTeam": {
+              "abbreviation": "CIN",
+              "cityStateRegion": "Cincinnati",
+              "conference": "AFC",
+              "division": "AFC_NORTH",
+              "fullName": "Cincinnati Bengals",
+              "nickName": "Bengals",
+              "id": "10040920-2020-bb1c-6273-272e6ebe1997",
+              "teamType": "TEAM"
+            },
+            "awayTeam": {
+              "abbreviation": "CLE",
+              "cityStateRegion": "Cleveland",
+              "conference": "AFC",
+              "division": "AFC_NORTH",
+              "fullName": "Cleveland Browns",
+              "nickName": "Browns",
+              "id": "10041050-2020-ba1f-5288-d7badb60386f",
+              "teamType": "TEAM"
+            },
+            "venue": { "id": "00092020-3530-3589-8384-c285f8cba087", "displayName": "Paul Brown Stadium", "fullName": "Paul Brown Stadium", "state": "OH", "city": "Cincinnati" },
+            "gameDetailId": null,
+            "slug": "browns-at-bengals-2020-reg-7"
+          },
+          {
+            "esbId": "2020102500",
+            "gameTime": "2020-10-25T17:00:00.000Z",
+            "gsisId": "58262",
+            "homeTeam": {
+              "abbreviation": "ATL",
+              "cityStateRegion": "Atlanta",
+              "conference": "NFC",
+              "division": "NFC_SOUTH",
+              "fullName": "Atlanta Falcons",
+              "nickName": "Falcons",
+              "id": "10040200-2020-b16a-466a-fec77d725cdb",
+              "teamType": "TEAM"
+            },
+            "awayTeam": {
+              "abbreviation": "DET",
+              "cityStateRegion": "Detroit",
+              "conference": "NFC",
+              "division": "NFC_NORTH",
+              "fullName": "Detroit Lions",
+              "nickName": "Lions",
+              "id": "10041540-2020-75ad-3bc8-aa772f3401fa",
+              "teamType": "TEAM"
+            },
+            "venue": {
+              "id": "00092020-2076-b456-694f-35c7ede1f714",
+              "displayName": "Mercedes-Benz Stadium",
+              "fullName": "Mercedes-Benz Stadium",
+              "state": "GA",
+              "city": "Atlanta"
+            },
+            "gameDetailId": null,
+            "slug": "lions-at-falcons-2020-reg-7"
+          },
+          {
+            "esbId": "2020102511",
+            "gameTime": "2020-10-25T20:05:00.000Z",
+            "gsisId": "58273",
+            "homeTeam": {
+              "abbreviation": "LV",
+              "cityStateRegion": "Las Vegas",
+              "conference": "AFC",
+              "division": "AFC_WEST",
+              "fullName": "Las Vegas Raiders",
+              "nickName": "Raiders",
+              "id": "10042520-2020-bc08-adff-ea4db8a52561",
+              "teamType": "TEAM"
+            },
+            "awayTeam": {
+              "abbreviation": "TB",
+              "cityStateRegion": "Tampa Bay",
+              "conference": "NFC",
+              "division": "NFC_SOUTH",
+              "fullName": "Tampa Bay Buccaneers",
+              "nickName": "Buccaneers",
+              "id": "10044900-2020-57ff-bc6f-3ae4642da5ff",
+              "teamType": "TEAM"
+            },
+            "venue": { "id": "00092020-1510-223b-d71d-1ca857c41f20", "displayName": "Allegiant Stadium", "fullName": "Allegiant Stadium", "state": "NV", "city": "Las Vegas" },
+            "gameDetailId": null,
+            "slug": "buccaneers-at-raiders-2020-reg-7"
+          },
+          {
+            "esbId": "2020102513",
+            "gameTime": "2020-10-25T20:25:00.000Z",
+            "gsisId": "58283",
+            "homeTeam": {
+              "abbreviation": "LAC",
+              "cityStateRegion": "L.A. Chargers",
+              "conference": "AFC",
+              "division": "AFC_WEST",
+              "fullName": "Los Angeles Chargers",
+              "nickName": "Chargers",
+              "id": "10044400-2020-fbac-1859-8e03a7a987df",
+              "teamType": "TEAM"
+            },
+            "awayTeam": {
+              "abbreviation": "JAX",
+              "cityStateRegion": "Jacksonville",
+              "conference": "AFC",
+              "division": "AFC_SOUTH",
+              "fullName": "Jacksonville Jaguars",
+              "nickName": "Jaguars",
+              "id": "10042250-2020-4c59-b998-17c186e3b481",
+              "teamType": "TEAM"
+            },
+            "venue": { "id": "00092020-3005-2852-7ab1-abaa87cdc067", "displayName": "SoFi Stadium", "fullName": "SoFi Stadium", "state": "CA", "city": "Inglewood" },
+            "gameDetailId": null,
+            "slug": "jaguars-at-chargers-2020-reg-7"
+          },
+          {
+            "esbId": "2020102510",
+            "gameTime": "2020-10-25T20:25:00.000Z",
+            "gsisId": "58272",
+            "homeTeam": {
+              "abbreviation": "NE",
+              "cityStateRegion": "New England",
+              "conference": "AFC",
+              "division": "AFC_EAST",
+              "fullName": "New England Patriots",
+              "nickName": "Patriots",
+              "id": "10043200-2020-9ba9-0828-049823295b70",
+              "teamType": "TEAM"
+            },
+            "awayTeam": {
+              "abbreviation": "SF",
+              "cityStateRegion": "San Francisco",
+              "conference": "NFC",
+              "division": "NFC_WEST",
+              "fullName": "San Francisco 49ers",
+              "nickName": "49ers",
+              "id": "10044500-2020-647d-4ff7-d6a678d2a29d",
+              "teamType": "TEAM"
+            },
+            "venue": { "id": "00092020-1065-16ca-7ceb-6711cb42730e", "displayName": "Gillette Stadium", "fullName": "Gillette Stadium", "state": "MA", "city": "Foxborough" },
+            "gameDetailId": null,
+            "slug": "49ers-at-patriots-2020-reg-7"
+          },
+          {
+            "esbId": "2020102509",
+            "gameTime": "2020-10-25T20:25:00.000Z",
+            "gsisId": "58271",
+            "homeTeam": {
+              "abbreviation": "DEN",
+              "cityStateRegion": "Denver",
+              "conference": "AFC",
+              "division": "AFC_WEST",
+              "fullName": "Denver Broncos",
+              "nickName": "Broncos",
+              "id": "10041400-2020-f0d9-8251-5126acbf2746",
+              "teamType": "TEAM"
+            },
+            "awayTeam": {
+              "abbreviation": "KC",
+              "cityStateRegion": "Kansas City",
+              "conference": "AFC",
+              "division": "AFC_WEST",
+              "fullName": "Kansas City Chiefs",
+              "nickName": "Chiefs",
+              "id": "10042310-2020-644b-9c8a-a1d7e50e2bdf",
+              "teamType": "TEAM"
+            },
+            "venue": {
+              "id": "00092020-5786-1201-a33e-c1a95e022db3",
+              "displayName": "Empower Field at Mile High",
+              "fullName": "Empower Field at Mile High",
+              "state": "CO",
+              "city": "Denver"
+            },
+            "gameDetailId": null,
+            "slug": "chiefs-at-broncos-2020-reg-7"
+          },
+          {
+            "esbId": "2020102508",
+            "gameTime": "2020-10-26T00:20:00.000Z",
+            "gsisId": "58270",
+            "homeTeam": {
+              "abbreviation": "ARI",
+              "cityStateRegion": "Arizona",
+              "conference": "NFC",
+              "division": "NFC_WEST",
+              "fullName": "Arizona Cardinals",
+              "nickName": "Cardinals",
+              "id": "10043800-2020-6de2-d4a8-fc8cf0e8a3ad",
+              "teamType": "TEAM"
+            },
+            "awayTeam": {
+              "abbreviation": "SEA",
+              "cityStateRegion": "Seattle",
+              "conference": "NFC",
+              "division": "NFC_WEST",
+              "fullName": "Seattle Seahawks",
+              "nickName": "Seahawks",
+              "id": "10044600-2020-6dcd-110e-566f0c0e66ec",
+              "teamType": "TEAM"
+            },
+            "venue": { "id": "00092020-1907-da33-4eba-dbc38ea8f7d1", "displayName": "State Farm Stadium", "fullName": "State Farm Stadium", "state": "AZ", "city": "Glendale" },
+            "gameDetailId": null,
+            "slug": "seahawks-at-cardinals-2020-reg-7"
+          },
+          {
+            "esbId": "2020102600",
+            "gameTime": "2020-10-27T00:15:00.000Z",
+            "gsisId": "58274",
+            "homeTeam": {
+              "abbreviation": "LA",
+              "cityStateRegion": "L.A. Rams",
+              "conference": "NFC",
+              "division": "NFC_WEST",
+              "fullName": "Los Angeles Rams",
+              "nickName": "Rams",
+              "id": "10042510-2020-b7df-2e70-b88d4d1e062f",
+              "teamType": "TEAM"
+            },
+            "awayTeam": {
+              "abbreviation": "CHI",
+              "cityStateRegion": "Chicago",
+              "conference": "NFC",
+              "division": "NFC_NORTH",
+              "fullName": "Chicago Bears",
+              "nickName": "Bears",
+              "id": "10040810-2020-688a-93a0-2f8f95b485a0",
+              "teamType": "TEAM"
+            },
+            "venue": { "id": "00092020-3005-2852-7ab1-abaa87cdc067", "displayName": "SoFi Stadium", "fullName": "SoFi Stadium", "state": "CA", "city": "Inglewood" },
+            "gameDetailId": null,
+            "slug": "bears-at-rams-2020-reg-7"
+          }
+        ]
+      }
+    }
+  }
+}

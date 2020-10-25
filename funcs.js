@@ -20,7 +20,7 @@ const args = [
   '--user-agent="Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/W.X.Y.Z‡ Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"',
 ]
 const defaultViewport = null
-const headless = false
+const headless = true
 
 module.exports = {
   async gameDataGame(url, storeResults = true) {
@@ -71,7 +71,7 @@ module.exports = {
         // console.log('on resp') //debugging
         if (response.request().method() !== 'GET') return // Ignore all requests not GET
         if (!response.url().includes(process.env.apiUrl)) return // we're only interested in calls to  api
-        console.log('\n 🚀MATCH: ', response.url()) //debugging
+        // console.log('\n 🚀MATCH: ', response.url()) //debugging
         const parsedData = await scrapers.gameResponse(response, gameData)
         // if (parsedData) Object.keys(parsedData).forEach(dataSet => (gameData[dataSet] = { ...parsedData[dataSet] }))
         if (parsedData) {
