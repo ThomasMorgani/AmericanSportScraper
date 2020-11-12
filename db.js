@@ -6,6 +6,7 @@ module.exports = {
         return console.error('error writing file: ', err)
       } else {
         console.log(`Wrote to store/${filename}.json`)
+        return true
       }
     })
   },

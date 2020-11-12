@@ -89,6 +89,7 @@ switch (process.argv['2']) {
       year: args['1'] || currentWeek.year,
       type: args['2'] || currentWeek.type,
     })
+
     break
 
   default:
@@ -96,4 +97,3 @@ switch (process.argv['2']) {
     man()
     break
 }
-return

@@ -584,6 +584,8 @@ module.exports = {
     const { opponentGameStats: away, teamGameStats: home } = data
     // const home = teamGameStats
     // const away = opponentGameStats
+
+    
     const home_team = data?.team?.abbreviation ? data.team.abbreviation : 'UNK'
     const away_abv = gameData?.away_abv ? gameData.away_abv : 'UNK'
     const home_abv = gameData?.home_abv ? gameData.home_abv : home_team
